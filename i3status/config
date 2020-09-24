@@ -1,0 +1,52 @@
+general {
+  output_format = "i3bar"
+  colors = false
+  markup = pango
+  interval = 2
+}
+
+order += "ethernet _first_"
+order += "cpu_usage"
+# order += "cpu_temperature 0"
+order += "memory"
+order += "volume master"
+order += "tztime clock"
+order += "tztime date"
+
+ethernet _first_ {
+  format_up = ""
+  format_down = "<span color='#e95678'>net:</span> <span color='#4c4d53'>down</span>"
+}
+
+memory {
+  format = "<span color='#e95678'>mem:</span> <span color='#f09483'>%used</span>"
+}
+
+cpu_usage {
+  format = "<span color='#e95678'>cpu:</span> <span color='#f09483'>%usage</span>"
+}
+
+cpu_temperature 0 {
+  format = "<span color='#e95678'>@</span> <span color='#f09483'>%degrees</span>"
+  path = ""
+}
+
+volume master {
+  format = "<span color='#e95678'>vol: <span color='#f09483'>%volume"
+  format_muted = "<span color='#e95678'>vol:</span> <span color='#b877db'></span><span color='#4c4d53'>%volume</span>"
+  device = "default"
+  mixer = "Master"
+  mixer_idx = 0
+}
+
+tztime clock {
+  format = "<span color='#e95678'>%time</span>"
+  timezone = "Europe/Warsaw"
+  format_time = "%H:%M"
+}
+
+tztime date {
+  format = "<span color='#e95678'>%time</span> "
+  timezone = "Europe/Warsaw"
+  format_time = "%F"
+}

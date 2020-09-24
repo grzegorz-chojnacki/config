@@ -1,0 +1,8 @@
+[user]
+	email = grzegorzc60@gmail.com
+	name = Grzegorz Chojnacki
+[diff]
+	tool = vimdiff
+
+[alias]
+	tracked = ls-tree -r --name-only HEAD

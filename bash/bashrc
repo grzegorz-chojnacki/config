@@ -1,0 +1,65 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# Start keychain
+eval $(keychain --eval --quiet id_rsa ~/.ssh/id_rsa)
+
+# Don't save duplicate lines or lines starting with space
+HISTCONTROL=ignoreboth:erasedups
+
+# Don't limit size of the history file
+HISTSIZE=
+HISTFILESIZE=
+
+# Bash behaviour
+shopt -s histappend # Append to history file
+shopt -s autocd     # cd into dirs without explicit cd command
+shopt -s cdspell    # Autocorrect cd names
+shopt -s dirspell   # Autocorrect dir names
+shopt -s globstar   # Enable '**' glob
+
+# Bash completion
+if [ -f /usr/share/bash_completion/bash_completion ]; then
+  source /usr/share/bash_completion/bash_completion
+fi
+
+# Turn on tab completion
+bind 'TAB':menu-complete
+
+# Terminal tput color codes
+export FGBlack=$(tput setaf 0)
+export FGRed=$(tput setaf 1)
+export FGGreen=$(tput setaf 2)
+export FGYellow=$(tput setaf 3)
+export FGBlue=$(tput setaf 4)
+export FGMagenta=$(tput setaf 5)
+export FGCyan=$(tput setaf 6)
+export FGWhite=$(tput setaf 7)
+
+export BGBlack=$(tput setab 0)
+export BGRed=$(tput setab 1)
+export BGGreen=$(tput setab 2)
+export BGYellow=$(tput setab 3)
+export BGBlue=$(tput setab 4)
+export BGMagenta=$(tput setab 5)
+export BGCyan=$(tput setab 6)
+export BGWhite=$(tput setab 7)
+
+export FBGReset=$(tput sgr0)
+
+# Source git prompt
+if [ -f /usr/share/git/completion/git-prompt.sh ]; then
+  source /usr/share/git/completion/git-prompt.sh
+fi
+
+export PS1='\[$FGBlue\] \w\[$FGMagenta\]$(__git_ps1) \[$FBGReset\]\$ '
+
+# Manage dotfiles with git bare repo
+alias dots='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# Standard aliases
+alias ls='ls -hN --color=auto --group-directories-first'
+alias ll='ls -Ao'
+alias la='ls -A'
+alias grep='grep --color=auto'
+alias mkdir='mkdir -pv'

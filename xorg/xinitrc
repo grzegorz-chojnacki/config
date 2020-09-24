@@ -1,0 +1,6 @@
+export TERM=alacritty
+export EDITOR=vim
+
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+
+exec i3
