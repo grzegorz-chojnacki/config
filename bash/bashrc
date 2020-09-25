@@ -58,7 +58,7 @@ export PS1='\[$FGBlue\] \w\[$FGMagenta\]$(__git_ps1) \[$FBGReset\]\$ '
 alias dots='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # Standard aliases
-alias ls='ls -hNG --color=auto'
+alias ls='ls -hN --color=auto --group-directories-first'
 alias ll='ls -Ao'
 alias la='ls -A'
 alias grep='grep --color=auto'
