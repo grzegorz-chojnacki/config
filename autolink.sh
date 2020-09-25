@@ -13,6 +13,7 @@ if [[ $repoName != $configPath ]]; then
     exit 1
   fi
   mv $repoName $configPath
+  echo "Renamed $repo to .config"
 fi
 
 targets=(
@@ -26,8 +27,10 @@ targets=(
 )
 
 for target in ${targets[@]}; do
-  echo ".config/$target -> $HOME/.${target##*/}"
-  ln -s .config/$target $HOME/.${target##*/}
+  newLink=$HOME/.${target##*/}
+
+  ln -si .config/$target $newLink
+  echo "$newLink -> .config/$target"
 done
 
 echo 'done.'
