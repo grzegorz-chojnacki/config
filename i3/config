@@ -2,8 +2,8 @@
 #   Startup    #
 ################
 
-exec --no-startup-id /usr/bin/VBoxClient-all
-exec --no-startup-id picom
+# exec --no-startup-id /usr/bin/VBoxClient-all
+exec --no-startup-id picom -b
 exec --no-startup-id nitrogen --restore
 
 ################
@@ -13,8 +13,7 @@ exec --no-startup-id nitrogen --restore
 # Disable cursor warping to different monitors
 mouse_warping none
 
-workspace_auto_back_and_forth yes
-
+# workspace_auto_back_and_forth yes
 
 
 ################
@@ -77,8 +76,8 @@ bar {
 set $Mod Mod4
 
 # Spawn quick 'dropdown' terminal that stays open
-bindsym $Mod+grave scratchpad show
-bindsym $Mod+Shift+grave move scratchpad
+#bindsym $Mod+grave scratchpad show
+#bindsym $Mod+Shift+grave move scratchpad
 
 # Spawn a new terminal
 bindsym $Mod+Return exec i3-sensible-terminal
@@ -127,6 +126,9 @@ bindsym $Mod+Shift+Left  move left
 bindsym $Mod+Shift+Down  move down
 bindsym $Mod+Shift+Up    move up
 bindsym $Mod+Shift+Right move right
+
+bindsym $mod+Shift+greater move workspace to output right
+bindsym $mod+Shift+less    move workspace to output left
 
 # split in horizontal orientation
 bindsym $Mod+b split h
@@ -215,3 +217,4 @@ mode "resize" {
 bindsym $Mod+r mode "resize"
 
 bindsym $Mod+g gaps inner all toggle 10
+
