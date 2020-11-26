@@ -50,3 +50,4 @@ tztime date {
   timezone = "Europe/Warsaw"
   format_time = "%F"
 }
+
