@@ -2,7 +2,8 @@
 [[ $- != *i* ]] && return
 
 # Start keychain
-eval $(keychain --eval --quiet id_rsa ~/.ssh/id_rsa)
+
+[[ -f ~/.ssh/id_rsa ]] && eval $(keychain --eval --quiet id_rsa ~/.ssh/id_rsa)
 
 # Don't save duplicate lines or lines starting with space
 HISTCONTROL=ignoreboth:erasedups
