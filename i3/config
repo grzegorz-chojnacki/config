@@ -3,8 +3,9 @@
 ################
 
 # exec --no-startup-id /usr/bin/VBoxClient-all
-exec --no-startup-id picom -b 
+exec --no-startup-id picom -b
 exec --no-startup-id nitrogen --restore
+exec --no-startup-id xfce4-clipman &
 
 ################
 #  Behaviour   #
@@ -217,3 +218,4 @@ bindsym $Mod+r mode "resize"
 
 bindsym $Mod+g gaps inner all toggle 10
 
+bindsym Print exec "xfce4-screenshooter -r -c"
