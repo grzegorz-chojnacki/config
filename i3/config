@@ -80,7 +80,7 @@ set $Mod Mod4
 #bindsym $Mod+Shift+grave move scratchpad
 
 # Spawn a new terminal
-bindsym $Mod+Return exec i3-sensible-terminal
+bindsym $Mod+Return exec alacritty
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
