@@ -50,6 +50,9 @@ client.background $Background
 # Gaps config
 for_window [Class=".*"] border pixel 2
 
+# Always floating
+for_window [class="Deadbeef"] floating enable, resize set 600px 500px, move workspace current
+
 #################
 #  Status bar   #
 #################
