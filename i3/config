@@ -94,9 +94,11 @@ bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT
 # Use Mouse+$Mod to drag floating windows to their wanted position
 floating_modifier $Mod
 
-
-# kill focused window
+# Kill focused window
 bindsym $Mod+q kill
+
+# Kill tab with mouse middle button click
+bindsym --release button2 kill
 
 # start dmenu (a program launcher)
 bindsym $Mod+p exec dmenu_run -i -l 10
