@@ -1,0 +1,130 @@
+{
+  "telemetry.enableTelemetry": false,
+  "files.autoSave": "onFocusChange",
+  "editor.tabSize": 2,
+  "editor.accessibilitySupport": "off",
+  "editor.mouseWheelZoom": true,
+  "files.trimFinalNewlines": true,
+  "editor.fontSize": 18,
+  "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
+  "editor.fontLigatures": "'ss04', 'ss08",
+  "terminal.integrated.fontSize": 16,
+  "editor.suggestSelection": "first",
+  "terminal.integrated.rendererType": "dom",
+  "html.format.wrapLineLength": 80,
+  "files.trimTrailingWhitespace": true,
+  "markdown.preview.lineHeight": 1.5,
+  "editor.cursorSurroundingLines": 5,
+  "editor.renderLineHighlight": "gutter",
+  "editor.dragAndDrop": false,
+  "editor.foldingStrategy": "indentation",
+  "editor.occurrencesHighlight": false,
+  "editor.renderLineHighlightOnlyWhenFocus": true,
+  "workbench.startupEditor": "none",
+  "workbench.editor.untitled.labelFormat": "name",
+  "editor.rulers": [ 80 ],
+  "[java]": { "editor.rulers": [ 120 ] },
+  "editor.find.addExtraSpaceOnTop": false,
+  "files.associations": {
+    "*.rmd": "markdown",
+    "*.rkt": "racket"
+  },
+  "explorer.confirmDragAndDrop": false,
+  "git.suggestSmartCommit": false,
+  "editor.minimap.enabled": true,
+  "breadcrumbs.enabled": true,
+  "editor.renderWhitespace": "selection",
+  "editor.cursorBlinking": "solid",
+  "git.autofetch": true,
+  "[html]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[json]": { "editor.defaultFormatter": "vscode.json-language-features" },
+  "[jsonc]": { "editor.defaultFormatter": "vscode.json-language-features" },
+  "[markdown]": { "editor.defaultFormatter": "yzhang.markdown-all-in-one" },
+  "[typescript]": { "editor.defaultFormatter": "vscode.typescript-language-features" },
+  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "extensions.ignoreRecommendations": false,
+  "terminal.integrated.shell.linux": "/bin/bash",
+  "terminal.integrated.shell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "remote.SSH.remotePlatform": {
+    "192.168.0.16": "linux",
+    "127.0.0.1": "linux"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "css.lint.duplicateProperties": "warning",
+  "prettier.arrowParens": "avoid",
+  "color-highlight.markRuler": false,
+  "code-runner.runInTerminal": true,
+  "code-runner.saveFileBeforeRun": true,
+  "magic-racket.general.racketPath": "\"Racket.exe\"",
+  "markdown-pdf.headerTemplate": "",
+  "markdown-pdf.highlightStyle": "darcula.css",
+  "workbench.colorTheme": "Horizon",
+  "markdown-pdf.displayHeaderFooter": false,
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "files.eol": "\n",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "markdown.extension.print.theme": "dark",
+  "html.format.endWithNewline": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "git.confirmSync": false,
+  "window.zoomLevel": 0,
+
+  // Theme modifications
+  "workbench.colorCustomizations": {
+    "[Horizon]": {
+      "statusBarItem.remoteBackground": "#16161C",
+      "statusBarItem.remoteForeground": "#E95678",
+      "extensionButton.prominentBackground": "#3D4043",
+    }
+  },
+  "editor.tokenColorCustomizations": {
+    "[Horizon]": {
+      "textMateRules": [
+        {
+          "name": "Markdown code block Fix",
+          "scope": "markup.fenced_code.block.markdown",
+          "settings": { "foreground": "#BBBBBB" }
+        },
+        {
+          "name": "Markdown code block Fix Fix",
+          "scope": "punctuation.definition.markdown",
+          "settings": { "foreground": "#F09483E6" }
+        },
+        {
+          "name": "Java variables Fix",
+          "scope": "source.java",
+          "settings": { "foreground": "#E95678E6" }
+        },
+        {
+          "name": "Punctuation Fix",
+          "scope": "source.java punctuation",
+          "settings": { "foreground": "#BBBBBB" }
+        },
+        {
+          "name": "String Fix",
+          "scope": "source.java punctuation.definition.string",
+          "settings": { "foreground": "#FAB795E6" }
+        },
+        {
+          "name": "Comment Fix",
+          "scope": "source.java punctuation.definition.comment",
+          "settings": { "foreground":  "#BBBBBB4D" }
+        }
+      ]
+    },
+  },
+  "prolog.executablePath": "C:\\Program Files\\swipl\\bin\\swipl.exe",
+  "prolog.linter.run": "onSave",
+  "prolog.linter.enableMsgInOutput": true,
+  "markdown.preview.fontSize": 16,
+  "workbench.statusBar.visible": true,
+  "terminal.external.windowsExec": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "markdown.extension.orderedList.marker": "one",
+  "window.menuBarVisibility": "toggle",
+}
