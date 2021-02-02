@@ -1,10 +1,10 @@
-<?xml encoding="UTF-8" version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <actions>
 <action>
 	<icon>Terminal</icon>
 	<name>Terminal</name>
 	<unique-id>1367866030392833-1</unique-id>
-	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<command>/usr/bin/alacritty %f</command>
 	<description></description>
 	<patterns>*</patterns>
 	<directories/>
