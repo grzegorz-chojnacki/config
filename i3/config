@@ -118,16 +118,16 @@ bindsym $Mod+Up    focus up
 bindsym $Mod+Right focus right
 
 # move focused window
-bindsym $Mod+Shift+h move left
-bindsym $Mod+Shift+j move down
-bindsym $Mod+Shift+k move up
-bindsym $Mod+Shift+l move right
+bindsym $Mod+Shift+h move left  40 px
+bindsym $Mod+Shift+j move down  40 px
+bindsym $Mod+Shift+k move up    40 px
+bindsym $Mod+Shift+l move right 40 px
 
 # alternatively, you can use the cursor keys:
-bindsym $Mod+Shift+Left  move left
-bindsym $Mod+Shift+Down  move down
-bindsym $Mod+Shift+Up    move up
-bindsym $Mod+Shift+Right move right
+bindsym $Mod+Shift+Left  move left  40 px
+bindsym $Mod+Shift+Down  move down  40 px
+bindsym $Mod+Shift+Up    move up    40 px
+bindsym $Mod+Shift+Right move right 40 px
 
 bindsym $Mod+Shift+greater move workspace to output right
 bindsym $Mod+Shift+less    move workspace to output left
