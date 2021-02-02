@@ -1,22 +1,2 @@
-autostart
-BraveSoftware
-Code - OSS
-!Code - OSS/User/**
-code-oss
-dconf
-deadbeef
-Electron
-catfish
-GIMP
-Kvantum
-manjaro
-Mousepad
-pamac
-pulse
-viewnior
-vlc
-volumeicon
-xfce4
-manjaro-hello.json
-mimeapps.list
-gtk-2.0
+# Ignore everything by default
+*

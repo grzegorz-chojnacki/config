@@ -1,6 +1,7 @@
 [user]
 	email = grzegorzc60@gmail.com
 	name = Grzegorz Chojnacki
+
 [diff]
 	tool = vimdiff
 
