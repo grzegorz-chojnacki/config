@@ -1,10 +1,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Start keychain
-
-[[ -f ~/.ssh/id_rsa ]] && eval $(keychain --eval --quiet id_rsa ~/.ssh/id_rsa)
-
 # Don't save duplicate lines or lines starting with space
 HISTCONTROL=ignoreboth:erasedups
 
@@ -18,11 +14,36 @@ shopt -s autocd     # cd into dirs without explicit cd command
 shopt -s cdspell    # Autocorrect cd names
 shopt -s dirspell   # Autocorrect dir names
 shopt -s globstar   # Enable '**' glob
+shopt -s checkwinsize
 
 # Bash completion
 if [ -f /usr/share/bash_completion/bash_completion ]; then
   source /usr/share/bash_completion/bash_completion
 fi
+
+#
+# # ex - archive extractor
+# # usage: ex <file>
+ex () {
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1   ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
 
 # Turn on tab completion
 bind 'TAB':menu-complete
@@ -55,12 +76,14 @@ fi
 
 export PS1='\[$FGBlue\] \w\[$FGMagenta\]$(__git_ps1) \[$FBGReset\]\$ '
 
-# Manage dotfiles with git bare repo
-alias dots='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
 # Standard aliases
 alias ls='ls -hN --color=auto --group-directories-first'
 alias ll='ls -Ao'
 alias la='ls -A'
 alias grep='grep --color=auto'
+alias egrep='egrep --colour=auto'
+alias fgrep='fgrep --colour=auto'
 alias mkdir='mkdir -pv'
+alias cp='cp -i'
+alias df='df -h'
+alias free='free -m'
