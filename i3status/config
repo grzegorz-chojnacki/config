@@ -7,7 +7,8 @@ general {
 
 order += "ethernet _first_"
 order += "cpu_usage"
-# order += "cpu_temperature 0"
+order += "cpu_temperature 0"
+order += "cpu_temperature 1"
 order += "memory"
 order += "volume master"
 order += "tztime clock"
@@ -24,11 +25,17 @@ memory {
 
 cpu_usage {
   format = "<span color='#e95678'>cpu:</span> <span color='#f09483'>%usage</span>"
+  separator_block_width = 0
 }
 
 cpu_temperature 0 {
-  format = "<span color='#e95678'>@</span> <span color='#f09483'>%degrees</span>"
-  path = ""
+  format = " <span color='#4c4d53'>@</span> <span color='#f09483'>%degrees°C</span>"
+  path = "/sys/class/hwmon/hwmon0/temp1_input"
+}
+
+cpu_temperature 1 {
+  format = "<span color='#e95678'>gpu:</span> <span color='#f09483'>%degrees°C</span>"
+  path = "/sys/class/hwmon/hwmon1/temp1_input"
 }
 
 volume master {
@@ -50,4 +57,3 @@ tztime date {
   timezone = "Europe/Warsaw"
   format_time = "%F"
 }
-

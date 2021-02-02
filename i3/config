@@ -2,6 +2,7 @@
 #   Startup    #
 ################
 
+# exec --no-startup-id /usr/lib/polkit-1/polkitd
 exec --no-startup-id picom -b
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xfce4-clipman &
