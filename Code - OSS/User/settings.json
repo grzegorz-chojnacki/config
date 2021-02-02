@@ -27,7 +27,9 @@
   "editor.find.addExtraSpaceOnTop": false,
   "files.associations": {
     "*.rmd": "markdown",
-    "*.rkt": "racket"
+    "*.rkt": "racket",
+    "bashrc": "shellscript",
+    "**/i3/config": "i3"
   },
   "explorer.confirmDragAndDrop": false,
   "git.suggestSmartCommit": false,
@@ -36,19 +38,11 @@
   "editor.renderWhitespace": "selection",
   "editor.cursorBlinking": "solid",
   "git.autofetch": true,
-  "[html]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[json]": { "editor.defaultFormatter": "vscode.json-language-features" },
   "[jsonc]": { "editor.defaultFormatter": "vscode.json-language-features" },
-  "[markdown]": { "editor.defaultFormatter": "yzhang.markdown-all-in-one" },
   "[typescript]": { "editor.defaultFormatter": "vscode.typescript-language-features" },
-  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "extensions.ignoreRecommendations": false,
   "terminal.integrated.shell.linux": "/bin/bash",
-  "terminal.integrated.shell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-  "remote.SSH.remotePlatform": {
-    "192.168.0.16": "linux",
-    "127.0.0.1": "linux"
-  },
   "typescript.updateImportsOnFileMove.enabled": "always",
   "css.lint.duplicateProperties": "warning",
   "prettier.arrowParens": "avoid",
@@ -119,12 +113,8 @@
       ]
     },
   },
-  "prolog.executablePath": "C:\\Program Files\\swipl\\bin\\swipl.exe",
-  "prolog.linter.run": "onSave",
-  "prolog.linter.enableMsgInOutput": true,
   "markdown.preview.fontSize": 16,
   "workbench.statusBar.visible": true,
-  "terminal.external.windowsExec": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
   "markdown.extension.orderedList.marker": "one",
   "window.menuBarVisibility": "toggle",
 }
