@@ -7,6 +7,7 @@ exec --no-startup-id picom -b
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xfce4-clipman &
 exec --no-startup-id redshift-gtk &
+exec --no-startup-id deadbeef &
 
 ################
 #  Behaviour   #
@@ -26,27 +27,26 @@ set $Foreground #bbbbbb
 set $Black      #06060c
 set $Dark       #232530
 set $Gray       #4c4d53
-set $Cranberry  #e95678
-set $Rosebud    #fab795
-set $Tacao      #fac29a
-set $Turquoise  #25b0bc
-set $Lavender   #b877db
-set $Apricot    #f09483
 set $White      #d5d8da
+set $Tacao      #fac29a
+set $Rosebud    #fab795
+set $Apricot    #f09483
+set $Cranberry  #e95678
+set $Lavender   #b877db
+set $Turquoise  #25b0bc
 
 font pango:Fira Code Medium 11
 
 title_align center
 smart_borders on
 
-# class                 border      backgr.     text       indicator   child_border
+# class                 border      background  text       indicator   child_border
 client.focused          $Background $Background $Cranberry $Apricot    $Gray
 client.focused_inactive $Background $Background $Lavender  $Background $Dark
 client.unfocused        $Background $Background $Gray      $Background $Dark
 client.urgent           $Background $Background $Apricot   $Background $Apricot
 client.placeholder      $Background $Background $Gray      $Background $Dark
-
-client.background $Background
+client.background       $Background
 
 # Gaps config
 for_window [Class=".*"] border pixel 2
@@ -86,6 +86,9 @@ set $Mod Mod4
 # Spawn a new terminal
 bindsym $Mod+Return exec alacritty
 
+# Make screenshot of region and copy to clipboard
+bindsym Print exec "xfce4-screenshooter -r -c"
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@   +10% && $refresh_i3status
@@ -102,8 +105,8 @@ bindsym $Mod+q kill
 # Kill tab with mouse middle button click
 bindsym --release $Mod+button2 kill
 
-# start dmenu (a program launcher)
-bindsym $Mod+p exec dmenu_run -i -l 10
+# start dmenu (a program launcher)c
+bindsym $Mod+p exec dmenu_run -i -fn 'Fira Code Medium' -nb '#16161c' -nf '#e95678' -sb '#e95678' -sf '#16161c'
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -223,5 +226,3 @@ mode "resize" {
 bindsym $Mod+r mode "resize"
 
 bindsym $Mod+g gaps inner all toggle 10
-
-bindsym Print exec "xfce4-screenshooter -r -c"
