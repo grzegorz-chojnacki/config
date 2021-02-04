@@ -4,10 +4,10 @@
 
 # exec --no-startup-id /usr/lib/polkit-1/polkitd
 exec --no-startup-id picom -b
+exec --no-startup-id "${HOME}/.config/screenlayout.sh"
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xfce4-clipman &
 exec --no-startup-id redshift-gtk &
-exec --no-startup-id deadbeef &
 
 ################
 #  Behaviour   #
@@ -52,7 +52,8 @@ client.background       $Background
 for_window [Class=".*"] border pixel 2
 
 # Always floating
-for_window [class="Deadbeef"] floating enable, resize set 600px 500px, move workspace current
+for_window [class="Deadbeef"]   floating enable, resize set 600px 500px, move workspace current
+for_window [class="Galculator"] floating enable, move workspace current
 
 #################
 #  Status bar   #
@@ -91,10 +92,14 @@ bindsym Print exec "xfce4-screenshooter -r -c"
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86Tools            exec --no-startup-id deadbeef
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@   +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@   -10% && $refresh_i3status
 bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@   toggle && $refresh_i3status
 bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86Calculator       exec --no-startup-id galculator
+bindsym XF86HomePage         exec --no-startup-id brave
+bindsym XF86Explorer         exec --no-startup-id thunar
 
 # Use Mouse+$Mod to drag floating windows to their wanted position
 floating_modifier $Mod
@@ -103,7 +108,7 @@ floating_modifier $Mod
 bindsym $Mod+q kill
 
 # Kill tab with mouse middle button click
-bindsym --release $Mod+button2 kill
+bindsym button2 kill
 
 # start dmenu (a program launcher)c
 bindsym $Mod+p exec dmenu_run -i -fn 'Fira Code Medium' -nb '#16161c' -nf '#e95678' -sb '#e95678' -sf '#16161c'
