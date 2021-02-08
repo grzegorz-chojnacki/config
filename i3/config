@@ -65,7 +65,7 @@ bar {
     background         $Background
     focused_workspace  $Background $Background $Cranberry
     active_workspace   $Background $Background $Lavender
-    inactive_workspace $Background $Background $Foreground
+    inactive_workspace $Background $Background $Gray
     urgent_workspace   $Background $Background $Apricot
     binding_mode       $Cranberry  $Cranberry  $Background
     separator          $Foreground
