@@ -16,7 +16,6 @@ exec --no-startup-id unclutter --timeout 2 &
 
 # Disable cursor warping to different monitors
 mouse_warping none
-floating_maximum_size 800 x 600
 
 # workspace_auto_back_and_forth yes
 workspace_layout tabbed
@@ -104,6 +103,9 @@ bindsym XF86Calculator       exec --no-startup-id galculator
 bindsym XF86HomePage         exec --no-startup-id brave
 bindsym XF86Explorer         exec --no-startup-id thunar
 bindsym $Mod+n               exec --no-startup-id code ~/notes.md
+bindsym $Mod+Shift+n         exec --no-startup-id alacritty -e nvim ~/notes.md
+bindsym $Mod+b               exec --no-startup-id brave
+bindsym $Mod+e               exec --no-startup-id thunar
 
 # Use Mouse+$Mod to drag floating windows to their wanted position
 floating_modifier $Mod

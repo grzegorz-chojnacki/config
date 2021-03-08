@@ -7,3 +7,5 @@
 
 [alias]
 	tracked = ls-tree -r --name-only HEAD
+[init]
+	defaultBranch = master
