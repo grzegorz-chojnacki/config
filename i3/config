@@ -86,7 +86,7 @@ set $Mod Mod4
 #bindsym $Mod+Shift+grave move scratchpad
 
 # Spawn a new terminal
-bindsym $Mod+Return exec alacritty
+bindsym --release $Mod+Return exec --no-startup-id alacritty
 
 # Make screenshot of region and copy to clipboard
 bindsym Print exec "xfce4-screenshooter -r -c"
@@ -111,7 +111,7 @@ bindsym $Mod+e               exec --no-startup-id thunar
 floating_modifier $Mod
 
 # Kill focused window
-bindsym $Mod+q kill
+bindsym --release $Mod+q kill
 
 # Kill tab with mouse middle button click
 bindsym button2 kill
