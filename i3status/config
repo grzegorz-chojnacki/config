@@ -30,12 +30,12 @@ cpu_usage {
 
 cpu_temperature 0 {
   format = " <span color='#4c4d53'>@</span> <span color='#f09483'>%degrees°C</span>"
-  path = "/sys/class/hwmon/hwmon0/temp1_input"
+  path = "/sys/class/hwmon/hwmon0/temp2_input"
 }
 
 cpu_temperature 1 {
   format = "<span color='#e95678'>gpu:</span> <span color='#f09483'>%degrees°C</span>"
-  path = "/sys/class/hwmon/hwmon1/temp1_input"
+  path = "/sys/class/hwmon/hwmon1/temp2_input"
 }
 
 volume master {
