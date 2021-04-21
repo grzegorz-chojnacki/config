@@ -3,9 +3,15 @@
 	name = Grzegorz Chojnacki
 
 [diff]
-	tool = vimdiff
+	tool = vimdiff3
 
 [alias]
 	tracked = ls-tree -r --name-only HEAD
 [init]
 	defaultBranch = master
+[difftool "vimdiff3"]
+	path = nvim
+[merge]
+	tool = vimdiff3
+[mergetool "vimdiff3"]
+	path = nvim
