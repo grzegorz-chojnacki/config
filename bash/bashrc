@@ -97,9 +97,11 @@ alias egrep='egrep --colour=auto'
 alias fgrep='fgrep --colour=auto'
 alias mkdir='mkdir -pv'
 alias cp='cp -i'
+alias rm='rm -i'
+alias mv='mv -i'
 alias df='df -h'
 alias free='free -m'
 alias cal='cal -m'
 alias vim='nvim'
 
-
+export CHROME_BIN=/bin/brave
