@@ -6,8 +6,8 @@ general {
 }
 
 order += "ethernet _first_"
-order += "cpu_usage"
 order += "cpu_temperature 0"
+order += "cpu_usage"
 order += "cpu_temperature 1"
 order += "memory"
 order += "volume master"
@@ -23,14 +23,14 @@ memory {
   format = "<span color='#e95678'>mem:</span> <span color='#f09483'>%used</span>"
 }
 
-cpu_usage {
-  format = "<span color='#e95678'>cpu:</span> <span color='#f09483'>%usage</span>"
+cpu_temperature 0 {
+  format = "<span color='#e95678'>cpu:</span> <span color='#f09483'>%degrees°C</span>"
+  path = "/sys/class/hwmon/hwmon0/temp2_input"
   separator_block_width = 0
 }
 
-cpu_temperature 0 {
-  format = " <span color='#4c4d53'>@</span> <span color='#f09483'>%degrees°C</span>"
-  path = "/sys/class/hwmon/hwmon0/temp2_input"
+cpu_usage {
+  format = " <span color='#4c4d53'>@</span> <span color='#f09483'>%usage</span>"
 }
 
 cpu_temperature 1 {
