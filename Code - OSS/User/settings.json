@@ -114,11 +114,25 @@
   },
   "markdown.preview.fontSize": 16,
   "workbench.statusBar.visible": true,
-  "markdown.extension.orderedList.marker": "one",
   "window.menuBarVisibility": "toggle",
   "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWxcIixcImN1c3RvbUxpYnJhcmllc1wiOltdLFwicGx1Z2luc1wiOltdLFwicmVjZW50Q29sb3JzXCI6W1wiRDZENkQ2XCIsXCJBMTlDQTFcIixcIjRGNEY0RlwiLFwiOTYzN0ExXCIsXCI0RjFCNEFcIixcIjM5NTlBMVwiLFwiMUMyQzRGXCIsXCIzMzNGNjZcIixcIjAwMzM2NlwiXSxcImZvcm1hdFdpZHRoXCI6MCxcImNyZWF0ZVRhcmdldFwiOmZhbHNlLFwicGFnZUZvcm1hdFwiOntcInhcIjowLFwieVwiOjAsXCJ3aWR0aFwiOjg1MCxcImhlaWdodFwiOjExMDB9LFwic2VhcmNoXCI6ZmFsc2UsXCJzaG93U3RhcnRTY3JlZW5cIjp0cnVlLFwiZ3JpZENvbG9yXCI6XCIjZDBkMGQwXCIsXCJkYXJrR3JpZENvbG9yXCI6XCIjNmU2ZTZlXCIsXCJhdXRvc2F2ZVwiOnRydWUsXCJyZXNpemVJbWFnZXNcIjpudWxsLFwib3BlbkNvdW50ZXJcIjowLFwidmVyc2lvblwiOjE4LFwidW5pdFwiOjEsXCJpc1J1bGVyT25cIjpmYWxzZSxcInVpXCI6XCJcIn0ifQ==",
   "hediet.vscode-drawio.theme": "dark",
   "liveServer.settings.donotShowInfoMsg": true,
   "python.showStartPage": false,
   "angular.experimental-ivy": true,
+  "terminal.external.linuxExec": "alacritty",
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "explorer.confirmDelete": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "editor.copyWithSyntaxHighlighting": false,
 }

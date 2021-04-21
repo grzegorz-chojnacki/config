@@ -90,6 +90,7 @@ bindsym --release $Mod+Return exec --no-startup-id alacritty
 
 # Make screenshot of region and copy to clipboard
 bindsym Print exec "xfce4-screenshooter -r -c"
+bindsym --release $Mod+Pause exec "systemctl suspend"
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
