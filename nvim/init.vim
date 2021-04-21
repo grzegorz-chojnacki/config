@@ -8,7 +8,7 @@
 
 " This line should not be removed as it ensures that various options are
 " properly set to work with the Vim-related packages.
-runtime! archlinux.vim
+"runtime! archlinux.vim
 
 " If you prefer the old-style vim functionalty, add 'runtime! vimrc_example.vim'
 " Or better yet, read /usr/share/vim/vim80/vimrc_example.vim or the vim manual
@@ -59,7 +59,7 @@ autocmd FileType * setlocal formatoptions-=r formatoptions-=o
 autocmd BufWritePre * %s/\s\+$//e
 
 " Autosave on lost focus
-autocmd FocusLost * :x
+autocmd FocusLost * :w
 
 " Replace all
 nnoremap S :%s//g<Left><Left>
@@ -81,4 +81,3 @@ let &t_ti.="\e[3 q"
 let &t_SI.="\e[5 q"
 let &t_EI.="\e[3 q"
 let &t_te.="\e[5 q"
-
