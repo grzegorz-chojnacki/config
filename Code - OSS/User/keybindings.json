@@ -220,5 +220,25 @@
     "key": "ctrl+shift+i",
     "command": "-editor.action.formatDocument.none",
     "when": "editorTextFocus && !editorHasDocumentFormattingProvider && !editorReadonly"
+  },
+  {
+    "key": "shift+enter",
+    "command": "-notebook.cell.executeAndSelectBelow",
+    "when": "notebookCellListFocused && notebookCellType == 'markdown' || notebookCellListFocused && notebookKernelCount > 0"
+  },
+  {
+    "key": "shift+enter",
+    "command": "-python.datascience.runcurrentcelladvance",
+    "when": "editorTextFocus && python.datascience.featureenabled && python.datascience.hascodecells && !editorHasSelection && !notebookEditorFocused"
+  },
+  {
+    "key": "shift+enter",
+    "command": "-python.datascience.execSelectionInteractive",
+    "when": "editorTextFocus && python.datascience.featureenabled && python.datascience.ownsSelection && !findInputFocussed && !notebookEditorFocused && !replaceInputFocussed && editorLangId == 'python'"
+  },
+  {
+    "key": "shift+enter",
+    "command": "-python.execSelectionInTerminal",
+    "when": "editorTextFocus && !findInputFocussed && !notebookEditorFocused && !python.datascience.ownsSelection && !replaceInputFocussed && editorLangId == 'python'"
   }
 ]

@@ -119,6 +119,7 @@
   "hediet.vscode-drawio.theme": "dark",
   "liveServer.settings.donotShowInfoMsg": true,
   "python.showStartPage": false,
+  // "python.linting.pylintArgs": ["--generated-members", "cv2.*"],
   "angular.experimental-ivy": true,
   "terminal.external.linuxExec": "alacritty",
   "[scss]": {
@@ -135,4 +136,7 @@
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
   "editor.copyWithSyntaxHighlighting": false,
+  "[vue]": {
+    "editor.defaultFormatter": "octref.vetur"
+  },
 }
