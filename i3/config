@@ -110,6 +110,7 @@ bindsym $Mod+n               exec --no-startup-id code ~/notes.md
 bindsym $Mod+Shift+n         exec --no-startup-id alacritty -e nvim ~/notes.md
 bindsym $Mod+b               exec --no-startup-id brave
 bindsym $Mod+e               exec --no-startup-id thunar
+bindsym $Mod+Shift+e         exec --no-startup-id alacritty -e ranger
 
 # Use Mouse+$Mod to drag floating windows to their wanted position
 floating_modifier $Mod
@@ -205,7 +206,7 @@ bindsym $Mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $Mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $Mod+Shift+e exec "i3-nagbar -f 'pango:Fira Code' -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $Mod+Shift+q exec "i3-nagbar -f 'pango:Fira Code' -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
