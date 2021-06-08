@@ -85,6 +85,7 @@ mouse:
   # If this is `true`, the mouse cursor is temporarily hidden when typing.
   hide_when_typing: true
 
+hints:
   url:
     launcher:
       program: xdg-open
