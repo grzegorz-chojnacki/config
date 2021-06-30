@@ -9,11 +9,15 @@
 	tracked = ls-tree -r --name-only HEAD
 	tree = log --all --decorate --oneline --graph
 	amend = commit --amend --no-edit
+
 [init]
 	defaultBranch = master
+
 [difftool "vimdiff3"]
 	path = nvim
+
 [merge]
 	tool = vimdiff3
+
 [mergetool "vimdiff3"]
 	path = nvim
