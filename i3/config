@@ -91,6 +91,9 @@ bindsym --release $Mod+Return exec --no-startup-id alacritty
 # Make screenshot of region and copy to clipboard
 bindsym Print exec "xfce4-screenshooter -r -c"
 
+# Reset xorg keyboard rate/delay preference
+bindsym $Mod+Scroll_Lock exec "xset r rate 200 50"
+
 # System actions
 bindsym --release $Mod+Pause exec "systemctl suspend"
 bindsym --release $Mod+Shift+Pause exec "poweroff"
@@ -117,6 +120,7 @@ floating_modifier $Mod
 
 # Kill focused window
 bindsym --release $Mod+q kill
+bindsym --release $Mod+c kill
 
 # Kill tab with mouse middle button click
 bindsym button2 kill
