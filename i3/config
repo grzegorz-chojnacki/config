@@ -42,7 +42,7 @@ title_align center
 smart_borders on
 
 # class                 border      background  text       indicator   child_border
-client.focused          $Background $Background $Cranberry $Apricot    $Gray
+client.focused          $Background $Background $Cranberry $Dark       $Gray
 client.focused_inactive $Background $Background $Lavender  $Background $Dark
 client.unfocused        $Background $Background $Gray      $Background $Dark
 client.urgent           $Background $Background $Apricot   $Background $Apricot
