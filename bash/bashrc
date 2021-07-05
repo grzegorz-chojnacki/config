@@ -75,7 +75,12 @@ if [ -f /usr/share/git/completion/git-prompt.sh ]; then
   source /usr/share/git/completion/git-prompt.sh
 fi
 
-export PS1='\[$FGBlue\]\w\[$FGMagenta\]$(__git_ps1) \[$FBGReset\]\$ '
+function errcode () {
+  local status=$?
+  [ $status != 0 ] && echo -n "$status "
+}
+
+export PS1='\[$FGRed\]$(errcode)\[$FGBlue\]\w\[$FGMagenta\]$(__git_ps1) \[$FBGReset\]\$ '
 export PATH=$HOME/scripts:$PATH
 
 # Less config
