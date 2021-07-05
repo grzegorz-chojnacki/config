@@ -45,8 +45,9 @@ ex () {
   fi
 }
 
-# Turn on tab completion
-bind 'TAB':menu-complete
+# Turn on tab and shift+tab completion
+bind    'TAB':menu-complete
+bind '"\e[Z"':menu-complete-backward
 
 # Terminal tput color codes
 export FGBlack=$(tput setaf 0)
