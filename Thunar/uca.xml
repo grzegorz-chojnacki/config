@@ -4,7 +4,7 @@
 	<icon>Terminal</icon>
 	<name>Terminal</name>
 	<unique-id>1367866030392833-1</unique-id>
-	<command>/usr/bin/alacritty %f</command>
+	<command>/usr/bin/alacritty</command>
 	<description></description>
 	<patterns>*</patterns>
 	<directories/>
