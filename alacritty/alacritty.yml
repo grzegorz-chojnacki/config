@@ -10,7 +10,7 @@ window:
 font:
   normal:
     family: Fira Code
-  size: 12.0
+  size: 14.0
 
 draw_bold_text_with_bright_colors: true
 background_opacity: 0.9
