@@ -79,7 +79,14 @@ bar {
 #################
 #  Keybindings  #
 #################
-set $Mod Mod4
+
+#
+# Use `xev` to get keysyms
+#
+
+# Setup basic modifiers
+set $Mod  Mod4
+set $Alt  Mod1
 
 # Spawn quick 'dropdown' terminal that stays open
 #bindsym $Mod+grave scratchpad show
@@ -114,6 +121,7 @@ bindsym $Mod+Shift+n         exec --no-startup-id alacritty -e nvim ~/notes.md
 bindsym $Mod+b               exec --no-startup-id brave
 bindsym $Mod+e               exec --no-startup-id thunar
 bindsym $Mod+Shift+e         exec --no-startup-id alacritty -e ranger
+bindsym Control+$Alt+Delete  exec --no-startup-id alacritty -e htop
 
 # Use Mouse+$Mod to drag floating windows to their wanted position
 floating_modifier $Mod
