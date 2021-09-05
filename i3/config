@@ -134,6 +134,7 @@ bindsym $Mod+b               exec --no-startup-id brave
 bindsym $Mod+e               exec --no-startup-id thunar
 bindsym $Mod+Shift+e         exec --no-startup-id alacritty -e ranger
 bindsym Control+$Alt+Delete  exec --no-startup-id alacritty -e htop
+bindsym $Mod+Shift+x         exec --no-startup-id alacritty -e ~/scripts/xpad
 
 # Use Mouse+$Mod to drag floating windows to their wanted position
 floating_modifier $Mod
