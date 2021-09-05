@@ -254,6 +254,7 @@ bindsym $Mod+r mode "resize"
 bindsym $Mod+g gaps inner all toggle 10
 
 mode "emoji" {
+  bindsym --release 1 exec "xdotool type '💯'"
   bindsym --release t exec "xdotool type '🤔'"
   bindsym --release w exec "xdotool type '😩'"
   bindsym --release r exec "xdotool type '😌'"
@@ -263,9 +264,9 @@ mode "emoji" {
   bindsym --release a exec "xdotool type '😳'"
   bindsym --release o exec "xdotool type '👌'"
   bindsym --release i exec "xdotool type '🤌'"
-  bindsym --release x exec "xdotool type '🙆‍♀️'"
-  bindsym --release z exec "xdotool type '💁‍♀️'"
-  bindsym --release c exec "xdotool type '🤷‍♀️'"
+  bindsym --release x exec "xdotool type '🙆'"
+  bindsym --release z exec "xdotool type '💁'"
+  bindsym --release c exec "xdotool type '🤷'"
   bindsym --release f exec "xdotool type '🔥'"
   bindsym --release g exec "xdotool type '🌵'"
 
