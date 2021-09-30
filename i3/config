@@ -261,6 +261,7 @@ mode "emoji" {
   bindsym --release t exec "xdotool type '🤔'"
   bindsym --release w exec "xdotool type '😩'"
   bindsym --release r exec "xdotool type '😌'"
+  bindsym --release y exec "xdotool type '👍'"
   bindsym --release p exec "xdotool type '💩'"
   bindsym --release s exec "xdotool type '😏'"
   bindsym --release e exec "xdotool type '👀'"
