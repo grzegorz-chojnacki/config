@@ -96,6 +96,7 @@ export MANPAGER='less -s -M +Gg'
 
 # Aliases
 alias ls='ls -hN --color=auto --group-directories-first'
+alias tree='tree -C --dirsfirst'
 alias ll='ls -Ao'
 alias la='ls -A'
 alias grep='grep --color=auto'
