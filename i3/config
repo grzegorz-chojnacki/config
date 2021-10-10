@@ -132,6 +132,7 @@ bindsym $Mod+n               exec --no-startup-id code ~/notes.md
 bindsym $Mod+Shift+n         exec --no-startup-id alacritty -e nvim ~/notes.md
 bindsym $Mod+b               exec --no-startup-id brave
 bindsym $Mod+e               exec --no-startup-id thunar
+bindsym $Mod+g               exec --no-startup-id gimp
 bindsym $Mod+Shift+e         exec --no-startup-id alacritty -e ranger
 bindsym Control+$Alt+Delete  exec --no-startup-id alacritty -e htop
 bindsym $Mod+Shift+x         exec --no-startup-id alacritty -e ~/scripts/xpad
@@ -253,8 +254,6 @@ mode "resize" {
 }
 
 bindsym $Mod+r mode "resize"
-
-bindsym $Mod+g gaps inner all toggle 10
 
 mode "emoji" {
   bindsym --release 1 exec "xdotool type '💯'"
