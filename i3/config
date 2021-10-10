@@ -23,18 +23,18 @@ workspace_layout tabbed
 ################
 #    Theme     #
 ################
-set $Background #16161c
-set $Foreground #bbbbbb
-set $Black      #06060c
+set $Background #16161C
+set $Foreground #BBBBBB
+set $Black      #06060C
 set $Dark       #232530
-set $Gray       #4c4d53
-set $White      #d5d8da
-set $Tacao      #fac29a
-set $Rosebud    #fab795
-set $Apricot    #f09483
-set $Cranberry  #e95678
-set $Lavender   #b877db
-set $Turquoise  #25b0bc
+set $Gray       #4C4D53
+set $White      #D5D8DA
+set $Tacao      #FAC29A
+set $Rosebud    #FAB795
+set $Apricot    #F09483
+set $Cranberry  #E95678
+set $Lavender   #B877DB
+set $Turquoise  #25B0BC
 
 font pango:Fira Code Medium 11
 
@@ -128,11 +128,11 @@ bindsym XF86Tools            exec --no-startup-id deadbeef
 bindsym XF86Calculator       exec --no-startup-id galculator
 bindsym XF86HomePage         exec --no-startup-id brave
 bindsym XF86Explorer         exec --no-startup-id thunar
-bindsym $Mod+n               exec --no-startup-id code ~/notes.md
-bindsym $Mod+Shift+n         exec --no-startup-id alacritty -e nvim ~/notes.md
 bindsym $Mod+b               exec --no-startup-id brave
 bindsym $Mod+e               exec --no-startup-id thunar
 bindsym $Mod+g               exec --no-startup-id gimp
+bindsym $Mod+n               exec --no-startup-id code ~/notes.md
+bindsym $Mod+Shift+n         exec --no-startup-id alacritty -e nvim ~/notes.md
 bindsym $Mod+Shift+e         exec --no-startup-id alacritty -e ranger
 bindsym Control+$Alt+Delete  exec --no-startup-id alacritty -e htop
 bindsym $Mod+Shift+x         exec --no-startup-id alacritty -e ~/scripts/xpad
@@ -148,13 +148,13 @@ bindsym --release $Mod+c kill
 bindsym button2 kill
 
 # start dmenu (a program launcher)
-set $dmenuConfig -i -fn 'Fira Code Medium' -nb '#16161c' -nf '#e95678' -sb '#e95678' -sf '#16161c'
-bindsym $Mod+Shift+p exec dmenu_run $dmenuConfig
+set $DmenuConfig -i -fn 'Fira Code Medium' -nb '#16161C' -nf '#E95678' -sb '#E95678' -sf '#16161C'
+bindsym $Mod+Shift+p exec dmenu_run $DmenuConfig
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $Mod+p exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu $dmenuConfig"
+bindsym $Mod+p exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu $DmenuConfig"
 
 # change focus
 bindsym $Mod+h focus left
