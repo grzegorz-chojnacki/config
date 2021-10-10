@@ -20,6 +20,7 @@ ethernet _first_ {
 
 memory {
   format = "<span color='#e95678'>mem:</span> <span color='#f09483'>%used</span>"
+  memory_used_method = memavailable
 }
 
 cpu_temperature 0 {
