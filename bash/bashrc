@@ -1,5 +1,22 @@
+#!/bin/bash
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
+##################
+# Bash behaviour #
+##################
+
+# Shopts
+shopt -s histappend # Append to history file
+shopt -s autocd     # cd into dirs without explicit cd command
+shopt -s cdspell    # Autocorrect cd names
+shopt -s dirspell   # Autocorrect dir names
+shopt -s globstar   # Enable '**' glob
+shopt -s checkwinsize
+
+# Enable tab and shift+tab completion
+bind 'TAB':menu-complete
+bind '"\e[Z"':menu-complete-backward
 
 # Don't save duplicate lines or lines starting with space
 HISTCONTROL=ignoreboth:erasedups
@@ -8,46 +25,10 @@ HISTCONTROL=ignoreboth:erasedups
 HISTSIZE=
 HISTFILESIZE=
 
-# Bash behaviour
-shopt -s histappend # Append to history file
-shopt -s autocd     # cd into dirs without explicit cd command
-shopt -s cdspell    # Autocorrect cd names
-shopt -s dirspell   # Autocorrect dir names
-shopt -s globstar   # Enable '**' glob
-shopt -s checkwinsize
 
-# Bash completion
-if [ -f /usr/share/bash_completion/bash_completion ]; then
-  source /usr/share/bash_completion/bash_completion
-fi
-
-#
-# # ex - archive extractor
-# # usage: ex <file>
-ex () {
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1   ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *)           echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
-}
-
-# Turn on tab and shift+tab completion
-bind    'TAB':menu-complete
-bind '"\e[Z"':menu-complete-backward
+#############
+# Variables #
+#############
 
 # Terminal tput color codes
 export FGBlack=$(tput setaf 0)
@@ -70,10 +51,54 @@ export BGWhite=$(tput setab 7)
 
 export FBGReset=$(tput sgr0)
 
+# Environmental variables
+export MANPAGER='less -s -M +Gg'
+export EDITOR='nvim'
+export TERMINAL='alacritty'
+export CHROME_BIN='/bin/brave'
+
+
+#############
+# Utilities #
+#############
+
+# Source bash completion
+if [ -f /usr/share/bash_completion/bash_completion ]; then
+  source /usr/share/bash_completion/bash_completion
+fi
+
 # Source git prompt
 if [ -f /usr/share/git/completion/git-prompt.sh ]; then
   source /usr/share/git/completion/git-prompt.sh
 fi
+
+# ex - archive extractor
+# usage: ex <file>
+function ex () {
+  if [ -f "$1" ]; then
+    case "$1" in
+      *.tar.bz2) tar xjf    "$1";;
+      *.tar.gz)  tar xzf    "$1";;
+      *.bz2)     bunzip2    "$1";;
+      *.rar)     unrar x    "$1";;
+      *.gz)      gunzip     "$1";;
+      *.tar)     tar xf     "$1";;
+      *.tbz2)    tar xjf    "$1";;
+      *.tgz)     tar xzf    "$1";;
+      *.zip)     unzip      "$1";;
+      *.Z)       uncompress "$1";;
+      *.7z)      7z x       "$1";;
+      *) echo "'$1' cannot be extracted via ex()";;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+
+################
+# Promp config #
+################
 
 function errcode () {
   local status=$?
@@ -83,18 +108,21 @@ function errcode () {
 export PS1='\[$FGRed\]$(errcode)\[$FGBlue\]\w\[$FGMagenta\]$(__git_ps1) \[$FBGReset\]\$ '
 export PATH=$HOME/scripts:$PATH
 
-# Less config
-export LESS_TERMCAP_mb=$FGMagenta # begin bold
-export LESS_TERMCAP_md=$FGRed     # begin blink
-export LESS_TERMCAP_so=$FGBlue    # begin reverse video
-export LESS_TERMCAP_us=$FGYellow  # begin underline
-export LESS_TERMCAP_me=$FBGReset  # reset bold/blink
-export LESS_TERMCAP_se=$FBGReset  # reset reverse video
-export LESS_TERMCAP_ue=$FBGReset  # reset underline
 
-export MANPAGER='less -s -M +Gg'
+###############
+# Less config #
+###############
+export LESS_TERMCAP_mb=$FGMagenta # Begin bold
+export LESS_TERMCAP_md=$FGRed     # Begin blink
+export LESS_TERMCAP_so=$FGBlue    # Begin reverse video
+export LESS_TERMCAP_us=$FGYellow  # Begin underline
+export LESS_TERMCAP_me=$FBGReset  # Reset bold/blink
+export LESS_TERMCAP_se=$FBGReset  # Reset reverse video
+export LESS_TERMCAP_ue=$FBGReset  # Reset underline
 
-# Aliases
+###########
+# Aliases #
+###########
 alias ls='ls -hN --color=auto --group-directories-first'
 alias tree='tree -C --dirsfirst'
 alias ll='ls -Ao'
@@ -111,5 +139,3 @@ alias free='free -m'
 alias cal='cal -m'
 alias vim='nvim'
 alias sigma="ssh sigma.ug.edu.pl -l gchojnacki"
-
-export CHROME_BIN=/bin/brave
