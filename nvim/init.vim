@@ -58,8 +58,8 @@ autocmd FileType * setlocal formatoptions-=r formatoptions-=o
 " Remove trailing whitespace on write
 autocmd BufWritePre * %s/\s\+$//e
 
-" Autosave on lost focus
-autocmd FocusLost * :w
+" Autosave on lost focus, don't care for errors
+autocmd BufLeave,FocusLost * silent! wall
 
 " Replace all
 nnoremap S :%s//g<Left><Left>
