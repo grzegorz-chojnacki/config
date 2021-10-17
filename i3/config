@@ -129,7 +129,7 @@ bindsym XF86Calculator       exec --no-startup-id galculator
 bindsym XF86HomePage         exec --no-startup-id brave
 bindsym XF86Explorer         exec --no-startup-id thunar
 bindsym $Mod+b               exec --no-startup-id brave
-bindsym $Mod+colon           exec --no-startup-id i3lock -uec 000000
+bindsym $Mod+Shift+colon     exec --no-startup-id i3lock -fec 000000
 bindsym $Mod+e               exec --no-startup-id thunar
 bindsym $Mod+g               exec --no-startup-id gimp
 bindsym $Mod+n               exec --no-startup-id code ~/notes.md
