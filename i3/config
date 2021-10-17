@@ -129,9 +129,11 @@ bindsym XF86Calculator       exec --no-startup-id galculator
 bindsym XF86HomePage         exec --no-startup-id brave
 bindsym XF86Explorer         exec --no-startup-id thunar
 bindsym $Mod+b               exec --no-startup-id brave
+bindsym $Mod+colon           exec --no-startup-id i3lock -uec 000000
 bindsym $Mod+e               exec --no-startup-id thunar
 bindsym $Mod+g               exec --no-startup-id gimp
 bindsym $Mod+n               exec --no-startup-id code ~/notes.md
+bindsym $Mod+i               exec --no-startup-id code ~/.config
 bindsym $Mod+Shift+n         exec --no-startup-id alacritty -e nvim ~/notes.md
 bindsym $Mod+Shift+e         exec --no-startup-id alacritty -e ranger
 bindsym Control+$Alt+Delete  exec --no-startup-id alacritty -e htop
@@ -218,7 +220,8 @@ bindsym $Mod+7 workspace number 7
 bindsym $Mod+8 workspace number 8
 bindsym $Mod+9 workspace number 9
 
-# move focused container to workspace
+bindsym $Mod+Prior workspace next_on_output
+bindsym $Mod+Next  workspace prev_on_output
 
 # Move focused container to workspace
 bindsym $Mod+Shift+1 move container to workspace number 1
@@ -231,7 +234,8 @@ bindsym $Mod+Shift+7 move container to workspace number 7
 bindsym $Mod+Shift+8 move container to workspace number 8
 bindsym $Mod+Shift+9 move container to workspace number 9
 
-# reload the configuration file
+bindsym $Mod+Shift+Prior move container to workspace next_on_output
+bindsym $Mod+Shift+Next  move container to workspace prev_on_output
 
 # Reload the configuration file
 bindsym $Mod+Shift+c reload
