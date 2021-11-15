@@ -42,7 +42,7 @@ colors:
       background: '#16161c'
 
   normal:
-    black:   '#06060c'
+    black:   '#16161C'
     red:     '#e95678'
     green:   '#f09483'
     yellow:  '#fac29a'
