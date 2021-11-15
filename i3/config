@@ -132,7 +132,8 @@ bindsym $Mod+b               exec --no-startup-id brave
 bindsym $Mod+Shift+colon     exec --no-startup-id i3lock -fec 000000
 bindsym $Mod+e               exec --no-startup-id thunar
 bindsym $Mod+g               exec --no-startup-id gimp
-bindsym $Mod+n               exec --no-startup-id code ~/notes.md
+bindsym $Mod+n               exec --no-startup-id code -r ~/notes.md
+bindsym $Mod+m               exec --no-startup-id code -r ~/pg/schedule.md
 bindsym $Mod+i               exec --no-startup-id code ~/.config
 bindsym $Mod+Shift+n         exec --no-startup-id alacritty -e nvim ~/notes.md
 bindsym $Mod+Shift+e         exec --no-startup-id alacritty -e ranger
