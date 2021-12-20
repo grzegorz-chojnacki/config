@@ -156,6 +156,7 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@     -10% 
 bindsym XF86AudioMute        exec pactl set-sink-mute   @DEFAULT_SINK@   toggle && $refresh_i3status
 bindsym XF86AudioMicMute     exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+set $Terminal alacritty -e
 bindsym XF86Tools            exec deadbeef
 bindsym XF86Calculator       exec galculator
 bindsym XF86HomePage         exec brave
@@ -167,10 +168,10 @@ bindsym $Mod+g               exec gimp
 bindsym $Mod+n               exec code -r ~/notes.md
 bindsym $Mod+m               exec code -r ~/pg/schedule.md
 bindsym $Mod+i               exec code ~/.config
-bindsym $Mod+Shift+n         exec alacritty -e nvim ~/notes.md
-bindsym $Mod+Shift+e         exec alacritty -e ranger
-bindsym Control+$Alt+Delete  exec alacritty -e htop
-bindsym $Mod+Shift+x         exec alacritty -e ~/scripts/xpad
+bindsym $Mod+Shift+n         exec $Terminal nvim
+bindsym $Mod+Shift+e         exec $Terminal ranger
+bindsym Control+$Alt+Delete  exec $Terminal htop
+bindsym $Mod+Shift+x         exec $Terminal ~/scripts/xpad
 
 # Use Mouse+$Mod to drag floating windows to their wanted position
 floating_modifier $Mod
