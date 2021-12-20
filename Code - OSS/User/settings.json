@@ -141,4 +141,5 @@
   },
   "prettier.htmlWhitespaceSensitivity": "ignore",
   "workbench.editor.untitled.hint": "hidden",
+  "terminal.integrated.persistentSessionReviveProcess": "never",
 }
