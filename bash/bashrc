@@ -138,4 +138,3 @@ alias df='df -h'
 alias free='free -m'
 alias cal='cal -m'
 alias vim='nvim'
-alias sigma="ssh sigma.ug.edu.pl -l gchojnacki"
