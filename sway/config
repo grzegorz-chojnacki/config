@@ -135,9 +135,15 @@ set $Alt  Mod1
 # Spawn a new terminal
 bindsym --no-repeat $Mod+Return exec alacritty
 
+# Helper commands
+set $Slurp slurp -b '#00000040'
+set $GetOutput swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name'
+
 # Make screenshot of region and copy to clipboard
-bindsym Print exec "xfce4-screenshooter -rc"
-bindsym $Mod+Print exec "xfce4-screenshooter -wc"
+bindsym Print exec grim -g "$($Slurp)" - | wl-copy
+
+# Make screenshot of focused output
+bindsym $Mod+Print exec grim -o "$($GetOutput)" - | wl-copy
 
 # System actions
 bindsym --release $Mod+Pause exec "systemctl suspend"
