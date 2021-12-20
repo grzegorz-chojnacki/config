@@ -3,8 +3,8 @@
 ################
 
 xwayland enable
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-exec --no-startup-id gammastep &
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+exec gammastep &
 
 ################
 #    Input     #
@@ -133,7 +133,7 @@ set $Alt  Mod1
 #bindsym $Mod+Shift+grave move scratchpad
 
 # Spawn a new terminal
-bindsym --no-repeat $Mod+Return exec --no-startup-id alacritty
+bindsym --no-repeat $Mod+Return exec alacritty
 
 # Make screenshot of region and copy to clipboard
 bindsym Print exec "xfce4-screenshooter -rc"
@@ -145,26 +145,26 @@ bindsym --release $Mod+Shift+Pause exec "poweroff"
 
 # Use pactl to adjust volume.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@   +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@   -10% && $refresh_i3status
-bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@   toggle && $refresh_i3status
-bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@     +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@     -10% && $refresh_i3status
+bindsym XF86AudioMute        exec pactl set-sink-mute   @DEFAULT_SINK@   toggle && $refresh_i3status
+bindsym XF86AudioMicMute     exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-bindsym XF86Tools            exec --no-startup-id deadbeef
-bindsym XF86Calculator       exec --no-startup-id galculator
-bindsym XF86HomePage         exec --no-startup-id brave
-bindsym XF86Explorer         exec --no-startup-id thunar
-bindsym $Mod+b               exec --no-startup-id brave
-bindsym $Mod+Shift+colon     exec --no-startup-id i3lock -fec 000000
-bindsym $Mod+e               exec --no-startup-id thunar
-bindsym $Mod+g               exec --no-startup-id gimp
-bindsym $Mod+n               exec --no-startup-id code -r ~/notes.md
-bindsym $Mod+m               exec --no-startup-id code -r ~/pg/schedule.md
-bindsym $Mod+i               exec --no-startup-id code ~/.config
-bindsym $Mod+Shift+n         exec --no-startup-id alacritty -e nvim ~/notes.md
-bindsym $Mod+Shift+e         exec --no-startup-id alacritty -e ranger
-bindsym Control+$Alt+Delete  exec --no-startup-id alacritty -e htop
-bindsym $Mod+Shift+x         exec --no-startup-id alacritty -e ~/scripts/xpad
+bindsym XF86Tools            exec deadbeef
+bindsym XF86Calculator       exec galculator
+bindsym XF86HomePage         exec brave
+bindsym XF86Explorer         exec thunar
+bindsym $Mod+b               exec brave
+bindsym $Mod+Shift+colon     exec i3lock -fec 000000
+bindsym $Mod+e               exec thunar
+bindsym $Mod+g               exec gimp
+bindsym $Mod+n               exec code -r ~/notes.md
+bindsym $Mod+m               exec code -r ~/pg/schedule.md
+bindsym $Mod+i               exec code ~/.config
+bindsym $Mod+Shift+n         exec alacritty -e nvim ~/notes.md
+bindsym $Mod+Shift+e         exec alacritty -e ranger
+bindsym Control+$Alt+Delete  exec alacritty -e htop
+bindsym $Mod+Shift+x         exec alacritty -e ~/scripts/xpad
 
 # Use Mouse+$Mod to drag floating windows to their wanted position
 floating_modifier $Mod
@@ -183,7 +183,7 @@ bindsym $Mod+Shift+p exec dmenu_run $DmenuConfig
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $Mod+p exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu $DmenuConfig"
+bindsym $Mod+p exec i3-dmenu-desktop --dmenu="dmenu $DmenuConfig"
 
 # Change focus
 bindsym $Mod+h focus left
