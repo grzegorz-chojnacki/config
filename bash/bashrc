@@ -56,7 +56,7 @@ export MANPAGER='less -s -M +Gg'
 export EDITOR='nvim'
 export TERMINAL='alacritty'
 export CHROME_BIN='/bin/brave'
-
+export FZF_DEFAULT_OPTS='--color 16'
 
 #############
 # Utilities #
@@ -99,7 +99,6 @@ function ex () {
 ################
 # Promp config #
 ################
-
 function errcode () {
   local status=$?
   [ $status != 0 ] && echo -n "$status "
