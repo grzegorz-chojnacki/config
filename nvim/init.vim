@@ -47,6 +47,8 @@ set undolevels=1000
 set backspace=indent,eol,start
 set encoding=utf-8
 
+set mouse=nv
+
 " Don't pollute $HOME, store viminfo in .cache
 set viminfo+=n~/.cache/viminfo
 
@@ -75,6 +77,14 @@ nnoremap <C-l> <C-w>l
 
 " Enable dot command in visual mode
 vnoremap . :norm.<CR>
+
+inoremap { {}<Esc>ha
+inoremap ( ()<Esc>ha
+inoremap < <><Esc>ha
+inoremap [ []<Esc>ha
+inoremap ' ''<Esc>ha
+inoremap " ""<Esc>ha
+inoremap ` ``<Esc>ha
 
 " Change cursor shape based on the mode
 let &t_ti.="\e[3 q"
