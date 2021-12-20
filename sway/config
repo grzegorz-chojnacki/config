@@ -177,7 +177,7 @@ bindsym --no-repeat $Mod+c kill
 bindsym button2 kill
 
 # Start dmenu (a program launcher)
-set $DmenuConfig -i -fn 'Fira Code Medium' -nb '#16161C' -nf '#E95678' -sb '#E95678' -sf '#16161C'
+set $DmenuConfig -i -fn 'Fira Code Medium' -nb '$Background' -nf '$Cranberry' -sb '$Cranberry' -sf '$Background'
 bindsym $Mod+Shift+p exec dmenu_run $DmenuConfig
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
