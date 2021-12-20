@@ -79,7 +79,7 @@ client.unfocused        $Background $Background $Gray      $Background $Dark
 client.urgent           $Background $Background $Apricot   $Background $Apricot
 
 # Always floating
-for_window [class="Deadbeef"]   floating enable, resize set 600px 500px, move workspace current
+for_window [app_id="deadbeef"] floating enable, resize set 1000px 800px, move workspace current
 for_window [class="Galculator"] floating enable, move workspace current
 
 # Steam
