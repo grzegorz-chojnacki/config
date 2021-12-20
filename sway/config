@@ -62,15 +62,21 @@ set $Turquoise  #25B0BC
 font pango:Fira Code Medium 11
 
 title_align center
+
+# Default border type
+default_border pixel 1
+
+# Hide borders when there is only single window on workspace
 smart_borders on
+
+# Also hide title bar
+hide_edge_borders --i3 none
 
 # class                 border      background  text       indicator   child_border
 client.focused          $Background $Background $Cranberry $Dark       $Gray
 client.focused_inactive $Background $Background $Lavender  $Background $Dark
 client.unfocused        $Background $Background $Gray      $Background $Dark
 client.urgent           $Background $Background $Apricot   $Background $Apricot
-client.placeholder      $Background $Background $Gray      $Background $Dark
-client.background       $Background
 
 # Always floating
 for_window [class="Deadbeef"]   floating enable, resize set 600px 500px, move workspace current
