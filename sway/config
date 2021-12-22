@@ -35,8 +35,9 @@ output DP-3 {
 }
 
 ################
-#  Behaviour   #c
+#  Behaviour   #
 ################
+
 # Disable cursor warping to different monitors
 mouse_warping none
 
@@ -61,38 +62,34 @@ set $Turquoise  #25B0BC
 
 font pango:Fira Code Medium 11
 
+# Borders
 title_align center
-
-# Default border type
-default_border pixel 1
-
-# Hide borders when there is only single window on workspace
 smart_borders on
-
-# Also hide title bar
+default_border pixel 1
 hide_edge_borders --i3 none
 
-# class                 border      background  text       indicator   child_border
+# Class                 Border      Background  Text       Indicator   Child
 client.focused          $Background $Background $Cranberry $Dark       $Gray
 client.focused_inactive $Background $Background $Lavender  $Background $Dark
 client.unfocused        $Background $Background $Gray      $Background $Dark
 client.urgent           $Background $Background $Apricot   $Background $Apricot
 
-# Always floating
-for_window [app_id="deadbeef"] floating enable, resize set 1000px 800px, move workspace current
-for_window [class="Galculator"] floating enable, move workspace current
+for_window {
+  # Always floating
+  [app_id="deadbeef"] floating enable, resize set 1000px 800px, move workspace current
+  [class="Galculator"] floating enable, move workspace current
 
-# Steam
-for_window [class="^Steam$" title="^Friends List$"] floating enable
-for_window [class="^Steam$" title="Steam - News"] floating enable
-for_window [class="^Steam$" title=".* - Chat"] floating enable
-for_window [class="^Steam$" title="^Settings$"] floating enable
-for_window [class="^Steam$" title=".* - event started"] floating enable
-for_window [class="^Steam$" title=".* CD key"] floating enable
-for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
-for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
-for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
-
+  # Steam
+  [class="^Steam$" title="^Friends List$"] floating enable
+  [class="^Steam$" title="Steam - News"] floating enable
+  [class="^Steam$" title=".* - Chat"] floating enable
+  [class="^Steam$" title="^Settings$"] floating enable
+  [class="^Steam$" title=".* - event started"] floating enable
+  [class="^Steam$" title=".* CD key"] floating enable
+  [class="^Steam$" title="^Steam - Self Updater$"] floating enable
+  [class="^Steam$" title="^Screenshot Uploader$"] floating enable
+  [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
+}
 
 #################
 #  Status bar   #
@@ -115,211 +112,190 @@ bar {
   status_command i3status
 }
 
-
 #################
 #  Keybindings  #
 #################
 
-#
-# Use `xev` to get keysyms
-#
-
 # Setup basic modifiers
-set $Mod  Mod4
-set $Alt  Mod1
-
-# Spawn quick 'dropdown' terminal that stays open
-#bindsym $Mod+grave scratchpad show
-#bindsym $Mod+Shift+grave move scratchpad
-
-# Spawn a new terminal
-bindsym --no-repeat $Mod+Return exec alacritty
-
-# Helper commands
-set $Slurp slurp -b '#00000040'
-set $GetOutput swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name'
-
-# Make screenshot of region and copy to clipboard
-bindsym Print exec grim -g "$($Slurp)" - | wl-copy
-
-# Make screenshot of focused output
-bindsym $Mod+Print exec grim -o "$($GetOutput)" - | wl-copy
-
-# System actions
-bindsym --release $Mod+Pause exec "systemctl suspend"
-bindsym --release $Mod+Shift+Pause exec "poweroff"
-
-# Use pactl to adjust volume.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@     +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@     -10% && $refresh_i3status
-bindsym XF86AudioMute        exec pactl set-sink-mute   @DEFAULT_SINK@   toggle && $refresh_i3status
-bindsym XF86AudioMicMute     exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-
-set $Terminal alacritty -e
-bindsym XF86Tools            exec deadbeef
-bindsym XF86Calculator       exec galculator
-bindsym XF86HomePage         exec brave
-bindsym XF86Explorer         exec pcmanfm
-bindsym $Mod+b               exec brave
-bindsym $Mod+Shift+colon     exec i3lock -fec 000000
-bindsym $Mod+e               exec pcmanfm
-bindsym $Mod+g               exec gimp
-bindsym $Mod+n               exec code -r ~/notes.md
-bindsym $Mod+m               exec code -r ~/pg/schedule.md
-bindsym $Mod+i               exec code ~/.config
-bindsym $Mod+Shift+n         exec $Terminal nvim
-bindsym $Mod+Shift+e         exec $Terminal ranger
-bindsym Control+$Alt+Delete  exec $Terminal htop
-bindsym $Mod+Shift+x         exec $Terminal ~/scripts/xpad
+set $Mod Mod4
+set $Alt Mod1
 
 # Use Mouse+$Mod to drag floating windows to their wanted position
 floating_modifier $Mod
 
-# Kill focused window
-bindsym --no-repeat $Mod+q kill
-bindsym --no-repeat $Mod+c kill
-
-# Kill tab with mouse middle button click
-bindsym button2 kill
-
-# Start dmenu (a program launcher)
+# Helper commands
+set $SizeUnit 40 px
+set $Slurp slurp -b '#00000040'
+set $Terminal alacritty -e
+set $GetOutput swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name'
+set $RefreshBar killall -SIGUSR1 i3status
 set $DmenuConfig -i -fn 'Fira Code Medium' -nb '$Background' -nf '$Cranberry' -sb '$Cranberry' -sf '$Background'
-bindsym $Mod+Shift+p exec dmenu_run $DmenuConfig
+set $Logout "swaynag -f 'pango:Fira Code' -t warning -m 'Would you like to logout?' -B 'Yes' 'sway-msg exit'"
 
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-bindsym $Mod+p exec i3-dmenu-desktop --dmenu="dmenu $DmenuConfig"
+bindsym {
+  --no-repeat {
+    $Mod+f fullscreen toggle
+    $Mod+Shift+s workspace back_and_forth
 
-# Change focus
-bindsym $Mod+h focus left
-bindsym $Mod+j focus down
-bindsym $Mod+k focus up
-bindsym $Mod+l focus right
+    $Mod+t layout tabbed
+    $Mod+s layout toggle split
 
-# Alternatively, you can use the cursor keys:
-bindsym $Mod+Left  focus left
-bindsym $Mod+Down  focus down
-bindsym $Mod+Up    focus up
-bindsym $Mod+Right focus right
+    $Mod+Shift+space floating toggle
+    $Mod+space focus mode_toggle
 
-# Move focused window
-bindsym $Mod+Shift+h move left  40 px
-bindsym $Mod+Shift+j move down  40 px
-bindsym $Mod+Shift+k move up    40 px
-bindsym $Mod+Shift+l move right 40 px
+    $Mod+a focus parent
+    $Mod+d focus child
 
-# Alternatively, you can use the cursor keys:
-bindsym $Mod+Shift+Left  move left  40 px
-bindsym $Mod+Shift+Down  move down  40 px
-bindsym $Mod+Shift+Up    move up    40 px
-bindsym $Mod+Shift+Right move right 40 px
+    $Mod+q  kill
+    $Mod+c  kill
+    button2 kill
 
-bindsym $Mod+Shift+greater move workspace to output right
-bindsym $Mod+Shift+less    move workspace to output left
+    $Mod+Shift+c reload
+    $Mod+Shift+r restart
 
-bindsym $Mod+Shift+s workspace back_and_forth
+    $Mod+grave       scratchpad show
+    $Mod+Shift+grave move scratchpad
 
-# Enter fullscreen mode for the focused container
-bindsym $Mod+f fullscreen toggle
+    # Make screenshot of region and copy to clipboard
+    Print exec grim -g "$($Slurp)" - | wl-copy
+    # Make screenshot of focused output
+    $Mod+Print exec grim -o "$($GetOutput)" - | wl-copy
 
-# Change container layout (stacked, tabbed, toggle split)
-bindsym $Mod+t layout tabbed
-bindsym $Mod+s layout toggle split
+    # Media controls
+    XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@     +10% && $RefreshBar
+    XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@     -10% && $RefreshBar
+    XF86AudioMute        exec pactl set-sink-mute   @DEFAULT_SINK@   toggle && $RefreshBar
+    XF86AudioMicMute     exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && $RefreshBar
+    XF86Tools            exec deadbeef
+    XF86Calculator       exec galculator
+    XF86HomePage         exec brave
+    XF86Explorer         exec pcmanfm
 
-# Toggle tiling / floating
-bindsym $Mod+Shift+space floating toggle
+    # System actions
+    $Mod+Shift+q         exec $Logout
+    $Mod+Pause           exec "systemctl suspend"
+    $Mod+Shift+Pause     exec "poweroff"
 
-# Change focus between tiling / floating windows
-bindsym $Mod+space focus mode_toggle
+    # Launchers
+    $Mod+p               exec i3-dmenu-desktop --dmenu="dmenu $DmenuConfig"
+    $Mod+Shift+p         exec dmenu_run $DmenuConfig
 
-# Focus the parent container
-bindsym $Mod+a focus parent
+    # Other Programs
+    $Mod+Return          exec alacritty
+    $Mod+b               exec brave
+    $Mod+e               exec pcmanfm
+    $Mod+g               exec gimp
+    $Mod+n               exec code -r ~/notes.md
+    $Mod+m               exec code -r ~/pg/schedule.md
+    $Mod+i               exec code ~/.config
+    $Mod+Shift+n         exec $Terminal nvim
+    $Mod+Shift+e         exec $Terminal ranger
+    $Mod+Shift+x         exec $Terminal ~/scripts/xpad
+    Control+$Alt+Delete  exec $Terminal htop
 
-# Focus the child container
-bindsym $Mod+d focus child
+    $Mod+1 workspace number 1
+    $Mod+2 workspace number 2
+    $Mod+3 workspace number 3
+    $Mod+4 workspace number 4
+    $Mod+5 workspace number 5
+    $Mod+6 workspace number 6
+    $Mod+7 workspace number 7
+    $Mod+8 workspace number 8
+    $Mod+9 workspace number 9
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
+    $Mod+Prior workspace next_on_output
+    $Mod+Next  workspace prev_on_output
 
-# Switch to workspace
-bindsym $Mod+1 workspace number 1
-bindsym $Mod+2 workspace number 2
-bindsym $Mod+3 workspace number 3
-bindsym $Mod+4 workspace number 4
-bindsym $Mod+5 workspace number 5
-bindsym $Mod+6 workspace number 6
-bindsym $Mod+7 workspace number 7
-bindsym $Mod+8 workspace number 8
-bindsym $Mod+9 workspace number 9
+    $Mod+Shift+1 move container to workspace number 1
+    $Mod+Shift+2 move container to workspace number 2
+    $Mod+Shift+3 move container to workspace number 3
+    $Mod+Shift+4 move container to workspace number 4
+    $Mod+Shift+5 move container to workspace number 5
+    $Mod+Shift+6 move container to workspace number 6
+    $Mod+Shift+7 move container to workspace number 7
+    $Mod+Shift+8 move container to workspace number 8
+    $Mod+Shift+9 move container to workspace number 9
 
-bindsym $Mod+Prior workspace next_on_output
-bindsym $Mod+Next  workspace prev_on_output
+    $Mod+Shift+comma  move workspace to output right
+    $Mod+Shift+period move workspace to output left
 
-# Move focused container to workspace
-bindsym $Mod+Shift+1 move container to workspace number 1
-bindsym $Mod+Shift+2 move container to workspace number 2
-bindsym $Mod+Shift+3 move container to workspace number 3
-bindsym $Mod+Shift+4 move container to workspace number 4
-bindsym $Mod+Shift+5 move container to workspace number 5
-bindsym $Mod+Shift+6 move container to workspace number 6
-bindsym $Mod+Shift+7 move container to workspace number 7
-bindsym $Mod+Shift+8 move container to workspace number 8
-bindsym $Mod+Shift+9 move container to workspace number 9
+    $Mod+Shift+Prior move container to workspace next_on_output
+    $Mod+Shift+Next  move container to workspace prev_on_output
+  }
 
-bindsym $Mod+Shift+Prior move container to workspace next_on_output
-bindsym $Mod+Shift+Next  move container to workspace prev_on_output
+  # Repeatable bindings
+  $Mod+h focus left
+  $Mod+l focus right
+  $Mod+j focus down
+  $Mod+k focus up
 
-# Reload the configuration file
-bindsym $Mod+Shift+c reload
-# Restart sway inplace (preserves your layout/session, can be used to upgrade sway)
-bindsym $Mod+Shift+r restart
-# Exit sway (logs you out of your X session)
-bindsym $Mod+Shift+q exec "swaynag -f 'pango:Fira Code' -t warning -m 'Would you like to logout?' -B 'Yes' 'sway-msg exit'"
+  $Mod+Left  focus left
+  $Mod+Down  focus down
+  $Mod+Up    focus up
+  $Mod+Right focus right
 
-# Resize window (you can also use the mouse for that)
-mode "resize" {
-  bindsym h resize shrink width  10 px or 10 ppt
-  bindsym j resize grow   height 10 px or 10 ppt
-  bindsym k resize shrink height 10 px or 10 ppt
-  bindsym l resize grow   width  10 px or 10 ppt
+  $Mod+Shift+h move left  $SizeUnit
+  $Mod+Shift+j move down  $SizeUnit
+  $Mod+Shift+k move up    $SizeUnit
+  $Mod+Shift+l move right $SizeUnit
 
-  bindsym Left  resize shrink width  10 px or 10 ppt
-  bindsym Down  resize grow   height 10 px or 10 ppt
-  bindsym Up    resize shrink height 10 px or 10 ppt
-  bindsym Right resize grow   width  10 px or 10 ppt
-
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-  bindsym $Mod+r mode "default"
+  $Mod+Shift+Left  move left  $SizeUnit
+  $Mod+Shift+Down  move down  $SizeUnit
+  $Mod+Shift+Up    move up    $SizeUnit
+  $Mod+Shift+Right move right $SizeUnit
 }
 
-bindsym $Mod+r mode "resize"
+################
+#    Modes     #
+################
+
+mode "resize" {
+  bindsym {
+    h resize shrink width  $SizeUnit
+    j resize grow   height $SizeUnit
+    k resize shrink height $SizeUnit
+    l resize grow   width  $SizeUnit
+
+    Left  resize shrink width  $SizeUnit
+    Down  resize grow   height $SizeUnit
+    Up    resize shrink height $SizeUnit
+    Right resize grow   width  $SizeUnit
+
+    Return mode "default"
+    Escape mode "default"
+    $Mod+r mode "default"
+  }
+}
 
 mode "emoji" {
-  bindsym 1 exec "xdotool type '💯'"
-  bindsym 3 exec "xdotool type '❤️'"
-  bindsym w exec "xdotool type '😩'"
-  bindsym e exec "xdotool type '👀'"
-  bindsym r exec "xdotool type '😌'"
-  bindsym t exec "xdotool type '🤔'"
-  bindsym y exec "xdotool type '👍'"
-  bindsym o exec "xdotool type '👌'"
-  bindsym i exec "xdotool type '🤌'"
-  bindsym p exec "xdotool type '💩'"
-  bindsym a exec "xdotool type '😳'"
-  bindsym s exec "xdotool type '😏'"
-  bindsym d exec "xdotool type '😃'"
-  bindsym f exec "xdotool type '🔥'"
-  bindsym g exec "xdotool type '🌵'"
-  bindsym z exec "xdotool type '💁'"
-  bindsym x exec "xdotool type '🙆'"
-  bindsym c exec "xdotool type '🤷'"
+  set $Type xdotool type
 
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-  bindsym $Mod+period mode "default"
+  bindsym {
+    1 exec $Type '💯'
+    3 exec $Type '❤️'
+    w exec $Type '😩'
+    e exec $Type '👀'
+    r exec $Type '😌'
+    t exec $Type '🤔'
+    y exec $Type '👍'
+    o exec $Type '👌'
+    i exec $Type '🤌'
+    p exec $Type '💩'
+    a exec $Type '😳'
+    s exec $Type '😏'
+    d exec $Type '😃'
+    f exec $Type '🔥'
+    g exec $Type '🌵'
+    z exec $Type '💁'
+    x exec $Type '🙆'
+    c exec $Type '🤷'
+    Return      mode "default"
+    Escape      mode "default"
+    $Mod+period mode "default"
+  }
 }
 
-bindsym $Mod+period mode "emoji"
+bindsym {
+  $Mod+r      mode "resize"
+  $Mod+period mode "emoji"
+}
