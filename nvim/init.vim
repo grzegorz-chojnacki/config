@@ -48,6 +48,7 @@ set backspace=indent,eol,start
 set encoding=utf-8
 
 set mouse=nv
+set clipboard=unnamedplus
 
 " Don't pollute $HOME, store viminfo in .cache
 set viminfo+=n~/.cache/viminfo
