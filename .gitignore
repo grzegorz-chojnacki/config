@@ -1,2 +1,50 @@
 # Ignore everything by default
 *
+
+# Repo
+!.gitignore
+!autolink.sh
+!README.md
+
+# Base system
+!bash/bash_profile
+!bash/bashrc
+!git/gitconfig
+!inputrc
+
+# Xorg
+!xorg/Xresources
+!xorg/xinitrc
+
+# WMs
+!sway/config
+!i3/config
+
+# WM Dependencies
+!i3status/config
+!dunst/dunstrc
+!picom/picom.conf
+!gammastep/config.ini
+!redshift.conf
+
+# Graphical settings
+!gtk-3.0/settings.ini
+!nitrogen/bg-saved.cfg
+!fontconfig/fonts.conf
+!qt5ct/qt5ct.conf
+
+# Text editors
+!Code - OSS/User/keybindings.json
+!Code - OSS/User/settings.json
+!nvim/colors/default-light.vim
+!nvim/colors/dim.vim
+!nvim/init.vim
+!ranger/rifle.conf
+
+# Tools
+!Thunar/uca.xml
+!pcmanfm/default/pcmanfm.conf
+!alacritty/alacritty.yml
+!galculator/galculator.conf
+!htop/htoprc
+!neofetch/config.conf
