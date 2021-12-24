@@ -13,6 +13,7 @@ input type:keyboard {
   repeat_rate 50
   repeat_delay 200
   xkb_layout pl
+  xkb_options caps:escape
 }
 
 seat seat0 {
@@ -23,12 +24,14 @@ seat seat0 {
 #   Display    #
 ################
 output HDMI-A-1 {
+  subpixel rgb
   mode 1920x1080@60Hz
   pos 0 80
   background /home/grzegorz/Pictures/Images/3-filter-scale.png fill #000000
 }
 
 output DP-3 {
+  subpixel rgb
   mode 1920x1200@60Hz
   pos 1920 0
   background /home/grzegorz/Pictures/Images/3-filter.png fill #000000
@@ -80,14 +83,14 @@ for_window {
   [class="Galculator"] floating enable, move workspace current
 
   # Steam
-  [class="^Steam$" title="^Friends List$"] floating enable
-  [class="^Steam$" title="Steam - News"] floating enable
-  [class="^Steam$" title=".* - Chat"] floating enable
-  [class="^Steam$" title="^Settings$"] floating enable
-  [class="^Steam$" title=".* - event started"] floating enable
-  [class="^Steam$" title=".* CD key"] floating enable
+  [class="^Steam$" title="^Friends List$"]         floating enable
+  [class="^Steam$" title="Steam - News"]           floating enable
+  [class="^Steam$" title=".* - Chat"]              floating enable
+  [class="^Steam$" title="^Settings$"]             floating enable
+  [class="^Steam$" title=".* - event started"]     floating enable
+  [class="^Steam$" title=".* CD key"]              floating enable
   [class="^Steam$" title="^Steam - Self Updater$"] floating enable
-  [class="^Steam$" title="^Screenshot Uploader$"] floating enable
+  [class="^Steam$" title="^Screenshot Uploader$"]  floating enable
   [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 }
 
@@ -123,8 +126,9 @@ set $Alt Mod1
 # Use Mouse+$Mod to drag floating windows to their wanted position
 floating_modifier $Mod
 
-# Helper commands
+# Helper variables and commands
 set $SizeUnit 40 px
+set $ChromiumFlags --enable-features=UseOzonePlatform --ozone-platform=wayland
 set $Slurp slurp -b '#00000040'
 set $Terminal alacritty -e
 set $GetOutput swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name'
@@ -173,8 +177,8 @@ bindsym {
 
     # System actions
     $Mod+Shift+q         exec $Logout
-    $Mod+Pause           exec "systemctl suspend"
-    $Mod+Shift+Pause     exec "poweroff"
+    $Mod+Pause           exec systemctl suspend
+    $Mod+Shift+Pause     exec poweroff
 
     # Launchers
     $Mod+p               exec i3-dmenu-desktop --dmenu="dmenu $DmenuConfig"
@@ -182,7 +186,7 @@ bindsym {
 
     # Other Programs
     $Mod+Return          exec alacritty
-    $Mod+b               exec brave
+    $Mod+b               exec brave $ChromiumFlags
     $Mod+e               exec pcmanfm
     $Mod+g               exec gimp
     $Mod+n               exec code -r ~/notes.md
