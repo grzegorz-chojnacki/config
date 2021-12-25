@@ -25,6 +25,29 @@ HISTCONTROL=ignoreboth:erasedups
 HISTSIZE=
 HISTFILESIZE=
 
+##############
+# TTY Colors #
+##############
+
+if [ "$TERM" = "linux" ]; then
+    echo -en "\e]P7BBBBBB" # Lightgrey
+    echo -en "\e]PFD5D8DA" # White
+    echo -en "\e]P016161C" # Black
+    echo -en "\e]P84C4D53" # Darkgrey
+    echo -en "\e]P1E95678" # Darkred
+    echo -en "\e]P9E95678" # Red
+    echo -en "\e]P2F09483" # Darkgreen
+    echo -en "\e]PAF09483" # Green
+    echo -en "\e]P4FAB795" # Darkblue
+    echo -en "\e]PCFAB795" # Blue
+    echo -en "\e]P3FAC29A" # Brown
+    echo -en "\e]PBFAC29A" # Yellow
+    echo -en "\e]P625B0BC" # Darkcyan
+    echo -en "\e]PE25B0BC" # Cyan
+    echo -en "\e]P5B877DB" # Darkmagenta
+    echo -en "\e]PDB877DB" # Magenta
+    clear # For background artifacting
+fi
 
 #############
 # Variables #
