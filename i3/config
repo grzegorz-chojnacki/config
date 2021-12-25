@@ -219,27 +219,19 @@ bindsym $Mod+Shift+Down  move down  $SizeUnit
 bindsym $Mod+Shift+Up    move up    $SizeUnit
 bindsym $Mod+Shift+Right move right $SizeUnit
 
+bindsym $Mod+Ctrl+h     resize shrink width  $SizeUnit
+bindsym $Mod+Ctrl+j     resize grow   height $SizeUnit
+bindsym $Mod+Ctrl+k     resize shrink height $SizeUnit
+bindsym $Mod+Ctrl+l     resize grow   width  $SizeUnit
+
+bindsym $Mod+Ctrl+Left  resize shrink width  $SizeUnit
+bindsym $Mod+Ctrl+Down  resize grow   height $SizeUnit
+bindsym $Mod+Ctrl+Up    resize shrink height $SizeUnit
+bindsym $Mod+Ctrl+Right resize grow   width  $SizeUnit
+
 ################
 #    Modes     #
 ################
-
-mode "resize" {
-  bindsym h resize shrink width  $SizeUnit
-  bindsym j resize grow   height $SizeUnit
-  bindsym k resize shrink height $SizeUnit
-  bindsym l resize grow   width  $SizeUnit
-
-  bindsym Left  resize shrink width  $SizeUnit
-  bindsym Down  resize grow   height $SizeUnit
-  bindsym Up    resize shrink height $SizeUnit
-  bindsym Right resize grow   width  $SizeUnit
-
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-  bindsym $Mod+r mode "default"
-}
-
-bindsym $Mod+r mode "resize"
 
 mode "emoji" {
   bindsym --release 1 exec "xdotool type '💯'"
