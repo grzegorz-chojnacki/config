@@ -41,6 +41,7 @@ font pango:Fira Code Medium 11
 title_align center
 smart_borders on
 default_border pixel 1
+for_window [class=".*" floating] border normal 1
 
 # class                 border      background  text       indicator   child_border
 client.focused          $Background $Background $Cranberry $Dark       $Gray
