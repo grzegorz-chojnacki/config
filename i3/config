@@ -198,20 +198,20 @@ bindsym $Mod+Shift+period move workspace to output left
 bindsym $Mod+Shift+Prior move container to workspace next_on_output
 bindsym $Mod+Shift+Next  move container to workspace prev_on_output
 
-bindsym $Mod+h focus left
-bindsym $Mod+j focus down
-bindsym $Mod+k focus up
-bindsym $Mod+l focus right
+bindsym $Mod+h     focus left
+bindsym $Mod+j     focus down
+bindsym $Mod+k     focus up
+bindsym $Mod+l     focus right
 
 bindsym $Mod+Left  focus left
 bindsym $Mod+Down  focus down
 bindsym $Mod+Up    focus up
 bindsym $Mod+Right focus right
 
-bindsym $Mod+Shift+h move left  $SizeUnit
-bindsym $Mod+Shift+j move down  $SizeUnit
-bindsym $Mod+Shift+k move up    $SizeUnit
-bindsym $Mod+Shift+l move right $SizeUnit
+bindsym $Mod+Shift+h     move left  $SizeUnit
+bindsym $Mod+Shift+j     move down  $SizeUnit
+bindsym $Mod+Shift+k     move up    $SizeUnit
+bindsym $Mod+Shift+l     move right $SizeUnit
 
 bindsym $Mod+Shift+Left  move left  $SizeUnit
 bindsym $Mod+Shift+Down  move down  $SizeUnit
