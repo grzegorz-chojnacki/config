@@ -218,6 +218,16 @@ bindsym $Mod+Shift+Down  move down  $SizeUnit
 bindsym $Mod+Shift+Up    move up    $SizeUnit
 bindsym $Mod+Shift+Right move right $SizeUnit
 
+bindsym $Mod+Ctrl+Shift+h     move container to output left
+bindsym $Mod+Ctrl+Shift+j     move container to output down
+bindsym $Mod+Ctrl+Shift+k     move container to output up
+bindsym $Mod+Ctrl+Shift+l     move container to output right
+
+bindsym $Mod+Ctrl+Shift+Left  move container to output left
+bindsym $Mod+Ctrl+Shift+Down  move container to output down
+bindsym $Mod+Ctrl+Shift+Up    move container to output up
+bindsym $Mod+Ctrl+Shift+Right move container to output right
+
 bindsym $Mod+Ctrl+h     resize shrink width  $SizeUnit
 bindsym $Mod+Ctrl+j     resize grow   height $SizeUnit
 bindsym $Mod+Ctrl+k     resize shrink height $SizeUnit
