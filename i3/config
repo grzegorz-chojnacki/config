@@ -151,6 +151,7 @@ bindsym $Mod+Scroll_Lock           exec xset r rate 200 50
 bindsym $Mod+Shift+colon           exec --no-startup-id i3lock -fec 000000
 bindsym --release $Mod+Pause       exec systemctl suspend
 bindsym --release $Mod+Shift+Pause exec poweroff
+bindsym --release $Mod+F12         exec ~/scripts/hide-desktop
 
 # Launchers
 bindsym $Mod+p                     exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu $DmenuConfig"
