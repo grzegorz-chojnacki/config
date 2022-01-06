@@ -1,5 +1,5 @@
 {
-  "telemetry.enableTelemetry": false,
+  "telemetry.telemetryLevel": "off",
   "files.autoSave": "onFocusChange",
   "editor.tabSize": 2,
   "editor.accessibilitySupport": "off",
@@ -27,9 +27,9 @@
   "editor.find.addExtraSpaceOnTop": false,
   "files.associations": {
     "*.rmd": "markdown",
-    "*.rkt": "racket",
     "bashrc": "shellscript",
-    "**/i3/config": "i3"
+    "**/i3/config": "shellscript",
+    "**/sway/config": "shellscript"
   },
   "explorer.confirmDragAndDrop": false,
   "git.suggestSmartCommit": false,
@@ -42,14 +42,12 @@
   "[jsonc]": { "editor.defaultFormatter": "vscode.json-language-features" },
   "[typescript]": { "editor.defaultFormatter": "vscode.typescript-language-features" },
   "extensions.ignoreRecommendations": false,
-  "terminal.integrated.shell.linux": "/bin/bash",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "css.lint.duplicateProperties": "warning",
   "prettier.arrowParens": "avoid",
   "color-highlight.markRuler": false,
   "code-runner.runInTerminal": true,
   "code-runner.saveFileBeforeRun": true,
-  "magic-racket.general.racketPath": "\"Racket.exe\"",
   "markdown-pdf.headerTemplate": "",
   "markdown-pdf.highlightStyle": "darcula.css",
   "workbench.colorTheme": "Horizon",
@@ -80,16 +78,6 @@
     "[Horizon]": {
       "textMateRules": [
         {
-          "name": "Markdown code block Fix",
-          "scope": "markup.fenced_code.block.markdown",
-          "settings": { "foreground": "#BBBBBB" }
-        },
-        {
-          "name": "Markdown code block Fix Fix",
-          "scope": "punctuation.definition.markdown",
-          "settings": { "foreground": "#F09483E6" }
-        },
-        {
           "name": "Java variables Fix",
           "scope": "source.java",
           "settings": { "foreground": "#E95678E6" }
@@ -114,7 +102,6 @@
   },
   "markdown.preview.fontSize": 16,
   "workbench.statusBar.visible": true,
-  "window.menuBarVisibility": "hidden",
   "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWxcIixcImN1c3RvbUxpYnJhcmllc1wiOltdLFwicGx1Z2luc1wiOltdLFwicmVjZW50Q29sb3JzXCI6W1wiRDZENkQ2XCIsXCJBMTlDQTFcIixcIjRGNEY0RlwiLFwiOTYzN0ExXCIsXCI0RjFCNEFcIixcIjM5NTlBMVwiLFwiMUMyQzRGXCIsXCIzMzNGNjZcIixcIjAwMzM2NlwiXSxcImZvcm1hdFdpZHRoXCI6MCxcImNyZWF0ZVRhcmdldFwiOmZhbHNlLFwicGFnZUZvcm1hdFwiOntcInhcIjowLFwieVwiOjAsXCJ3aWR0aFwiOjg1MCxcImhlaWdodFwiOjExMDB9LFwic2VhcmNoXCI6ZmFsc2UsXCJzaG93U3RhcnRTY3JlZW5cIjp0cnVlLFwiZ3JpZENvbG9yXCI6XCIjZDBkMGQwXCIsXCJkYXJrR3JpZENvbG9yXCI6XCIjNmU2ZTZlXCIsXCJhdXRvc2F2ZVwiOnRydWUsXCJyZXNpemVJbWFnZXNcIjpudWxsLFwib3BlbkNvdW50ZXJcIjowLFwidmVyc2lvblwiOjE4LFwidW5pdFwiOjEsXCJpc1J1bGVyT25cIjpmYWxzZSxcInVpXCI6XCJcIn0ifQ==",
   "hediet.vscode-drawio.theme": "dark",
   "liveServer.settings.donotShowInfoMsg": true,
@@ -136,10 +123,8 @@
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
   "editor.copyWithSyntaxHighlighting": false,
-  "[vue]": {
-    "editor.defaultFormatter": "octref.vetur"
-  },
   "prettier.htmlWhitespaceSensitivity": "ignore",
   "workbench.editor.untitled.hint": "hidden",
   "terminal.integrated.persistentSessionReviveProcess": "never",
+  "window.menuBarVisibility": "hidden",
 }
