@@ -195,6 +195,7 @@ bindsym $Mod+Shift+9 move container to workspace number 9
 
 bindsym $Mod+Shift+comma  move workspace to output right
 bindsym $Mod+Shift+period move workspace to output left
+bindsym $Mod+Shift+slash  exec ~/scripts/swap-workspaces
 
 bindsym $Mod+Shift+Prior move container to workspace next_on_output
 bindsym $Mod+Shift+Next  move container to workspace prev_on_output
