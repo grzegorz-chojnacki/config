@@ -160,6 +160,7 @@ bindsym $Mod+Shift+p               exec --no-startup-id dmenu_run $DmenuConfig
 # Other programs
 bindsym $Mod+Return                exec --no-startup-id alacritty
 bindsym $Mod+b                     exec --no-startup-id brave
+bindsym $Mod+Shift+b               exec --no-startup-id brave --incognito
 bindsym $Mod+e                     exec --no-startup-id pcmanfm
 bindsym $Mod+g                     exec --no-startup-id gimp
 bindsym $Mod+n                     exec --no-startup-id code -r ~/notes.md
