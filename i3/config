@@ -265,9 +265,29 @@ mode "emoji" {
   bindsym --release x exec "xdotool type '🙆'"
   bindsym --release c exec "xdotool type '🤷'"
 
-  bindsym Return      mode "default"
-  bindsym Escape      mode "default"
-  bindsym $Mod+period mode "default"
+  set $ExitCmd mode "default"
+  bindsym Return      $ExitCmd
+  bindsym Escape      $ExitCmd
+  bindsym $Mod+period $ExitCmd
 }
 
 bindsym $Mod+period mode "emoji"
+
+mode "swap" {
+  bindsym h     focus left
+  bindsym j     focus down
+  bindsym k     focus up
+  bindsym l     focus right
+
+  bindsym Left  focus left
+  bindsym Down  focus down
+  bindsym Up    focus up
+  bindsym Right focus right
+
+  set $ExitCmd swap container with mark "swap", unmark "swap", mode "default"
+  bindsym Return     $ExitCmd
+  bindsym Escape     $ExitCmd
+  bindsym $Mod+slash $ExitCmd
+}
+
+bindsym $Mod+slash mark --add "swap", mode "swap"
