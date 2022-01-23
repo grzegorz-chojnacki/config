@@ -4,3 +4,4 @@
 # fi
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
+
