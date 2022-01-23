@@ -52,6 +52,6 @@ disk "/" {
 }
 
 tztime clock {
-  format = "<span color='#e95678'>%a %H:%M %F</span> "
+  format = "<span color='#e95678'>%F %a %H:%M</span> "
   timezone = "Europe/Warsaw"
 }
