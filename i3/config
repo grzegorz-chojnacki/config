@@ -112,7 +112,7 @@ bindsym $Mod+f fullscreen toggle
 bindsym $Mod+Shift+s workspace back_and_forth
 
 bindsym $Mod+t layout tabbed
-bindsym $Mod+s layout toggle split
+bindsym $Mod+s layout toggle split, border pixel 1
 
 bindsym $Mod+Shift+space floating toggle
 bindsym $Mod+space focus mode_toggle
