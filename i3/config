@@ -107,6 +107,7 @@ set $RefreshBar killall -SIGUSR1 i3status
 set $Terminal alacritty -e
 set $DmenuConfig -i -fn 'Fira Code Medium' -nb '#16161C' -nf '#E95678' -sb '#E95678' -sf '#16161C'
 set $Logout "i3-nagbar -f 'pango:Fira Code' -t warning -m 'Would you like to logout?' -B 'Yes' 'i3-msg exit'"
+set $ClipboardImage xclip -selection clipboard -t image/png -i
 
 bindsym $Mod+f fullscreen toggle
 bindsym $Mod+Shift+s workspace back_and_forth
@@ -131,9 +132,9 @@ bindsym $Mod+grave       scratchpad show
 bindsym $Mod+Shift+grave move scratchpad
 
 # Make screenshot of region and copy to clipboard
-bindsym Print exec "xfce4-screenshooter -rc"
+bindsym Print exec maim -su | $ClipboardImage
 # Make screenshot of focused window
-bindsym $Mod+Print exec "xfce4-screenshooter -wc"
+bindsym $Mod+Print exec maim -i $(xdotool getactivewindow) | $ClipboardImage
 
 # Media controls
 bindsym XF86AudioRaiseVolume       exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@     +10% && $RefreshBar
