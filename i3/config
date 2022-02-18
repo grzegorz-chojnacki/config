@@ -168,9 +168,9 @@ bindsym $Mod+g                     exec --no-startup-id gimp
 bindsym $Mod+n                     exec --no-startup-id code -r ~/notes.md
 bindsym $Mod+m                     exec --no-startup-id code -r ~/pg/schedule.md
 bindsym $Mod+i                     exec --no-startup-id code ~/.config
+bindsym $Mod+Shift+x               exec --no-startup-id ~/scripts/xpad
 bindsym $Mod+Shift+n               exec --no-startup-id $Terminal nvim
 bindsym $Mod+Shift+e               exec --no-startup-id $Terminal ranger
-bindsym $Mod+Shift+x               exec --no-startup-id $Terminal ~/scripts/xpad
 bindsym Control+$Alt+Delete        exec --no-startup-id $Terminal htop
 
 bindsym $Mod+1 workspace number 1
