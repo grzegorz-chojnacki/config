@@ -161,4 +161,4 @@ alias df='df -h'
 alias free='free -h'
 alias cal='cal -m'
 alias vim='nvim'
-
+alias timer="termdown"
