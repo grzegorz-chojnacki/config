@@ -56,8 +56,9 @@ set expandtab
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
-
-set ruler
+set showbreak=↪ 
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·,lead:·
+set list
 
 " Spellchecker
 set spelllang=en_us,pl
