@@ -40,6 +40,14 @@ set ignorecase
 set smartcase
 set incsearch
 
+" Don't pollute $HOME, store viminfo in .cache
+set viminfo+=n~/.cache/viminfo
+
+" Undo settings
+set undolevels=1000
+set undodir=~/.cache/undodir
+set undofile
+
 " Whitespace settings
 set autoindent
 set smartindent
