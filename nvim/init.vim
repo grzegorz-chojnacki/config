@@ -60,16 +60,23 @@ let &t_SI.="\e[5 q"
 let &t_EI.="\e[3 q"
 let &t_te.="\e[5 q"
 
-let mapleader = " "
+" Events
+augroup custom
+  " Clear all commands in group
+  autocmd!
 
-" Disable automatic commenting on newline
-autocmd FileType * setlocal formatoptions-=r formatoptions-=o
+  " Disable automatic commenting on newline
+  autocmd FileType * setlocal formatoptions-=r formatoptions-=o
 
-" Remove trailing whitespace on write
-autocmd BufWritePre * %s/\s\+$//e
+  " Remove trailing whitespace on write
+  autocmd BufWritePre * %s/\s\+$//e
 
-" Autosave on lost focus, don't care for errors
-autocmd BufLeave,FocusLost * silent! wall
+  " Auto source config on save
+  autocmd BufWritePost $MYVIMRC :source $MYVIMRC
+
+  " Autosave on lost focus, don't care for errors
+  autocmd BufLeave,FocusLost * silent! wall
+augroup end
 
 " Replace all
 nnoremap S :%s//g<Left><Left>
