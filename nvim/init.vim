@@ -14,7 +14,7 @@
 " Or better yet, read /usr/share/vim/vim80/vimrc_example.vim or the vim manual
 " and configure vim to your own liking!
 
-" do not load defaults if ~/.vimrc is missing
+" Do not load defaults if ~/.vimrc is missing
 "let skip_defaults_vim=1
 colorscheme dim
 filetype plugin on
@@ -87,11 +87,32 @@ augroup custom
   autocmd BufLeave,FocusLost * silent! wall
 augroup end
 
+" Mappings
+let mapleader = " "
+
+" Reload init.vim
+nnoremap <Leader>c :source $MYVIMRC<CR>
+
+" Natural movement through wrapped lines
+nnoremap j gj
+nnoremap k gk
+
+" Toggle line wrapping
+nnoremap <M-z> :set wrap!<CR>
+
+" Clear last search
+nnoremap <Leader>/ :let @/ = ""<CR>
+
+" Virtualedit bindings
+nnoremap <Leader>V :set virtualedit=all<CR>
+nnoremap <Leader>v :set virtualedit=""<CR>
+
+" Save file
+nnoremap <C-s> :w<CR>
+
 " Replace all
 nnoremap S :%s//g<Left><Left>
-
-" Replace all occurences of a word under the cursor
-nnoremap <Leader>* :%s///g<Left><Left>
+vnoremap S :s//g<Left><Left>
 
 " Pane switching shortcuts
 nnoremap <C-h> <C-w>h
