@@ -20,38 +20,45 @@ colorscheme dim
 filetype plugin on
 syntax on
 
+" Various basic settings
 set nocompatible
+set encoding=utf-8
+set backspace=indent,eol,start
 set wildmenu
 set wildmode=full
 set splitbelow splitright
 set number relativenumber
 set linebreak
-set showmatch
+set ruler
 set scrolloff=5
+set clipboard=unnamedplus
+set mouse=nv
 
+" Search settings
 set hlsearch
 set ignorecase
 set smartcase
 set incsearch
-set autoindent
 
-set expandtab
-set shiftwidth=2
+" Whitespace settings
+set autoindent
 set smartindent
 set smarttab
+set expandtab
+set shiftwidth=2
+set tabstop=2
 set softtabstop=2
 
 set ruler
 
-set undolevels=1000
-set backspace=indent,eol,start
-set encoding=utf-8
+" Spellchecker
+set spelllang=en_us,pl
 
-set mouse=nv
-set clipboard=unnamedplus
-
-" Don't pollute $HOME, store viminfo in .cache
-set viminfo+=n~/.cache/viminfo
+" Change cursor shape based on the mode
+let &t_ti.="\e[3 q"
+let &t_SI.="\e[5 q"
+let &t_EI.="\e[3 q"
+let &t_te.="\e[5 q"
 
 let mapleader = " "
 
@@ -78,10 +85,3 @@ nnoremap <C-l> <C-w>l
 
 " Enable dot command in visual mode
 vnoremap . :norm.<CR>
-
-
-" Change cursor shape based on the mode
-let &t_ti.="\e[3 q"
-let &t_SI.="\e[5 q"
-let &t_EI.="\e[3 q"
-let &t_te.="\e[5 q"
