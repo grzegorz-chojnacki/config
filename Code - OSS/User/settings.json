@@ -64,7 +64,6 @@
   "markdown.extension.print.theme": "dark",
   "html.format.endWithNewline": true,
   "diffEditor.ignoreTrimWhitespace": false,
-  "git.confirmSync": false,
 
   // Theme modifications
   "workbench.colorCustomizations": {
@@ -127,4 +126,9 @@
   "workbench.editor.untitled.hint": "hidden",
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "window.menuBarVisibility": "hidden",
+  "markdown-pdf.margin.bottom": "0",
+  "markdown-pdf.margin.right": "0",
+  "markdown-pdf.margin.left": "0",
+  "markdown-pdf.margin.top": "0",
+  "terminal.integrated.enableMultiLinePasteWarning": false,
 }
