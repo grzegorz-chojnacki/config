@@ -2,7 +2,7 @@
 " /usr/share/vim/vimfiles/archlinux.vim) and sourced by the call to :runtime
 " you can find below.  If you wish to change any of those settings, you should
 " do it in this file (/etc/vimrc), since archlinux.vim will be overwritten
-" iverytime an upgrade of the vim packages is performed.  It is recommended to
+" every time an upgrade of the vim packages is performed.  It is recommended to
 " make changes after sourcing archlinux.vim since it alters the value of the
 " 'compatible' option.
 
@@ -79,13 +79,6 @@ nnoremap <C-l> <C-w>l
 " Enable dot command in visual mode
 vnoremap . :norm.<CR>
 
-inoremap { {}<Esc>ha
-inoremap ( ()<Esc>ha
-inoremap < <><Esc>ha
-inoremap [ []<Esc>ha
-inoremap ' ''<Esc>ha
-inoremap " ""<Esc>ha
-inoremap ` ``<Esc>ha
 
 " Change cursor shape based on the mode
 let &t_ti.="\e[3 q"
