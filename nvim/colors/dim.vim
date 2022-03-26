@@ -4,35 +4,93 @@ if exists("syntax_on")
   syntax reset
 endif
 
-exec "source " . expand('<sfile>:p:h') . "/default-light.vim"
-
 let colors_name = "dim"
 
-" In diffs, added lines are green, changed lines are yellow, deleted lines are
-" red, and changed text (within a changed line) is bright yellow and bold.
-highlight DiffAdd        ctermfg=0    ctermbg=2
-highlight DiffChange     ctermfg=0    ctermbg=3
-highlight DiffDelete     ctermfg=0    ctermbg=1
-highlight DiffText       ctermfg=0    ctermbg=11   cterm=bold
+" Editor
+highlight LineNr        ctermfg=8
+highlight VertSplit     ctermfg=8   ctermbg=0   cterm=NONE
+highlight StatusLineNC  ctermfg=8   ctermbg=0   cterm=NONE
+highlight StatusLine    ctermfg=7   ctermbg=0   cterm=bold
+highlight ModeMsg       ctermfg=1               cterm=bold
+highlight Question      ctermfg=3               cterm=bold
+highlight MoreMsg       ctermfg=2
+highlight TabLine       ctermfg=4   ctermbg=0   cterm=NONE
+highlight TabLineFill               ctermbg=0   cterm=NONE
+highlight TabLineSel    ctermfg=3   ctermbg=0   cterm=bold
+highlight Title         ctermfg=5
+highlight ColorColumn               ctermbg=8
+highlight SignColumn                ctermbg=0
+highlight Folded        ctermfg=7   ctermbg=8
+highlight FoldColumn    ctermfg=7   ctermbg=8
+highlight Cursor        ctermfg=0   ctermbg=1
+highlight CursorLineNr  ctermfg=7               cterm=NONE
+highlight CursorLine                            cterm=NONE
+highlight CursorColumn              ctermbg=8
+highlight TermCursor    ctermfg=1   ctermbg=0   cterm=inverse
+highlight Pmenu         ctermfg=7   ctermbg=0
+highlight PmenuSel      ctermfg=0   ctermbg=1   cterm=NONE
+highlight WildMenu      ctermfg=0   ctermbg=1   cterm=NONE
+highlight PmenuSbar                 ctermbg=0
+highlight PmenuThumb                ctermbg=8
 
-" Invert selected lines in visual mode
-highlight Visual         ctermfg=NONE ctermbg=NONE cterm=inverse
+" Errors, warnings and text statuses
+highlight Error         ctermfg=1   ctermbg=NONE
+highlight Todo          ctermfg=3   ctermbg=NONE cterm=italic
+highlight WarningMsg    ctermfg=2
+highlight ErrorMsg      ctermfg=1   ctermbg=NONE
+highlight Underlined    ctermfg=5                cterm=underline
+highlight Conceal       ctermfg=7   ctermbg=8
+highlight Ignore        ctermfg=7
 
-" Highlight search matches in black, with a red background
-highlight Search         ctermfg=0    ctermbg=1
+" Diff
+highlight DiffAdd       ctermfg=0   ctermbg=5
+highlight DiffChange    ctermfg=0   ctermbg=2
+highlight DiffDelete    ctermfg=0   ctermbg=1
+highlight DiffText      ctermfg=8   ctermbg=2   cterm=bold
 
-" Dim line numbers, comments, color columns, the status line, splits and sign
-" columns.
-highlight LineNr       ctermfg=8
-highlight Comment      ctermfg=8
-highlight ColorColumn  ctermfg=7    ctermbg=8
-highlight Folded       ctermfg=7    ctermbg=8
-highlight FoldColumn   ctermfg=7    ctermbg=8
-highlight Pmenu        ctermfg=15   ctermbg=8
-highlight PmenuSel     ctermfg=8    ctermbg=15
-highlight SpellCap     ctermfg=7    ctermbg=8
-highlight StatusLine   ctermfg=15   ctermbg=8    cterm=bold
-highlight StatusLineNC ctermfg=7    ctermbg=8    cterm=NONE
-highlight VertSplit    ctermfg=7    ctermbg=8    cterm=NONE
-highlight SignColumn                ctermbg=8
-highlight MatchParen   ctermfg=1    ctermbg=8    cterm=bold
+" Selection
+highlight Visual        ctermfg=7   ctermbg=8
+highlight MatchParen    ctermfg=1   ctermbg=8   cterm=bold
+
+" Highlight
+highlight Search        ctermfg=1   ctermbg=8
+highlight IncSearch     ctermfg=3   ctermbg=8   cterm=bold
+
+" Spelling
+highlight SpellBad      ctermfg=1               cterm=underline
+highlight SpellRare     ctermfg=2               cterm=underline
+highlight SpellLocal    ctermfg=3               cterm=underline
+highlight SpellCap      ctermfg=7               cterm=underline
+
+" Various
+highlight Special       ctermfg=5
+highlight SpecialKey    ctermfg=8
+highlight NonText       ctermfg=8
+highlight Directory     ctermfg=4
+highlight Whitespace    ctermfg=8
+
+" Syntax
+highlight Comment       ctermfg=8               cterm=italic
+highlight Constant      ctermfg=2
+highlight Identifier    ctermfg=1               cterm=NONE
+highlight Function      ctermfg=6
+highlight String        ctermfg=4
+highlight Character     ctermfg=4
+highlight Statement     ctermfg=5
+highlight PreProc       ctermfg=5
+highlight Type          ctermfg=3
+highlight Typedef       ctermfg=3
+
+" Trailing spaces
+match ExtraWhitespace /\s\+$/
+highlight ExtraWhitespace ctermfg=1
+
+" Braces
+match Braces /[{}\[\]]/
+highlight link Braces Normal
+
+" HTML
+highlight htmlTag       ctermfg=1
+" highlight htmlTagName   ctermfg=1
+highlight link htmlTagName htmlTag
+highlight htmlArg       ctermfg=2
