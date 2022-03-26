@@ -25,7 +25,7 @@ set nocompatible
 set encoding=utf-8
 set backspace=indent,eol,start
 set wildmenu
-set wildmode=full
+set wildmode=longest:full,full
 set splitbelow splitright
 set number relativenumber
 set linebreak
@@ -33,6 +33,7 @@ set ruler
 set scrolloff=5
 set clipboard=unnamedplus
 set mouse=nv
+set cursorline
 
 " Search settings
 set hlsearch
@@ -93,6 +94,9 @@ let mapleader = " "
 " Reload init.vim
 nnoremap <Leader>c :source $MYVIMRC<CR>
 
+" Autocompletion
+inoremap <Tab> <C-n>
+
 " Natural movement through wrapped lines
 nnoremap j gj
 nnoremap k gk
@@ -122,3 +126,13 @@ nnoremap <C-l> <C-w>l
 
 " Enable dot command in visual mode
 vnoremap . :norm.<CR>
+
+" Easier terminal exit
+tnoremap <Esc> <C-\><C-n>
+
+" Get highlight-groups of word under the cursor
+nnoremap <F10> :echo "hi<"
+  \ . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+  \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+  \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
