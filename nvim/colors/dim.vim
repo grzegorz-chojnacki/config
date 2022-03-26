@@ -11,27 +11,32 @@ highlight LineNr        ctermfg=8
 highlight VertSplit     ctermfg=8   ctermbg=0   cterm=NONE
 highlight StatusLineNC  ctermfg=8   ctermbg=0   cterm=NONE
 highlight StatusLine    ctermfg=7   ctermbg=0   cterm=bold
+
+highlight MoreMsg       ctermfg=2
 highlight ModeMsg       ctermfg=1               cterm=bold
 highlight Question      ctermfg=3               cterm=bold
-highlight MoreMsg       ctermfg=2
+
 highlight TabLine       ctermfg=4   ctermbg=0   cterm=NONE
 highlight TabLineFill               ctermbg=0   cterm=NONE
 highlight TabLineSel    ctermfg=3   ctermbg=0   cterm=bold
+
 highlight Title         ctermfg=5
 highlight ColorColumn               ctermbg=8
 highlight SignColumn                ctermbg=0
 highlight Folded        ctermfg=7   ctermbg=8
-highlight FoldColumn    ctermfg=7   ctermbg=8
+highlight link FoldColumn Folded
+
 highlight Cursor        ctermfg=0   ctermbg=1
 highlight CursorLineNr  ctermfg=7               cterm=NONE
 highlight CursorLine                            cterm=NONE
 highlight CursorColumn              ctermbg=8
 highlight TermCursor    ctermfg=1   ctermbg=0   cterm=inverse
+
 highlight Pmenu         ctermfg=7   ctermbg=0
 highlight PmenuSel      ctermfg=0   ctermbg=1   cterm=NONE
-highlight WildMenu      ctermfg=0   ctermbg=1   cterm=NONE
 highlight PmenuSbar                 ctermbg=0
 highlight PmenuThumb                ctermbg=8
+highlight link WildMenu PmenuSel
 
 " Errors, warnings and text statuses
 highlight Error         ctermfg=1   ctermbg=NONE
@@ -44,8 +49,8 @@ highlight Ignore        ctermfg=7
 
 " Diff
 highlight DiffAdd       ctermfg=0   ctermbg=5
-highlight DiffChange    ctermfg=0   ctermbg=2
 highlight DiffDelete    ctermfg=0   ctermbg=1
+highlight DiffChange    ctermfg=0   ctermbg=2
 highlight DiffText      ctermfg=8   ctermbg=2   cterm=bold
 
 " Selection
@@ -62,12 +67,18 @@ highlight SpellRare     ctermfg=2               cterm=underline
 highlight SpellLocal    ctermfg=3               cterm=underline
 highlight SpellCap      ctermfg=7               cterm=underline
 
-" Various
+" Whitespace and other
+match TrailingWhitespace /\s\+$/
+highlight TrailingWhitespace ctermfg=1
 highlight Special       ctermfg=5
 highlight SpecialKey    ctermfg=8
 highlight NonText       ctermfg=8
 highlight Directory     ctermfg=4
 highlight Whitespace    ctermfg=8
+
+" Normal colored braces
+match Braces /[{}\[\]]/
+highlight link Braces Normal
 
 " Syntax
 highlight Comment       ctermfg=8               cterm=italic
@@ -79,18 +90,10 @@ highlight Character     ctermfg=4
 highlight Statement     ctermfg=5
 highlight PreProc       ctermfg=5
 highlight Type          ctermfg=3
-highlight Typedef       ctermfg=3
-
-" Trailing spaces
-match ExtraWhitespace /\s\+$/
-highlight ExtraWhitespace ctermfg=1
-
-" Braces
-match Braces /[{}\[\]]/
-highlight link Braces Normal
+highlight link Typedef Type
 
 " HTML
-highlight htmlTag       ctermfg=1
-" highlight htmlTagName   ctermfg=1
-highlight link htmlTagName htmlTag
 highlight htmlArg       ctermfg=2
+highlight htmlTag       ctermfg=1
+highlight link htmlTagName htmlTag
+
