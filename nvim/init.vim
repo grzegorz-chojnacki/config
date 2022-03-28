@@ -61,14 +61,13 @@ set showbreak=↪ 
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·,lead:·
 set list
 
-" Spellchecker
-set spelllang=en_us,pl
-
-" Change cursor shape based on the mode
-let &t_ti.="\e[3 q"
-let &t_SI.="\e[5 q"
-let &t_EI.="\e[3 q"
-let &t_te.="\e[5 q"
+" Remove trailing whitespace and blank lines at the end of file
+function! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    keeppatterns %s/\v($\n\s*)+%$//e
+    call winrestview(l:save)
+endfun
 
 " Events
 augroup custom
@@ -78,8 +77,8 @@ augroup custom
   " Disable automatic commenting on newline
   autocmd FileType * setlocal formatoptions-=r formatoptions-=o
 
-  " Remove trailing whitespace on write
-  autocmd BufWritePre * %s/\s\+$//e
+  " Trim whitespace on write
+  autocmd BufWritePre * :call TrimWhitespace()
 
   " Auto source config on save
   autocmd BufWritePost $MYVIMRC :source $MYVIMRC
