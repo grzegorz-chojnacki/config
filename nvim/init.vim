@@ -26,14 +26,18 @@ set encoding=utf-8
 set backspace=indent,eol,start
 set wildmenu
 set wildmode=longest:full,full
+set wildcharm=<Tab>
 set splitbelow splitright
 set number relativenumber
 set linebreak
 set ruler
 set scrolloff=5
+set sidescrolloff=5
 set clipboard=unnamedplus
 set mouse=nv
 set cursorline
+set iskeyword+=-
+set formatoptions+=ro
 
 " Search settings
 set hlsearch
@@ -58,7 +62,7 @@ set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 set showbreak=↪ 
-set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·,lead:·
+set listchars=tab:»\ ,precedes:‹,extends:›,nbsp:·,trail:·,lead:·
 set list
 
 " Remove trailing whitespace and blank lines at the end of file
