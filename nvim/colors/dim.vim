@@ -23,15 +23,14 @@ highlight TabLineSel    ctermfg=3   ctermbg=0   cterm=bold
 highlight Title         ctermfg=5
 highlight ColorColumn               ctermbg=8
 highlight SignColumn                ctermbg=0
-highlight Folded        ctermfg=7   ctermbg=8
-highlight link FoldColumn Folded
+highlight Folded        ctermfg=5   ctermbg=0
+highlight FoldColumn    ctermfg=5   ctermbg=0
 
 highlight Cursor        ctermfg=0   ctermbg=1
 highlight CursorLineNr  ctermfg=7               cterm=NONE
 highlight CursorLine                            cterm=NONE
 highlight CursorColumn              ctermbg=8
-highlight TermCursor    ctermfg=1   ctermbg=0   cterm=inverse
-
+highlight TermCursor    ctermfg=1   ctermbg=0
 highlight Pmenu         ctermfg=7   ctermbg=0
 highlight PmenuSel      ctermfg=0   ctermbg=1   cterm=NONE
 highlight PmenuSbar                 ctermbg=0
@@ -62,10 +61,10 @@ highlight Search        ctermfg=1   ctermbg=8
 highlight IncSearch     ctermfg=3   ctermbg=8   cterm=bold
 
 " Spelling
-highlight SpellBad      ctermfg=1               cterm=underline
-highlight SpellRare     ctermfg=2               cterm=underline
-highlight SpellLocal    ctermfg=3               cterm=underline
-highlight SpellCap      ctermfg=7               cterm=underline
+highlight SpellBad      ctermfg=1   ctermbg=0   cterm=underline
+highlight SpellRare     ctermfg=2   ctermbg=0   cterm=underline
+highlight SpellLocal    ctermfg=3   ctermbg=0   cterm=underline
+highlight SpellCap      ctermfg=7   ctermbg=0   cterm=underline
 
 " Whitespace and other
 match TrailingWhitespace /\s\+$/
@@ -96,4 +95,3 @@ highlight link Typedef Type
 highlight htmlArg       ctermfg=2
 highlight htmlTag       ctermfg=1
 highlight link htmlTagName htmlTag
-
