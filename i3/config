@@ -71,6 +71,7 @@ bar {
   position top
   separator_symbol " "
   status_command i3status
+  modifier none
 }
 
 #################
@@ -87,6 +88,9 @@ set $Alt  Mod1
 
 # Use Mouse+$Mod to drag floating windows to their wanted position
 floating_modifier $Mod
+
+# Toggle bar visibility
+bindsym $Mod+Shift+f bar mode toggle
 
 # Helper variables and commands
 set $SizeUnit 40 px
