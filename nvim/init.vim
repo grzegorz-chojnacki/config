@@ -65,7 +65,7 @@ set softtabstop=2
 set breakindent
 set breakindentopt=sbr
 set showbreak=↪ 
-set listchars=tab:»\ ,precedes:‹,extends:›,nbsp:·,trail:·,lead:·
+set listchars=tab:»\ ,precedes:‹,extends:›,nbsp:␣,trail:·,lead:·,conceal:∷
 set list
 
 " Remove trailing whitespace and blank lines at the end of file
