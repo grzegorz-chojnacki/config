@@ -93,6 +93,9 @@ augroup custom
   " Autosave on lost focus, don't care for errors
   autocmd BufLeave,FocusLost,CursorHold * silent! wall
 
+  " Set default formatoptions for all files
+  autocmd FileType * set formatoptions+=ro
+
   " Continue quotes in Markdown
   autocmd FileType markdown setlocal comments=n:>
 augroup end
