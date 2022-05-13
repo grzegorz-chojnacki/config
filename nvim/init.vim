@@ -81,8 +81,8 @@ augroup custom
   " Clear all commands in group
   autocmd!
 
-  " Disable automatic commenting on newline
-  autocmd FileType * setlocal formatoptions-=r formatoptions-=o
+  " Jump to last location without affecting the jump list
+  autocmd BufRead * silent! :normal g`"
 
   " Trim whitespace on write
   autocmd BufWritePre * :call <SID>TrimWhitespace()
@@ -95,6 +95,7 @@ augroup custom
 augroup end
 
 let mapleader = " "
+
 
 """"""""""""""""""""""""""""""""""""""""""
 " NORMAL, VISUAL, OPERATOR mode mappings "
