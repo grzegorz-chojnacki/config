@@ -91,6 +91,7 @@ augroup custom
   autocmd BufWritePost $MYVIMRC :source $MYVIMRC
 
   " Autosave on lost focus, don't care for errors
+  autocmd BufLeave,FocusLost,CursorHold * silent! wall
 
   " Continue quotes in Markdown
   autocmd FileType markdown setlocal comments=n:>
