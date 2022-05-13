@@ -115,8 +115,8 @@ noremap <Leader>sp :set spell!<CR>
 noremap j gj
 noremap k gk
 
-" More accessible EOL binding
-noremap - $
+" More accessible (non-blank) EOL binding
+noremap - g_
 
 " Quick newline
 noremap <M-o> o<Esc>
@@ -159,7 +159,7 @@ nnoremap S :%s//g<Left><Left>
 
 " Get highlight-groups of word under the cursor
 nnoremap <F10> :echo "hi<"
-  \ . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+  \ . synIDattr(synID(line("."),col("."),1),"name") . "> trans<"
   \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
   \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
@@ -169,7 +169,8 @@ nnoremap <Leader>q :b #<CR>
 " Open (and split) buffers
 nnoremap <Leader><Tab> :b <Tab>
 nnoremap <Leader>s<Tab> :sb <Tab>
-nnoremap <Leader>v<Tab> :vertical sb <Tab>
+nnoremap <Leader>v<Tab> :vsb <Tab>
+
 
 """"""""""""""""""""""""
 " VISUAL mode mappings "
@@ -201,8 +202,8 @@ vnoremap p "_dP
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
-" Replace all
-vnoremap S :s//g<Left><Left>
+" Replace all inside selection
+vnoremap S :s/\%V/g<Left><Left>
 
 
 """"""""""""""""""""""""
