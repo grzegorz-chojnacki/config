@@ -144,10 +144,6 @@ nnoremap <silent> <Esc> :let @/ = ""<CR>
 " Save file
 nnoremap <C-s> :w<CR>
 
-" Select all word occurences (and stay in place)
-nnoremap * *N
-nnoremap # #N
-
 " Pane switching shortcuts
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -179,9 +175,17 @@ nnoremap <Leader>v<Tab> :vertical sb <Tab>
 " VISUAL mode mappings "
 """"""""""""""""""""""""
 
-" Search for selected text
-vnoremap * y/\V<C-r>"<CR>N
-vnoremap # y?\V<C-r>"<CR>N
+" From http://got-ravings.blogspot.com/2008/07/vim-pr0n-visual-search-mappings.html
+" Makes * and # work on visual mode too.
+function! s:VSetSearch(cmdtype)
+  let temp = @s
+  norm! gv"sy
+  let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
+  let @s = temp
+endfunction
+
+xnoremap * :call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
+xnoremap # :call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 
 " Text indentation without loosing selection
 vnoremap < <gv
