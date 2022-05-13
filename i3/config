@@ -116,7 +116,6 @@ bindsym $Mod+space focus mode_toggle
 bindsym $Mod+a focus parent
 bindsym $Mod+d focus child
 
-bindsym --release $Mod+q  kill
 bindsym --release $Mod+c  kill
 bindsym --release button2 kill
 
@@ -153,6 +152,7 @@ bindsym --release $Mod+F12         exec ~/scripts/hide-desktop
 
 # Launchers
 bindsym $Mod+p                     exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu $DmenuConfig"
+bindsym $Mod+z                     exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu $DmenuConfig"
 bindsym $Mod+Shift+p               exec --no-startup-id dmenu_run $DmenuConfig
 
 # Other programs
