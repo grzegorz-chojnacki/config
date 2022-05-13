@@ -5,7 +5,7 @@
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id "${HOME}/.config/screenlayout.sh"
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id redshift-gtk &
+exec --no-startup-id redshift &
 exec --no-startup-id unclutter --timeout 2 &
 
 ################
