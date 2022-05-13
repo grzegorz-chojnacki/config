@@ -22,6 +22,7 @@ syntax on
 
 " Various basic settings
 set nocompatible
+set confirm
 set encoding=utf-8
 set backspace=indent,eol,start
 set wildmenu
@@ -36,8 +37,8 @@ set sidescrolloff=5
 set clipboard=unnamedplus
 set mouse=nv
 set cursorline
-set iskeyword+=-
-set formatoptions+=ro
+set path+=**
+set complete+=i,kspell
 
 " Search settings
 set hlsearch
@@ -61,6 +62,8 @@ set expandtab
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
+set breakindent
+set breakindentopt=sbr
 set showbreak=↪ 
 set listchars=tab:»\ ,precedes:‹,extends:›,nbsp:·,trail:·,lead:·
 set list
