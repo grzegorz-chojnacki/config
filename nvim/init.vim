@@ -130,6 +130,9 @@ noremap <silent> <Leader>v :let &virtualedit=(empty(&virtualedit) ? 'all' : '')<
 " Toggle fold column
 noremap <silent> <Leader>z :let &foldcolumn=(&foldcolumn ? 0 : 1)<CR>
 
+" Rerun last macro
+noremap Q @@
+
 
 """"""""""""""""""""""""
 " NORMAL mode mappings "
