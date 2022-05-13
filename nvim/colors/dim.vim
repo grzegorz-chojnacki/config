@@ -75,10 +75,6 @@ highlight NonText       ctermfg=8
 highlight Directory     ctermfg=4
 highlight Whitespace    ctermfg=8
 
-" Normal colored braces
-match Braces /[{}\[\]]/
-highlight link Braces Normal
-
 " Syntax
 highlight Comment       ctermfg=8               cterm=italic
 highlight Constant      ctermfg=2
