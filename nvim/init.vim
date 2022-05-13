@@ -69,7 +69,7 @@ set listchars=tab:»\ ,precedes:‹,extends:›,nbsp:␣,trail:·,lead:·,concea
 set list
 
 " Remove trailing whitespace and blank lines at the end of file
-function! TrimWhitespace()
+function! s:TrimWhitespace()
     let l:save = winsaveview()
     keeppatterns %s/\s\+$//e
     keeppatterns %s/\v($\n\s*)+%$//e
@@ -85,7 +85,7 @@ augroup custom
   autocmd FileType * setlocal formatoptions-=r formatoptions-=o
 
   " Trim whitespace on write
-  autocmd BufWritePre * :call TrimWhitespace()
+  autocmd BufWritePre * :call <SID>TrimWhitespace()
 
   " Auto source config on save
   autocmd BufWritePost $MYVIMRC :source $MYVIMRC
