@@ -131,4 +131,5 @@
   "markdown-pdf.margin.left": "0",
   "markdown-pdf.margin.top": "0",
   "terminal.integrated.enableMultiLinePasteWarning": false,
+  "editor.bracketPairColorization.enabled": false,
 }
