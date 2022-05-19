@@ -69,6 +69,28 @@ set showbreak=↪ 
 set listchars=tab:»\ ,precedes:‹,extends:›,nbsp:␣,trail:·,lead:·,conceal:∷
 set list
 
+
+call plug#begin()
+Plug 'junegunn/vim-easy-align'
+Plug 'preservim/nerdtree'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+call plug#end()
+
+" Run EasyAlign in normal/visual mode
+nnoremap ga <Plug>(EasyAlign)
+xnoremap ga <Plug>(EasyAlign)
+
+" Toggle or focus NERDTree
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+
+" Toggle comment
+nmap <C-_> gcc
+
 " Remove trailing whitespace and blank lines at the end of file
 function! s:TrimWhitespace()
     let l:save = winsaveview()
@@ -156,7 +178,7 @@ nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
 
 " Replace all
-nnoremap S :%s//g<Left><Left>
+nnoremap s :%s//g<Left><Left>
 
 " Get highlight-groups of word under the cursor
 nnoremap <F10> :echo "hi<"
@@ -204,7 +226,7 @@ vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " Replace all inside selection
-vnoremap S :s/\%V/g<Left><Left>
+vnoremap s :s/\%V/g<Left><Left>
 
 " Format markdown table
 vnoremap <Space>f !column -t -s'\|' -o'\|'<CR>
