@@ -205,6 +205,9 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 " Replace all inside selection
 vnoremap S :s/\%V/g<Left><Left>
 
+" Format markdown table
+vnoremap <Space>f !column -t -s'\|' -o'\|'<CR>
+
 
 """"""""""""""""""""""""
 " INSERT mode mappings "
