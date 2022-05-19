@@ -38,6 +38,7 @@ set sidescrolloff=5
 set clipboard=unnamedplus
 set mouse=nv
 set cursorline
+set updatetime=200
 set path+=**
 set complete+=i,kspell
 

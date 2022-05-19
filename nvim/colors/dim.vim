@@ -47,10 +47,13 @@ highlight Underlined    ctermfg=5                cterm=underline
 highlight Ignore        ctermfg=7
 
 " Diff
-highlight DiffAdd       ctermfg=5   ctermbg=8    cterm=NONE
-highlight DiffDelete    ctermfg=1   ctermbg=8    cterm=NONE
-highlight DiffChange    ctermfg=2   ctermbg=8    cterm=NONE
-highlight DiffText      ctermfg=2   ctermbg=8    cterm=NONE,bold
+highlight DiffAdd         ctermfg=6   ctermbg=8    cterm=NONE
+highlight DiffDelete      ctermfg=1   ctermbg=8    cterm=NONE
+highlight DiffChange      ctermfg=2   ctermbg=8    cterm=NONE
+highlight DiffText        ctermfg=2   ctermbg=8    cterm=NONE,bold
+highlight GitGutterAdd    ctermfg=6
+highlight GitGutterChange ctermfg=2
+highlight GitGutterDelete ctermfg=1
 
 " Selection
 highlight Visual        ctermfg=7   ctermbg=8
