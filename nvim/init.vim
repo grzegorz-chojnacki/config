@@ -138,8 +138,8 @@ noremap Q @@
 " NORMAL mode mappings "
 """"""""""""""""""""""""
 
-" Clear last search
-nnoremap <silent> <Esc> :let @/ = ""<CR>
+" Clear last search and the command output at the bottom
+nnoremap <silent> <Esc> :let @/='' \| echon<CR>
 
 " Save file
 nnoremap <C-s> :w<CR>
