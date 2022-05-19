@@ -27,6 +27,7 @@ set encoding=utf-8
 set backspace=indent,eol,start
 set wildmenu
 set wildmode=longest:full,full
+set completeopt=menuone,longest,preview,noselect
 set wildcharm=<Tab>
 set splitbelow splitright
 set number relativenumber
@@ -76,6 +77,7 @@ function! s:TrimWhitespace()
     call winrestview(l:save)
 endfun
 
+
 " Events
 augroup custom
   " Clear all commands in group
@@ -96,7 +98,7 @@ augroup custom
   " Set default formatoptions for all files
   autocmd FileType * set formatoptions+=ro
 
-  " Continue quotes in Markdown
+  " Continue quotes in markdown
   autocmd FileType markdown setlocal comments=n:>
 augroup end
 
@@ -118,6 +120,9 @@ noremap k gk
 " More accessible (non-blank) EOL binding
 noremap - g_
 
+" Repeat last used register
+noremap Q @@
+
 " Quick newline
 noremap <M-o> o<Esc>
 
@@ -129,10 +134,6 @@ noremap <silent> <Leader>v :let &virtualedit=(empty(&virtualedit) ? 'all' : '')<
 
 " Toggle fold column
 noremap <silent> <Leader>z :let &foldcolumn=(&foldcolumn ? 0 : 1)<CR>
-
-" Rerun last macro
-noremap Q @@
-
 
 """"""""""""""""""""""""
 " NORMAL mode mappings "
