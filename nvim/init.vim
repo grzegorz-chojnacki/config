@@ -23,6 +23,7 @@ syntax on
 " Various basic settings
 set nocompatible
 set confirm
+set title
 set encoding=utf-8
 set backspace=indent,eol,start
 set wildmenu
@@ -66,7 +67,8 @@ set tabstop=2
 set softtabstop=2
 set breakindent
 set breakindentopt=sbr
-set showbreak=↪ 
+set showbreak=↪
+set cpoptions+=n
 set listchars=tab:»\ ,precedes:‹,extends:›,nbsp:␣,trail:·,lead:·,conceal:∷
 set list
 
@@ -82,22 +84,25 @@ Plug 'tpope/vim-commentary'
 call plug#end()
 
 " Run EasyAlign in normal/visual mode
-nnoremap ga <Plug>(EasyAlign)
-xnoremap ga <Plug>(EasyAlign)
+nnoremap ga <Plug>(LiveEasyAlign)
+xnoremap ga <Plug>(LiveEasyAlign)
 
-" Toggle or focus NERDTree
-nnoremap <leader>n :NERDTreeFocus<CR>
+" More consistent visual mode vim-surround mapping
+vmap s S
+
+" Toggle NERDTree
 nnoremap <C-t> :NERDTreeToggle<CR>
 
 " Toggle comment
 nmap <C-_> gcc
+xmap <C-_> gc
 
 " Remove trailing whitespace and blank lines at the end of file
 function! s:TrimWhitespace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    keeppatterns %s/\v($\n\s*)+%$//e
-    call winrestview(l:save)
+  let l:save = winsaveview()
+  keeppatterns %s/\s\+$//e
+  keeppatterns %s/\v($\n\s*)+%$//e
+  call winrestview(l:save)
 endfun
 
 
@@ -158,6 +163,7 @@ noremap <silent> <Leader>v :let &virtualedit=(empty(&virtualedit) ? 'all' : '')<
 " Toggle fold column
 noremap <silent> <Leader>z :let &foldcolumn=(&foldcolumn ? 0 : 1)<CR>
 
+
 """"""""""""""""""""""""
 " NORMAL mode mappings "
 """"""""""""""""""""""""
@@ -179,7 +185,7 @@ nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
 
 " Replace all
-nnoremap s :%s//g<Left><Left>
+nnoremap S :%s//g<Left><Left>
 
 " Get highlight-groups of word under the cursor
 nnoremap <F10> :echo "hi<"
@@ -227,7 +233,7 @@ vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " Replace all inside selection
-vnoremap s :s/\%V/g<Left><Left>
+vnoremap S :s/\%V/g<Left><Left>
 
 " Format markdown table
 vnoremap <Space>f !column -t -s'\|' -o'\|'<CR>
