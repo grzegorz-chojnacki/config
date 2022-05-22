@@ -72,6 +72,7 @@ set cpoptions+=n
 set listchars=tab:»\ ,precedes:‹,extends:›,nbsp:␣,trail:·,lead:·,conceal:∷
 set list
 
+let mapleader = " "
 
 call plug#begin()
 Plug 'junegunn/vim-easy-align'
@@ -92,6 +93,9 @@ vmap s S
 
 " Toggle NERDTree
 nnoremap <C-t> :NERDTreeToggle<CR>
+
+" Launch Fugitive buffer
+nnoremap <leader>g :Git<CR>
 
 " Toggle comment
 nmap <C-_> gcc
@@ -130,7 +134,6 @@ augroup custom
   autocmd FileType markdown setlocal comments=n:>
 augroup end
 
-let mapleader = " "
 
 
 """"""""""""""""""""""""""""""""""""""""""
