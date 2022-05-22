@@ -239,14 +239,6 @@ vnoremap S :s/\%V/g<Left><Left>
 vnoremap <Space>f !column -t -s'\|' -o'\|'<CR>
 
 
-""""""""""""""""""""""""
-" INSERT mode mappings "
-""""""""""""""""""""""""
-
-" Auto completion
-inoremap <C-Space> <C-n>
-
-
 """"""""""""""""""""""""""
 " TERMINAL mode mappings "
 """"""""""""""""""""""""""
