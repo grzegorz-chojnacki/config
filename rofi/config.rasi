@@ -1,0 +1,125 @@
+configuration {
+  modi: "drun,run,window";
+  font: "Fira Code Medium 11";
+  show-icons: false;
+  steal-focus: true;
+  sort: true;
+  matching: "fuzzy";
+  sorting-method: "fzf";
+  disable-history: true;
+  window-format: "{w}  {c}  {t}";
+  drun-display-format: "{name} [<span color="#4C4D53">({generic})</span>]";
+  replace: true;
+
+  drun    { display-name: "Run"; }
+  run     { display-name: "run"; }
+  window  { display-name: "Window"; }
+
+  filebrowser {
+    display-name: "open";
+    directory: "~";
+    directories-first: true;
+    sorting-method: "name";
+  }
+}
+
+// Color palette
+* {
+    background: #16161C;
+    foreground: #BBBBBB;
+    black:      #06060C;
+    dark:       #232530;
+    gray:       #4C4D53;
+    white:      #D5D8DA;
+    tacao:      #FAC29A;
+    rosebud:    #FAB795;
+    apricot:    #F09483;
+    cranberry:  #E95678;
+    lavender:   #B877DB;
+    turquoise:  #25B0BC;
+}
+
+element normal.normal,
+element alternate.normal,
+element selected.normal {
+    background-color: @background;
+    text-color:       @foreground;
+}
+
+element selected.normal,
+element selected.urgent,
+element selected.active {
+    background-color: @dark;
+    text-color:       @foreground;
+}
+
+element normal.active,
+element selected.active,
+element alternate.active {
+    text-color:       @cranberry;
+    background-color: @background;
+}
+
+element normal.urgent,
+element selected.urgent,
+element alternate.urgent {
+    text-color: @apricot;
+}
+
+element-text { highlight: @tacao; }
+
+window { border-color: @gray; }
+
+message {
+    padding:      1px;
+    border-color: @dark;
+    border:       2px solid 0px 0px;
+}
+
+listview {
+    spacing: 0;
+    border:  0;
+}
+
+scrollbar { handle-color: @gray; }
+
+button selected {
+    background-color: @dark;
+    text-color:       @foreground;
+}
+
+case-indicator    { text-color: @gray; }
+num-filtered-rows { text-color: @gray; }
+num-rows          { text-color: @gray; }
+
+entry  { placeholder: ""; }
+prompt {
+    spacing:    0;
+    text-color: @cranberry;
+}
+
+textbox              { text-color: @foreground; }
+textbox-prompt-colon {
+    str: ":";
+    text-color: @cranberry;
+}
+
+textbox-num-sep {
+    str:        "/";
+    text-color: @gray;
+}
+
+inputbar {
+    padding:    1px;
+    spacing:    0px;
+    text-color: @foreground;
+    children: [
+        "prompt",
+        "textbox-prompt-colon",
+        "entry",
+        "num-filtered-rows",
+        "textbox-num-sep",
+        "num-rows",
+        "case-indicator"
+    ];
+}
