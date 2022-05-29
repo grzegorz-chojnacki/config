@@ -78,6 +78,7 @@ call plug#begin()
 Plug 'junegunn/vim-easy-align'
 Plug 'preservim/nerdtree'
 Plug 'airblade/vim-gitgutter'
+Plug 'ap/vim-css-color'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -132,6 +133,11 @@ augroup custom
 
   " Continue quotes in markdown
   autocmd FileType markdown setlocal comments=n:>
+
+  " Set color highlighting for arbitrary files
+  autocmd FileType markdown
+        \ silent! :syntax match HexColor /#\v(\x{8}|\x{6}|\x{4}|\x{3})/
+        \ | call css_color#init('hex', 'none', 'HexColor')
 augroup end
 
 
