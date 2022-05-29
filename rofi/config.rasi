@@ -1,3 +1,4 @@
+// vim: set ft=scss
 configuration {
   modi: "drun,run,window";
   font: "Fira Code Medium 11";
