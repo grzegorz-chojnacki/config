@@ -148,14 +148,15 @@ noremap <Leader>sp :set spell!<CR>
 noremap j gj
 noremap k gk
 
-" More accessible (non-blank) EOL binding
-noremap - g_
+" More accessible EOL binding
+noremap - $
 
 " Repeat last used register
 noremap Q @@
 
 " Quick newline
 noremap <M-o> o<Esc>
+noremap <M-O> O<Esc>
 
 " Toggle line wrapping
 noremap <silent> <M-z> :set wrap!<CR>
@@ -189,6 +190,7 @@ nnoremap <A-k> :m .-2<CR>==
 
 " Replace all
 nnoremap S :%s//g<Left><Left>
+vnoremap S :%s//g<Left><Left>
 
 " Get highlight-groups of word under the cursor
 nnoremap <F10> :echo "hi<"
@@ -204,6 +206,12 @@ nnoremap <Leader><Tab> :b <Tab>
 nnoremap <Leader>s<Tab> :sb <Tab>
 nnoremap <Leader>v<Tab> :vsb <Tab>
 
+" Replace the next occurance of the last changed text
+nnoremap c. /\V<C-r>"<CR>cgn<C-a><Esc>
+
+" Change the word under the cursor
+nnoremap <leader>c *``cgn
+
 
 """"""""""""""""""""""""
 " VISUAL mode mappings "
@@ -218,8 +226,9 @@ function! s:VSetSearch(cmdtype)
   let @s = temp
 endfunction
 
-xnoremap * :call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
-xnoremap # :call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
+xnoremap * :call <SID>VSetSearch('/')<CR>/<C-r>=@/<CR><CR>
+xnoremap # :call <SID>VSetSearch('?')<CR>?<C-r>=@/<CR><CR>
+vmap <leader>c *``cgn
 
 " Text indentation without loosing selection
 vnoremap < <gv
@@ -235,11 +244,8 @@ vnoremap p "_dP
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
-" Replace all inside selection
-vnoremap S :s/\%V/g<Left><Left>
-
 " Format markdown table
-vnoremap <Space>f !column -t -s'\|' -o'\|'<CR>
+vnoremap <leader>f !column -t -s'\|' -o'\|'<CR>
 
 
 """"""""""""""""""""""""""
