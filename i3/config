@@ -97,14 +97,13 @@ floating_modifier $Mod
 bindsym $Mod+Shift+f bar mode toggle
 
 # Helper variables and commands
-set $SizeUnit 40 px
-set $RefreshBar killall -SIGUSR1 i3status
-set $Terminal alacritty -e
-set $DmenuConfig -i -fn 'Fira Code Medium' -nb '#16161C' -nf '#E95678' -sb '#E95678' -sf '#16161C'
-set $Logout "i3-nagbar -f 'pango:Fira Code' -t warning -m 'Would you like to logout?' -B 'Yes' 'i3-msg exit'"
+set $SizeUnit       40 px
+set $RefreshBar     killall -SIGUSR1 i3status
+set $Terminal       alacritty -e
+set $Logout         "i3-nagbar -f 'pango:Fira Code' -t warning -m 'Would you like to logout?' -B 'Yes' 'i3-msg exit'"
 set $ClipboardImage xclip -selection clipboard -t image/png -i
 
-bindsym $Mod+f fullscreen toggle
+bindsym $Mod+f       fullscreen toggle
 bindsym $Mod+Shift+s workspace back_and_forth
 
 bindsym $Mod+t layout tabbed
@@ -116,10 +115,11 @@ bindsym $Mod+space focus mode_toggle
 bindsym $Mod+a focus parent
 bindsym $Mod+d focus child
 
-bindsym --release $Mod+c  kill
-bindsym --release button2 kill
+bindsym --release button2      kill
+bindsym --release $Mod+c       kill
+bindsym --release $Mod+Shift+c exec --no-startup-id xkill
 
-bindsym $Mod+Shift+c reload
+bindsym $Mod+r       reload
 bindsym $Mod+Shift+r restart
 
 bindsym $Mod+grave       scratchpad show
@@ -146,15 +146,15 @@ bindsym Shift+XF86Explorer         exec --no-startup-id gsimplecal
 bindsym $Mod+Shift+q               exec $Logout
 bindsym $Mod+Scroll_Lock           exec xset r rate 200 50
 bindsym $Mod+Shift+colon           exec --no-startup-id i3lock -fec 000000 && sleep 1 && xset s activate
-bindsym --release $Mod+x           exec --no-startup-id xkill
 bindsym --release $Mod+Pause       exec systemctl suspend
 bindsym --release $Mod+Shift+Pause exec poweroff
 bindsym --release $Mod+F12         exec ~/scripts/hide-desktop
 
 # Launchers
-bindsym $Mod+p                     exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu $DmenuConfig"
-bindsym $Mod+z                     exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu $DmenuConfig"
-bindsym $Mod+Shift+p               exec --no-startup-id dmenu_run $DmenuConfig
+bindsym $Mod+z                     exec --no-startup-id rofi -show drun
+bindsym $Mod+p                     exec --no-startup-id rofi -show drun
+bindsym $Mod+Shift+p               exec --no-startup-id rofi -show run
+bindsym $Alt+Tab                   exec --no-startup-id rofi -show window
 
 # Other programs
 bindsym $Mod+Return                exec --no-startup-id alacritty
@@ -163,7 +163,7 @@ bindsym $Mod+Shift+b               exec --no-startup-id brave --incognito
 bindsym $Mod+e                     exec --no-startup-id pcmanfm
 bindsym $Mod+g                     exec --no-startup-id gimp
 bindsym $Mod+i                     exec --no-startup-id code ~/.config
-bindsym $Mod+Shift+x               exec --no-startup-id ~/scripts/xpad
+bindsym $Mod+x                     exec --no-startup-id ~/scripts/xpad
 bindsym $Mod+n                     exec --no-startup-id $Terminal nvim ~/notes.md
 bindsym $Mod+Shift+n               exec --no-startup-id $Terminal nvim
 bindsym $Mod+Shift+e               exec --no-startup-id $Terminal ranger
