@@ -32,7 +32,8 @@ set completeopt=menuone,longest,preview,noselect
 set wildcharm=<Tab>
 set splitbelow splitright
 set number relativenumber
-set linebreak
+set signcolumn=number
+set nolinebreak
 set ruler
 set scrolloff=5
 set sidescrolloff=5
@@ -74,6 +75,8 @@ set list
 
 let mapleader = " "
 
+let g:markdown_fenced_languages = ['python', 'javascript', 'sh']
+
 call plug#begin()
 Plug 'junegunn/vim-easy-align'
 Plug 'preservim/nerdtree'
@@ -88,15 +91,24 @@ call plug#end()
 " Run EasyAlign in normal/visual mode
 nnoremap ga <Plug>(LiveEasyAlign)
 xnoremap ga <Plug>(LiveEasyAlign)
+" GitGutter config
+let g:gitgutter_close_preview_on_escape = 1
+let g:gitgutter_sign_modified_removed = '~'
+let g:gitgutter_sign_removed_first_line = '-'
+let g:gitgutter_sign_removed_above_and_below = '-'
+let g:gitgutter_sign_removed = '-'
 
 " More consistent visual mode vim-surround mapping
 vmap s S
+" Toggle GitGutter
+nnoremap <leader>G :GitGutterToggle<CR>
+
+" Launch Fugitive buffer
+nnoremap <leader>g :Git<CR>
 
 " Toggle NERDTree
 nnoremap <C-t> :NERDTreeToggle<CR>
 
-" Launch Fugitive buffer
-nnoremap <leader>g :Git<CR>
 
 " Toggle comment
 nmap <C-_> gcc

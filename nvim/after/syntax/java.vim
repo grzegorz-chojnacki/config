@@ -14,3 +14,7 @@ highlight link javaClassDecl Special
 highlight link javaStorageClass Special
 
 highlight link javaDocParam Identifier
+
+
+let java_highlight_java_lang_ids=1
+highlight link javaC_JavaLang Type

@@ -17,7 +17,3 @@ syntax match pythonConstant /\<[A-Z_][A-Z0-9_]\+\>/
 highlight link pythonConstant Constant
 
 syntax match pythonFunction /\<\i*\>\ze\w*(/ containedin=ALLBUT,pythonString,pythonRawString,pythonComment
-
-" Syntax matching gets overriden by pythonFunction group
-match pythonClass /\<class\>\s*\zs\<\i*\>/
-highlight link pythonClass Type
