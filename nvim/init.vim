@@ -98,8 +98,6 @@ let g:gitgutter_sign_removed_first_line = '-'
 let g:gitgutter_sign_removed_above_and_below = '-'
 let g:gitgutter_sign_removed = '-'
 
-" More consistent visual mode vim-surround mapping
-vmap s S
 " Toggle GitGutter
 nnoremap <leader>G :GitGutterToggle<CR>
 
@@ -207,8 +205,8 @@ nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
 
 " Replace all
-nnoremap S :%s//g<Left><Left>
-vnoremap S :%s//g<Left><Left>
+nnoremap s :%s//g<Left><Left>
+vnoremap s :s//g<Left><Left>
 
 " Get highlight-groups of word under the cursor
 nnoremap <F10> :echo "hi<"
