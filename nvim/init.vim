@@ -33,7 +33,7 @@ set wildcharm=<Tab>
 set splitbelow splitright
 set number relativenumber
 set signcolumn=number
-set nolinebreak
+set nowrap
 set ruler
 set scrolloff=5
 set sidescrolloff=5
