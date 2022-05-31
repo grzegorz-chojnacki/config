@@ -77,9 +77,11 @@ let mapleader = " "
 
 let g:markdown_fenced_languages = ['python', 'javascript', 'sh']
 
+" Netrw config
+let g:netrw_banner = 0
+
 call plug#begin()
 Plug 'junegunn/vim-easy-align'
-Plug 'preservim/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'tpope/vim-fugitive'
@@ -88,9 +90,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 call plug#end()
 
-" Run EasyAlign in normal/visual mode
-nnoremap ga <Plug>(LiveEasyAlign)
-xnoremap ga <Plug>(LiveEasyAlign)
 " GitGutter config
 let g:gitgutter_close_preview_on_escape = 1
 let g:gitgutter_sign_modified_removed = '~'
@@ -104,13 +103,19 @@ nnoremap <leader>G :GitGutterToggle<CR>
 " Launch Fugitive buffer
 nnoremap <leader>g :Git<CR>
 
-" Toggle NERDTree
-nnoremap <C-t> :NERDTreeToggle<CR>
+" Launch Netrw
+nnoremap <C-w>e :Ex<CR>
 
+" Run EasyAlign in normal/visual mode
+nnoremap ga <Plug>(LiveEasyAlign)
+xnoremap ga <Plug>(LiveEasyAlign)
 
 " Toggle comment
 nmap <C-_> gcc
 xmap <C-_> gc
+
+" Run fzf
+nnoremap <M-f> :FZF!<CR>
 
 " Remove trailing whitespace and blank lines at the end of file
 function! s:TrimWhitespace()
@@ -151,7 +156,6 @@ augroup custom
 augroup end
 
 
-
 """"""""""""""""""""""""""""""""""""""""""
 " NORMAL, VISUAL, OPERATOR mode mappings "
 """"""""""""""""""""""""""""""""""""""""""
@@ -169,6 +173,13 @@ noremap - $
 
 " Repeat last used register
 noremap Q @@
+" Duplicate line
+nnoremap <leader>t :t+0<CR>
+nnoremap <leader>T :t-1<CR>
+
+" Duplicate selection
+xnoremap <leader>t :t+1<CR>
+xnoremap <leader>T :t-1<CR>
 
 " Quick newline
 noremap <M-o> o<Esc>
