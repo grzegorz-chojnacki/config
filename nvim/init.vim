@@ -174,12 +174,12 @@ noremap - $
 " Repeat last used register
 noremap Q @@
 " Duplicate line
-nnoremap <leader>t :t+0<CR>
-nnoremap <leader>T :t-1<CR>
+nnoremap <M-t> :t+0<CR>
+nnoremap <M-T> :t-1<CR>
 
 " Duplicate selection
-xnoremap <leader>t :t+1<CR>
-xnoremap <leader>T :t-1<CR>
+xnoremap <M-t> :t '>+0<CR>gv
+xnoremap <M-T> :t '<-1<CR>gv
 
 " Quick newline
 noremap <M-o> o<Esc>
