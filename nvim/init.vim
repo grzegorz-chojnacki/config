@@ -146,6 +146,9 @@ augroup custom
   " Set default formatoptions for all files
   autocmd FileType * set formatoptions+=ro
 
+  " Fix cursor placement on tabs in help files (align left)
+  autocmd FileType help setlocal listchars=tab:\ \  list
+
   " Continue quotes in markdown
   autocmd FileType markdown setlocal comments=n:>
 
