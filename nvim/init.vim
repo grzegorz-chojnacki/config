@@ -123,7 +123,7 @@ augroup custom
   autocmd!
 
   " Jump to last location without affecting the jump list
-  autocmd BufRead * silent! :normal g`"
+  autocmd BufRead * silent! :normal g'"
 
   " Trim whitespace on write
   autocmd BufWritePre * :call <SID>TrimWhitespace()
