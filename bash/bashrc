@@ -24,7 +24,7 @@ HISTCONTROL=ignoreboth:erasedups
 # Don't limit size of the history file
 HISTSIZE=
 HISTFILESIZE=
-export HISTFILE="$XDG_CACHE_HOME/.bash_history"
+export HISTFILE="$XDG_CACHE_HOME/bash_history"
 
 ##############
 # TTY Colors #

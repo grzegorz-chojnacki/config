@@ -1,8 +1,9 @@
-export TERM=alacritty
-export EDITOR=vim
-
 ERRFILE="$XDG_CACHE_HOME/X11/xsession-errors"
 
-[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+[[ -f ~/.config/X11/.Xresources ]] && xrdb -merge ~/.config/X11/Xresources
+
+xset -b
+xset r rate 200 50
+xset s off
 
 exec i3
