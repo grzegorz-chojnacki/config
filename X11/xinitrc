@@ -1,6 +1,8 @@
 export TERM=alacritty
 export EDITOR=vim
 
+ERRFILE="$XDG_CACHE_HOME/X11/xsession-errors"
+
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
 exec i3

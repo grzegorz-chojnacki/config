@@ -19,11 +19,9 @@ fi
 targets=(
   'bash/bashrc'
   'bash/bash_profile'
-  'git/gitconfig'
-  'inputrc'
-  'vim'
-  'xorg/xinitrc'
-  'xorg/Xresources'
+  'X11/xinitrc'
+  'X11/Xresources'
+  'profile'
 )
 
 for target in ${targets[@]}; do

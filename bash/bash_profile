@@ -3,5 +3,5 @@
 #   startx
 # fi
 
-[[ -f ~/.bashrc ]] && . ~/.bashrc
 
+[[ -f ~/.bashrc ]] && . ~/.bashrc
