@@ -45,6 +45,7 @@ set statusline=%<[%n]%y%m%r\ %f%=%l,%c\ %P
 set updatetime=200
 set path+=**
 set complete+=i,kspell
+set spelllang=en_us,pl
 
 " Search settings
 set hlsearch
@@ -77,11 +78,6 @@ set list
 
 let mapleader = " "
 
-let g:markdown_fenced_languages = ['python', 'javascript', 'sh']
-
-" Netrw config
-let g:netrw_banner = 0
-
 call plug#begin()
 Plug 'junegunn/vim-easy-align'
 Plug 'airblade/vim-gitgutter'
@@ -99,27 +95,10 @@ let g:gitgutter_sign_removed_first_line = '-'
 let g:gitgutter_sign_removed_above_and_below = '-'
 let g:gitgutter_sign_removed = '-'
 
-" Toggle GitGutter
-nnoremap <leader>G :GitGutterToggle<CR>
+let g:markdown_fenced_languages = ['python', 'javascript', 'sh']
 
-" Launch Fugitive buffer
-nnoremap <leader>g :Git<CR>
-
-" Launch Netrw
-nnoremap <C-w>e :Ex<CR>
-
-" Run EasyAlign in normal/visual mode
-nnoremap ga <Plug>(LiveEasyAlign)
-xnoremap ga <Plug>(LiveEasyAlign)
-
-map <C-z> <Nop>
-
-" Toggle comment
-nmap <C-_> gcc
-xmap <C-_> gc
-
-" Run fzf
-nnoremap <M-f> :FZF!<CR>
+" Netrw config
+let g:netrw_banner = 0
 
 " Remove trailing whitespace and blank lines at the end of file
 function! s:TrimWhitespace()
@@ -129,6 +108,14 @@ function! s:TrimWhitespace()
   call winrestview(l:save)
 endfun
 
+" From http://got-ravings.blogspot.com/2008/07/vim-pr0n-visual-search-mappings.html
+" Makes * and # work on visual mode too.
+function! s:VSetSearch(cmdtype)
+  let temp = @s
+  norm! gv"sy
+  let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
+  let @s = temp
+endfunction
 
 " Events
 augroup custom
@@ -144,18 +131,16 @@ augroup custom
   " Auto source config on save
   autocmd BufWritePost $MYVIMRC :source $MYVIMRC
 
-  " Autosave on lost focus, don't care for errors
-  autocmd BufLeave,FocusLost,CursorHold * silent! wall
-
   " Set default formatoptions for all files
   autocmd FileType * set formatoptions+=ro
 
   " Fix cursor placement on tabs in help files (align left)
-  autocmd FileType help setlocal listchars=tab:\ \  list
+  autocmd FileType help :setlocal listchars=tab:\ \ | set list
 
   " Continue quotes in markdown
   autocmd FileType markdown setlocal comments=n:>
-
+  " Format tables
+  autocmd FileType markdown vnoremap <leader>f !column -t -s'\|' -o'\|'<CR>
   " Set color highlighting for arbitrary files
   autocmd FileType markdown
         \ silent! :syntax match HexColor /#\v(\x{8}|\x{6}|\x{4}|\x{3})/
@@ -163,54 +148,48 @@ augroup custom
 augroup end
 
 
-""""""""""""""""""""""""""""""""""""""""""
-" NORMAL, VISUAL, OPERATOR mode mappings "
-""""""""""""""""""""""""""""""""""""""""""
+" Launch plugins
+nnoremap <leader>G :GitGutterToggle<CR>
+nnoremap <leader>g :Git<CR>
+nnoremap <M-f> :FZF!<CR>
+nnoremap <C-w>e :Ex<CR>
+nnoremap <C-w><C-e> :Ex<CR>
+nnoremap ga <Plug>(LiveEasyAlign)
+xnoremap ga <Plug>(LiveEasyAlign)
 
-" Spellchecker
-set spelllang=en_us,pl
-noremap <Leader>sp :set spell!<CR>
+" Toggle comment
+nmap <C-_> gcc
+xmap <C-_> gc
 
-" Natural movement through wrapped lines
-noremap j gj
-noremap k gk
+" Toggle buffer
+nnoremap <Leader><Tab> :b <Tab>
 
-" More accessible EOL binding
-noremap - $
-
-" Repeat last used register
-noremap Q @@
-" Duplicate line
-nnoremap <M-t> :t+0<CR>
-nnoremap <M-T> :t-1<CR>
-
-" Duplicate selection
-xnoremap <M-t> :t '>+0<CR>gv
-xnoremap <M-T> :t '<-1<CR>gv
-
-" Quick newline
-noremap <M-o> o<Esc>
-noremap <M-O> O<Esc>
-
-" Toggle line wrapping
+" Toggle options
 noremap <silent> <M-z> :set wrap!<CR>
-
-" Virtual edit bindings
 noremap <silent> <Leader>v :let &virtualedit=(empty(&virtualedit) ? 'all' : '')<CR>
-
-" Toggle fold column
 noremap <silent> <Leader>z :let &foldcolumn=(&foldcolumn ? 0 : 1)<CR>
-
-
-""""""""""""""""""""""""
-" NORMAL mode mappings "
-""""""""""""""""""""""""
+noremap <silent> <Leader>sp :set spell!<CR>
 
 " Clear last search and the command output at the bottom
 nnoremap <silent> <Esc> :let @/='' \| echon<CR>
 
+" Don't allow to suspend
+noremap <C-z> <Nop>
+
 " Save file
 nnoremap <C-s> :w<CR>
+
+" Easier exit from terminal
+tnoremap <Esc> <C-\><C-n>
+
+" Natural movement
+noremap j gj
+noremap k gk
+noremap - $
+
+" Quick newline
+noremap <M-o> o<Esc>
+noremap <M-O> O<Esc>
 
 " Pane switching shortcuts
 nnoremap <C-h> <C-w>h
@@ -221,70 +200,40 @@ nnoremap <C-l> <C-w>l
 " Move lines
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
+" Duplicate lines
+nnoremap <M-t> :t+0<CR>
+nnoremap <M-T> :t-1<CR>
+xnoremap <M-t> :t '>+0<CR>gv
+xnoremap <M-T> :t '<-1<CR>gv
 
 " Replace all
 nnoremap s :%s//g<Left><Left>
 vnoremap s :s//g<Left><Left>
+
+" Replace the next occurance of the last changed text
+nnoremap c. /\V<C-r>"<CR>cgn<C-a><Esc>
+
+" Enable dot command in visual mode
+vnoremap . :norm.<CR>
+
+" Text indentation without loosing selection
+vnoremap < <gv
+vnoremap > >gv
+
+" Keep register content when pasting over text in visual mode
+vnoremap p "_dP
+
+" Change the word under the cursor
+nnoremap <leader>c *``cgn
+xnoremap * :call <SID>VSetSearch('/')<CR>/<C-r>=@/<CR><CR>
+xnoremap # :call <SID>VSetSearch('?')<CR>?<C-r>=@/<CR><CR>
+vmap <leader>c *``cgn
 
 " Get highlight-groups of word under the cursor
 nnoremap <F10> :echo "hi<"
   \ . synIDattr(synID(line("."),col("."),1),"name") . "> trans<"
   \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
   \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-
-" Go to previous buffer
-nnoremap <Leader>q :b #<CR>
-
-" Open (and split) buffers
-nnoremap <Leader><Tab> :b <Tab>
-nnoremap <Leader>s<Tab> :sb <Tab>
-nnoremap <Leader>v<Tab> :vsb <Tab>
-
-" Replace the next occurance of the last changed text
-nnoremap c. /\V<C-r>"<CR>cgn<C-a><Esc>
-
-" Change the word under the cursor
-nnoremap <leader>c *``cgn
-
-
-""""""""""""""""""""""""
-" VISUAL mode mappings "
-""""""""""""""""""""""""
-
-" From http://got-ravings.blogspot.com/2008/07/vim-pr0n-visual-search-mappings.html
-" Makes * and # work on visual mode too.
-function! s:VSetSearch(cmdtype)
-  let temp = @s
-  norm! gv"sy
-  let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
-  let @s = temp
-endfunction
-
-xnoremap * :call <SID>VSetSearch('/')<CR>/<C-r>=@/<CR><CR>
-xnoremap # :call <SID>VSetSearch('?')<CR>?<C-r>=@/<CR><CR>
-vmap <leader>c *``cgn
-
-" Text indentation without loosing selection
-vnoremap < <gv
-vnoremap > >gv
-
-" Enable dot command in visual mode
-vnoremap . :norm.<CR>
-
-" Keep register content when pasting over text in visual mode
-vnoremap p "_dP
-
-" Move lines
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
-
-" Format markdown table
-vnoremap <leader>f !column -t -s'\|' -o'\|'<CR>
-
-
-""""""""""""""""""""""""""
-" TERMINAL mode mappings "
-""""""""""""""""""""""""""
-
-" Easier terminal exit
-tnoremap <Esc> <C-\><C-n>
