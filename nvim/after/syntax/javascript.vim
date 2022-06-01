@@ -1,7 +1,7 @@
 syntax keyword javaScriptReserved let var function
 
 syntax match javaScriptIdentifier /\<[^0-9]\i*\>/
-syntax match javaScriptFunction /\<\i*\>\ze\w*(/
+syntax match javaScriptFunction /\<\i*\>\ze\s*(/
 
 syntax match javaScriptArrow /=>/
 highlight link javaScriptArrow Keyword

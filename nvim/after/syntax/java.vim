@@ -1,7 +1,7 @@
-syntax match javaIdentifier /\<[^0-9]\i*\>/ containedin=javaParenT
+syntax match javaIdentifier /\<\I\i*\>/ containedin=javaParenT
 highlight link javaIdentifier Identifier
 
-syntax match javaFunction /\<[^0-9]\i*\>\ze\w*(/ containedin=javaParenT
+syntax match javaFunction /\<\I\i*\>\ze\s*(/ containedin=javaParenT
 highlight link javaFunction Function
 
 syntax match javaAngleBracket /[<>]/
@@ -14,7 +14,6 @@ highlight link javaClassDecl Special
 highlight link javaStorageClass Special
 
 highlight link javaDocParam Identifier
-
 
 let java_highlight_java_lang_ids=1
 highlight link javaC_JavaLang Type
