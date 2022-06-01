@@ -9,7 +9,7 @@ window:
 
 font:
   normal:
-    family: Fira Code
+    family: monospace
   size: 14.0
 
 colors:
