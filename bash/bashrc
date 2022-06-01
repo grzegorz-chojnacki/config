@@ -29,7 +29,6 @@ export HISTFILE="$XDG_CACHE_HOME/bash_history"
 ##############
 # TTY Colors #
 ##############
-
 if [ "$TERM" = "linux" ]; then
     echo -en "\e]P7BBBBBB" # Lightgrey
     echo -en "\e]PFD5D8DA" # White
@@ -55,25 +54,15 @@ fi
 #############
 
 # Terminal tput color codes
-export FGBlack=$(tput setaf 0)
-export FGRed=$(tput setaf 1)
-export FGGreen=$(tput setaf 2)
-export FGYellow=$(tput setaf 3)
-export FGBlue=$(tput setaf 4)
-export FGMagenta=$(tput setaf 5)
-export FGCyan=$(tput setaf 6)
-export FGWhite=$(tput setaf 7)
-
-export BGBlack=$(tput setab 0)
-export BGRed=$(tput setab 1)
-export BGGreen=$(tput setab 2)
-export BGYellow=$(tput setab 3)
-export BGBlue=$(tput setab 4)
-export BGMagenta=$(tput setab 5)
-export BGCyan=$(tput setab 6)
-export BGWhite=$(tput setab 7)
-
-export FBGReset=$(tput sgr0)
+export T0=$(tput setaf 0)
+export T1=$(tput setaf 1)
+export T2=$(tput setaf 2)
+export T3=$(tput setaf 3)
+export T4=$(tput setaf 4)
+export T5=$(tput setaf 5)
+export T6=$(tput setaf 6)
+export T7=$(tput setaf 7)
+export TR=$(tput sgr0)
 
 
 #############
@@ -119,10 +108,10 @@ function ex () {
 #################
 function errcode () {
   local status=$?
-  [ $status != 0 ] && echo -n "$status "
+  [ $status != 0 ] && echo -n " $status!"
 }
 
-export PS1='\[$FGRed\]$(errcode)\[$FGBlue\]\w\[$FGMagenta\]$(__git_ps1) \[$FBGReset\]\$ '
+export PS1='\[$T4\]\w\[$T5\]$(__git_ps1)\[$T1\]$(errcode)\[$TR\] \$ '
 export PS4='# '
 export PATH=$HOME/scripts:$PATH
 
