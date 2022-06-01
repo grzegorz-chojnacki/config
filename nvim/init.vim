@@ -40,6 +40,8 @@ set sidescrolloff=5
 set clipboard=unnamedplus
 set mouse=nv
 set cursorline
+set laststatus=3
+set statusline=%<[%n]%y%m%r\ %f%=%l,%c\ %P
 set updatetime=200
 set path+=**
 set complete+=i,kspell
@@ -109,6 +111,8 @@ nnoremap <C-w>e :Ex<CR>
 " Run EasyAlign in normal/visual mode
 nnoremap ga <Plug>(LiveEasyAlign)
 xnoremap ga <Plug>(LiveEasyAlign)
+
+map <C-z> <Nop>
 
 " Toggle comment
 nmap <C-_> gcc

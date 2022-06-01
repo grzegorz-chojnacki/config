@@ -22,8 +22,7 @@ highlight! link Typedef Type
 
 " Editor
 highlight LineNr          ctermfg=8    ctermbg=0    cterm=none
-highlight StatusLineNC    ctermfg=8    ctermbg=0    cterm=none
-highlight StatusLine      ctermfg=7    ctermbg=8    cterm=bold
+highlight StatusLine      ctermfg=7    ctermbg=0    cterm=bold
 highlight! link VertSplit LineNr
 
 highlight MoreMsg         ctermfg=2
