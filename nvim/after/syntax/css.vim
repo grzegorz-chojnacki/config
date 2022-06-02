@@ -1,3 +1,4 @@
+setlocal iskeyword+=-
 highlight link cssBraces Ignore
 highlight link cssTagName Identifier
 highlight link cssAttributeSelector Constant
