@@ -197,11 +197,17 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Pane resizing shortcuts
+nnoremap <silent> <C-M-h> :vertical resize -1<CR>
+nnoremap <silent> <C-M-j> :resize +1<CR>
+nnoremap <silent> <C-M-k> :resize -1<CR>
+nnoremap <silent> <C-M-l> :vertical resize +1<CR>
+
 " Move lines
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
+nnoremap <M-j> :m .+1<CR>==
+nnoremap <M-k> :m .-2<CR>==
+vnoremap <M-j> :m '>+1<CR>gv=gv
+vnoremap <M-k> :m '<-2<CR>gv=gv
 
 " Duplicate lines
 nnoremap <M-t> :t+0<CR>
