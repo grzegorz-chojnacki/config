@@ -77,6 +77,8 @@ set listchars=tab:»\ ,precedes:‹,extends:›,nbsp:␣,trail:·,lead:·,concea
 set list
 
 let mapleader = " "
+let g:python_host_prog =  '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
 
 call plug#begin()
 Plug 'junegunn/vim-easy-align'
