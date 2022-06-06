@@ -140,6 +140,9 @@ augroup custom
   " Fix cursor placement on tabs in help files (align left)
   autocmd FileType help :setlocal listchars=tab:\ \ | set list
 
+  " Blink highlight on yanked text
+  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+
   " Continue quotes in markdown
   autocmd FileType markdown setlocal comments=n:>
   " Format tables
