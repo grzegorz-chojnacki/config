@@ -57,6 +57,10 @@ function errcode () {
   [ $status != 0 ] && echo -n " $status!"
 }
 
+if [ -f /usr/share/git/completion/git-prompt.sh ]; then
+  source /usr/share/git/completion/git-prompt.sh
+fi
+
 export PS1='\[$T4\]\w\[$T5\]$(__git_ps1)\[$T1\]$(errcode)\[$TR\] \$ '
 export PS4='# '
 export PATH=$HOME/scripts:$PATH

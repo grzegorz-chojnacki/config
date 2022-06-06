@@ -2,7 +2,7 @@
 # TTY Colors #
 ##############
 if [ "$TERM" = "linux" ]; then
-    echo -en "\e]P016161C" # Black
+    # echo -en "\e]P016161C" # Black
     echo -en "\e]P1E95678" # Dark red
     echo -en "\e]P2F09483" # Dark green
     echo -en "\e]P3FAC29A" # Dark yellow
@@ -74,10 +74,6 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
 
 if [ -f /usr/share/bash_completion/bash_completion ]; then
   source /usr/share/bash_completion/bash_completion
-fi
-
-if [ -f /usr/share/git/completion/git-prompt.sh ]; then
-  source /usr/share/git/completion/git-prompt.sh
 fi
 
 # Autostart X session on login
