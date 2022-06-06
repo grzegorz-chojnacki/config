@@ -139,8 +139,7 @@ bindsym XF86Tools                  exec --no-startup-id deadbeef
 bindsym Shift+XF86Tools            exec --no-startup-id ~/scripts/now-playing
 bindsym XF86Calculator             exec --no-startup-id galculator
 bindsym XF86HomePage               exec --no-startup-id brave
-bindsym XF86Explorer               exec --no-startup-id pcmanfm
-bindsym Shift+XF86Explorer         exec --no-startup-id gsimplecal
+bindsym XF86Explorer               exec --no-startup-id gsimplecal
 
 # System actions
 bindsym $Mod+Shift+q               exec $Logout
@@ -163,8 +162,8 @@ bindsym $Mod+b                     exec --no-startup-id brave
 bindsym $Mod+Shift+b               exec --no-startup-id brave --incognito
 bindsym $Mod+e                     exec --no-startup-id pcmanfm
 bindsym $Mod+g                     exec --no-startup-id gimp
-bindsym $Mod+i                     exec --no-startup-id code ~/.config
 bindsym $Mod+x                     exec --no-startup-id ~/scripts/xpad
+bindsym $Mod+o                     exec --no-startup-id $Terminal nvim -c 'cd ~/.config' ~/.config/i3/config
 bindsym $Mod+n                     exec --no-startup-id $Terminal nvim ~/notes.md
 bindsym $Mod+Shift+n               exec --no-startup-id $Terminal nvim
 bindsym $Mod+Shift+e               exec --no-startup-id $Terminal fff
@@ -255,10 +254,9 @@ mode "swap" {
   bindsym Up    focus up
   bindsym Right focus right
 
-  set $ExitCmd swap container with mark "swap", unmark "swap", mode "default"
-  bindsym Return     $ExitCmd
-  bindsym Escape     $ExitCmd
-  bindsym $Mod+slash $ExitCmd
+  bindsym Return     swap container with mark "swap", unmark "swap", mode "default"
+  bindsym Escape     mode "default"
+  bindsym $Mod+slash mode "default"
 }
 
 bindsym $Mod+slash mark --add "swap", mode "swap"
