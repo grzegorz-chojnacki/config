@@ -41,7 +41,7 @@ set clipboard=unnamedplus
 set mouse=nv
 set cursorline
 set laststatus=3
-set statusline=%<[%n]%y%m%r\ %f%=%l,%c\ %P
+set statusline=%<[%n]%y%m%r\ %f%=%l,%c\ %p%%
 set updatetime=200
 set path+=**
 set complete+=i,kspell
@@ -69,6 +69,7 @@ set expandtab
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
+set linebreak
 set breakindent
 set breakindentopt=sbr
 set showbreak=↪
