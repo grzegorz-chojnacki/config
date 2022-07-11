@@ -1,21 +1,3 @@
-" All system-wide defaults are set in $VIMRUNTIME/archlinux.vim (usually just
-" /usr/share/vim/vimfiles/archlinux.vim) and sourced by the call to :runtime
-" you can find below.  If you wish to change any of those settings, you should
-" do it in this file (/etc/vimrc), since archlinux.vim will be overwritten
-" every time an upgrade of the vim packages is performed.  It is recommended to
-" make changes after sourcing archlinux.vim since it alters the value of the
-" 'compatible' option.
-
-" This line should not be removed as it ensures that various options are
-" properly set to work with the Vim-related packages.
-"runtime! archlinux.vim
-
-" If you prefer the old-style vim functionality, add 'runtime! vimrc_example.vim'
-" Or better yet, read /usr/share/vim/vim80/vimrc_example.vim or the vim manual
-" and configure vim to your own liking!
-
-" Do not load defaults if ~/.vimrc is missing
-"let skip_defaults_vim=1
 colorscheme dim
 filetype plugin on
 syntax on
@@ -98,7 +80,7 @@ let g:gitgutter_sign_removed_first_line = '-'
 let g:gitgutter_sign_removed_above_and_below = '-'
 let g:gitgutter_sign_removed = '-'
 
-let g:markdown_fenced_languages = ['python', 'javascript', 'sh']
+let g:markdown_fenced_languages = ['python', 'javascript', 'sh', 'bash', 'c', 'yaml']
 
 " Netrw config
 let g:netrw_banner = 0
