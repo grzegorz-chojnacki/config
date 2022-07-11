@@ -1,7 +1,6 @@
-syntax keyword javaScriptReserved let var function
+runtime after/syntax/common.vim
 
-syntax match javaScriptIdentifier /\<[^0-9]\i*\>/
-syntax match javaScriptFunction /\<\i*\>\ze\s*(/
+syntax keyword javaScriptReserved let var function
 
 syntax match javaScriptArrow /=>/
 highlight link javaScriptArrow Keyword

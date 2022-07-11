@@ -1,8 +1,9 @@
-syntax match javaIdentifier /\<\I\i*\>/ containedin=javaParenT
-highlight link javaIdentifier Identifier
+runtime after/syntax/common.vim
 
-syntax match javaFunction /\<\I\i*\>\ze\s*(/ containedin=javaParenT
-highlight link javaFunction Function
+syntax match javaType /\<[A-Z]\i*\>/
+highlight link javaType Type
+
+syntax clear javaParenT javaParenError
 
 syntax match javaAngleBracket /[<>]/
 highlight link javaAngleBracket Special

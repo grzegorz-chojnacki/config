@@ -29,8 +29,8 @@ highlight MoreMsg         ctermfg=2
 highlight ModeMsg         ctermfg=1                 cterm=bold
 highlight Question        ctermfg=3                 cterm=bold
 
-highlight TabLine         ctermfg=4    ctermbg=0    cterm=none
-highlight TabLineSel      ctermfg=3    ctermbg=0    cterm=bold
+highlight TabLine         ctermfg=8    ctermbg=0    cterm=none
+highlight TabLineSel      ctermfg=7    ctermbg=0    cterm=bold
 highlight! link TabLineFill TabLine
 
 highlight Title           ctermfg=5

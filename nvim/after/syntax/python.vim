@@ -1,13 +1,9 @@
+runtime after/syntax/common.vim
+
 highlight link pythonDecoratorName PreProc
 
-syntax match pythonIdentifier /\<\I\i*\>/
-highlight link pythonIdentifier Identifier
-
-syntax match pythonConstant /\<[A-Z_][A-Z0-9_]*\>/
 syntax keyword pythonConstant False None True
 highlight link pythonConstant Constant
-
-syntax match pythonFunction /\<\I\i*\>\ze\s*(/ containedin=pythonAttribute
 
 syntax match pythonSpecialString /\<[fru]\ze['"]/
 highlight link pythonSpecialString Statement
