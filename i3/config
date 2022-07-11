@@ -2,11 +2,12 @@
 #   Startup    #
 ################
 
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id "${HOME}/.config/screenlayout.sh"
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id redshift &
+exec --no-startup-id dunst &
 exec --no-startup-id unclutter --timeout 2 &
+exec --no-startup-id redshift &
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 ################
 #  Behaviour   #
@@ -104,7 +105,7 @@ set $Logout         "i3-nagbar -f 'pango:Fira Code' -t warning -m 'Would you lik
 set $ClipboardImage xclip -selection clipboard -t image/png -i
 
 bindsym $Mod+f       fullscreen toggle
-bindsym $Mod+Shift+s workspace back_and_forth
+bindsym $Mod+Tab     workspace back_and_forth
 
 bindsym $Mod+t layout tabbed
 bindsym $Mod+s layout toggle split, border pixel 1
@@ -179,8 +180,10 @@ bindsym $Mod+7 workspace number 7
 bindsym $Mod+8 workspace number 8
 bindsym $Mod+9 workspace number 9
 
-bindsym $Mod+Prior workspace next_on_output
-bindsym $Mod+Next  workspace prev_on_output
+bindsym $Mod+bracketleft  workspace next_on_output
+bindsym $Mod+bracketright workspace prev_on_output
+bindsym $Mod+Prior        workspace next_on_output
+bindsym $Mod+Next         workspace prev_on_output
 
 bindsym $Mod+Shift+1 move container to workspace number 1
 bindsym $Mod+Shift+2 move container to workspace number 2
@@ -196,8 +199,10 @@ bindsym $Mod+Shift+comma  move workspace to output right
 bindsym $Mod+Shift+period move workspace to output left
 bindsym $Mod+Shift+slash  exec ~/scripts/swap-workspaces
 
-bindsym $Mod+Shift+Prior move container to workspace next_on_output
-bindsym $Mod+Shift+Next  move container to workspace prev_on_output
+bindsym $Mod+Shift+bracketleft  move container to workspace next_on_output
+bindsym $Mod+Shift+bracketright move container to workspace prev_on_output
+bindsym $Mod+Shift+Prior        move container to workspace next_on_output
+bindsym $Mod+Shift+Next         move container to workspace prev_on_output
 
 bindsym $Mod+h     focus left
 bindsym $Mod+j     focus down
@@ -230,13 +235,13 @@ bindsym $Mod+Ctrl+Shift+Up    move container to output up
 bindsym $Mod+Ctrl+Shift+Right move container to output right
 
 bindsym $Mod+Ctrl+h     resize shrink width  $SizeUnit
-bindsym $Mod+Ctrl+j     resize grow   height $SizeUnit
-bindsym $Mod+Ctrl+k     resize shrink height $SizeUnit
+bindsym $Mod+Ctrl+j     resize shrink height $SizeUnit
+bindsym $Mod+Ctrl+k     resize grow   height $SizeUnit
 bindsym $Mod+Ctrl+l     resize grow   width  $SizeUnit
 
 bindsym $Mod+Ctrl+Left  resize shrink width  $SizeUnit
-bindsym $Mod+Ctrl+Down  resize grow   height $SizeUnit
-bindsym $Mod+Ctrl+Up    resize shrink height $SizeUnit
+bindsym $Mod+Ctrl+Down  resize shrink height $SizeUnit
+bindsym $Mod+Ctrl+Up    resize grow   height $SizeUnit
 bindsym $Mod+Ctrl+Right resize grow   width  $SizeUnit
 
 ################
