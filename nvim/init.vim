@@ -119,9 +119,6 @@ augroup custom
   " Set default formatoptions for all files
   autocmd FileType * set formatoptions+=ro
 
-  " Fix cursor placement on tabs in help files (align left)
-  autocmd FileType help :setlocal listchars=tab:\ \ | set list
-
   " Blink highlight on yanked text
   autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 
@@ -133,6 +130,12 @@ augroup custom
   autocmd FileType markdown
         \ silent! :syntax match HexColor /#\v(\x{8}|\x{6}|\x{4}|\x{3})/
         \ | call css_color#init('hex', 'none', 'HexColor')
+
+  " Fix cursor placement on tabs in help files (align left)
+  autocmd BufEnter * if &ft ==# 'help'
+        \ | setlocal listchars=tab:\ \
+        \ | set list
+        \ | endif
 augroup end
 
 
