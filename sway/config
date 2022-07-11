@@ -128,7 +128,7 @@ floating_modifier $Mod
 
 # Helper variables and commands
 set $SizeUnit 40 px
-set $ChromiumFlags --enable-features=UseOzonePlatform --ozone-platform=wayland
+set $ChromiumFlags --ozone-platform-hint=auto
 set $Slurp slurp -b '#00000040'
 set $Terminal alacritty -e
 set $GetOutput swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name'
@@ -172,7 +172,7 @@ bindsym {
     XF86AudioMicMute     exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && $RefreshBar
     XF86Tools            exec deadbeef
     XF86Calculator       exec galculator
-    XF86HomePage         exec brave
+    XF86HomePage         exec brave $ChromiumFlags
     XF86Explorer         exec pcmanfm
 
     # System actions
