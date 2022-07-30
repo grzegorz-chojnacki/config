@@ -157,6 +157,7 @@ nnoremap <Leader><Tab> :b <Tab>
 
 " Toggle options
 noremap <silent> <M-z> :set wrap!<CR>
+noremap <silent> <M-s> :let &scrolloff=((&scrolloff > 5) ? 5 : 99)<CR>
 noremap <silent> <Leader>v :let &virtualedit=(empty(&virtualedit) ? 'all' : '')<CR>
 noremap <silent> <Leader>z :let &foldcolumn=(&foldcolumn ? 0 : 1)<CR>
 noremap <silent> <Leader>sp :set spell!<CR>
