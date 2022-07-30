@@ -5,6 +5,7 @@
 xwayland enable
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec gammastep &
+exec dunst &
 
 ################
 #    Input     #
@@ -13,11 +14,11 @@ input type:keyboard {
   repeat_rate 50
   repeat_delay 200
   xkb_layout pl
-  xkb_options caps:escape
 }
 
 seat seat0 {
   hide_cursor 2000
+  hide_cursor when_typing enable
 }
 
 ################
@@ -27,7 +28,7 @@ output HDMI-A-1 {
   subpixel rgb
   mode 1920x1080@60Hz
   pos 0 80
-  background /home/grzegorz/Pictures/Images/3-filter-scale.png fill #000000
+  background /home/grzegorz/Pictures/Images/3-filter.png fill #000000
 }
 
 output DP-3 {
@@ -40,9 +41,6 @@ output DP-3 {
 ################
 #  Behaviour   #
 ################
-
-# Disable cursor warping to different monitors
-mouse_warping none
 
 # Workspace_auto_back_and_forth yes
 workspace_layout tabbed
@@ -134,7 +132,7 @@ set $Terminal alacritty -e
 set $GetOutput swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name'
 set $RefreshBar killall -SIGUSR1 i3status
 set $DmenuConfig -i -fn 'Fira Code Medium' -nb '$Background' -nf '$Cranberry' -sb '$Cranberry' -sf '$Background'
-set $Logout "swaynag -f 'pango:Fira Code' -t warning -m 'Would you like to logout?' -B 'Yes' 'sway-msg exit'"
+set $Logout "swaynag -f 'pango:Fira Code' -t warning -m 'Would you like to logout?' -B 'Yes' 'swaymsg exit'"
 
 bindsym {
   --no-repeat {
@@ -183,6 +181,7 @@ bindsym {
     # Launchers
     $Mod+p               exec i3-dmenu-desktop --dmenu="dmenu $DmenuConfig"
     $Mod+Shift+p         exec dmenu_run $DmenuConfig
+    $Mod+period          exec --no-startup-id ~/scripts/emoji
 
     # Other Programs
     $Mod+Return          exec alacritty
@@ -271,35 +270,6 @@ mode "resize" {
   }
 }
 
-mode "emoji" {
-  set $Type xdotool type
-
-  bindsym {
-    1 exec $Type '💯'
-    3 exec $Type '❤️'
-    w exec $Type '😩'
-    e exec $Type '👀'
-    r exec $Type '😌'
-    t exec $Type '🤔'
-    y exec $Type '👍'
-    o exec $Type '👌'
-    i exec $Type '🤌'
-    p exec $Type '💩'
-    a exec $Type '😳'
-    s exec $Type '😏'
-    d exec $Type '😃'
-    f exec $Type '🔥'
-    g exec $Type '🌵'
-    z exec $Type '💁'
-    x exec $Type '🙆'
-    c exec $Type '🤷'
-    Return      mode "default"
-    Escape      mode "default"
-    $Mod+period mode "default"
-  }
-}
-
 bindsym {
   $Mod+r      mode "resize"
-  $Mod+period mode "emoji"
 }
