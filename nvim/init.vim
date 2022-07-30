@@ -162,7 +162,7 @@ noremap <silent> <Leader>z :let &foldcolumn=(&foldcolumn ? 0 : 1)<CR>
 noremap <silent> <Leader>sp :set spell!<CR>
 
 " Clear last search and the command output at the bottom
-nnoremap <silent> <Esc> :let @/='' \| echon<CR>
+nnoremap <silent> <Esc> :nohlsearch \| echon<CR>
 
 " Don't allow to suspend
 noremap <C-z> <Nop>
@@ -176,11 +176,7 @@ tnoremap <Esc> <C-\><C-n>
 " Natural movement
 noremap j gj
 noremap k gk
-noremap - $
-
-" Quick newline
-noremap <M-o> o<Esc>
-noremap <M-O> O<Esc>
+noremap - g$
 
 " Pane switching shortcuts
 nnoremap <C-h> <C-w>h
@@ -190,28 +186,25 @@ nnoremap <C-l> <C-w>l
 
 " Pane resizing shortcuts
 nnoremap <silent> <C-M-h> :vertical resize -1<CR>
-nnoremap <silent> <C-M-j> :resize +1<CR>
-nnoremap <silent> <C-M-k> :resize -1<CR>
+nnoremap <silent> <C-M-j> :resize -1<CR>
+nnoremap <silent> <C-M-k> :resize +1<CR>
 nnoremap <silent> <C-M-l> :vertical resize +1<CR>
 
 " Move lines
-nnoremap <M-j> :m .+1<CR>==
-nnoremap <M-k> :m .-2<CR>==
-vnoremap <M-j> :m '>+1<CR>gv=gv
-vnoremap <M-k> :m '<-2<CR>gv=gv
+nnoremap <M-j> :m .+1<CR>
+nnoremap <M-k> :m .-2<CR>
+vnoremap <M-j> :m '>+1<CR>gv
+vnoremap <M-k> :m '<-2<CR>gv
 
-" Duplicate lines
-nnoremap <M-t> :t+0<CR>
-nnoremap <M-T> :t-1<CR>
-xnoremap <M-t> :t '>+0<CR>gv
-xnoremap <M-T> :t '<-1<CR>gv
+" Duplicate lines and ranges
+nnoremap <M-K> :t-1<CR>
+nnoremap <M-J> :t+0<CR>
+xnoremap <M-K> :t '>+0<CR>gv
+xnoremap <M-J> :t '<-1<CR>gv
 
 " Replace all
 nnoremap s :%s//g<Left><Left>
 vnoremap s :s//g<Left><Left>
-
-" Replace the next occurance of the last changed text
-nnoremap c. /\V<C-r>"<CR>cgn<C-a><Esc>
 
 " Enable dot command in visual mode
 vnoremap . :norm.<CR>
@@ -223,11 +216,14 @@ vnoremap > >gv
 " Keep register content when pasting over text in visual mode
 vnoremap p "_dP
 
-" Change the word under the cursor
-nnoremap <leader>c *``cgn
-xnoremap * :call <SID>VSetSearch('/')<CR>/<C-r>=@/<CR><CR>
-xnoremap # :call <SID>VSetSearch('?')<CR>?<C-r>=@/<CR><CR>
+" Proper start mappings in visual mode
+xnoremap * :call <SID>VSetSearch('/')<CR>/<C-r>/<CR>
+xnoremap # :call <SID>VSetSearch('?')<CR>?<C-r>/<CR>
+
+" Change next occurence of word or selection
 vmap <leader>c *``cgn
+nnoremap <leader>ciw *``cgn
+nnoremap <leader>c. /\V<C-r>"<CR>cgn<C-a><Esc>
 
 " Get highlight-groups of word under the cursor
 nnoremap <F10> :echo "hi<"
