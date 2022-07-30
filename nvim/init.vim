@@ -107,14 +107,17 @@ augroup custom
   " Clear all commands in group
   autocmd!
 
+  " Set the cursor to I-beam upon exiting
+  autocmd VimLeave * set guicursor=a:ver20
+
   " Jump to last location without affecting the jump list
-  autocmd BufRead * silent! :normal g'"
+  autocmd BufRead * silent! normal g'"
 
   " Trim whitespace on write
-  autocmd BufWritePre * :call <SID>TrimWhitespace()
+  autocmd BufWritePre * call <SID>TrimWhitespace()
 
   " Auto source config on save
-  autocmd BufWritePost $MYVIMRC :source $MYVIMRC
+  autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
   " Set default formatoptions for all files
   autocmd FileType * set formatoptions+=ro
