@@ -82,7 +82,9 @@ alias mv='mv -iv'
 alias df='df -h'
 alias free='free -h'
 
-alias v='nvim'
+alias v="$EDITOR"
+alias sudo="sudo -E"
+alias sv='sudoedit'
 alias e='ranger'
 alias f='fff'
 alias o='xdg-open'
