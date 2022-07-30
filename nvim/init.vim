@@ -120,7 +120,7 @@ augroup custom
   autocmd FileType * set formatoptions+=ro
 
   " Blink highlight on yanked text
-  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+  autocmd TextYankPost * silent! lua require('vim.highlight').on_yank()
 
   " Continue quotes in markdown
   autocmd FileType markdown setlocal comments=n:>
@@ -227,6 +227,6 @@ nnoremap <leader>c. /\V<C-r>"<CR>cgn<C-a><Esc>
 
 " Get highlight-groups of word under the cursor
 nnoremap <F10> :echo "hi<"
-  \ . synIDattr(synID(line("."),col("."),1),"name") . "> trans<"
-  \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-  \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+      \ . synIDattr(synID(line("."),col("."),1),"name") . "> trans<"
+      \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+      \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
