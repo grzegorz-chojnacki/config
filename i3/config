@@ -180,10 +180,10 @@ bindsym $Mod+7 workspace number 7
 bindsym $Mod+8 workspace number 8
 bindsym $Mod+9 workspace number 9
 
-bindsym $Mod+bracketleft  workspace next_on_output
-bindsym $Mod+bracketright workspace prev_on_output
-bindsym $Mod+Prior        workspace next_on_output
-bindsym $Mod+Next         workspace prev_on_output
+bindsym $Mod+bracketright workspace next_on_output
+bindsym $Mod+bracketleft  workspace prev_on_output
+bindsym $Mod+Prior        workspace prev_on_output
+bindsym $Mod+Next         workspace next_on_output
 
 bindsym $Mod+Shift+1 move container to workspace number 1
 bindsym $Mod+Shift+2 move container to workspace number 2
