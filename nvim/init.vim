@@ -61,14 +61,65 @@ let g:python_host_prog =  '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
 
 call plug#begin()
-Plug 'junegunn/vim-easy-align'
-Plug 'airblade/vim-gitgutter'
+" Required by telescope
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/playground'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+
 Plug 'ap/vim-css-color'
+Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/vim-easy-align'
+
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
 call plug#end()
+
+" let g:coq_settings = {
+"       \ 'auto_start': 'shut-up',
+"       \ 'keymap': { 'jump_to_mark': '<c-m>' },
+"       \ 'display': {
+"         \ 'pum': { 'source_context': [' [',']'], 'fast_close': v:false },
+"         \ 'icons': { 'mode': 'none' }}}
+
+" Embedded lua config
+lua << EOF
+require('nvim-treesitter.configs').setup({
+  ensure_installed = {
+    "vim",
+    "lua",
+    "bash",
+    "markdown",
+    "yaml",
+    "html",
+    "css",
+    "comment",
+    "javascript",
+    "java",
+    "json",
+    "json5",
+    "jsdoc",
+    "python",
+    "c",
+    "latex",
+  },
+  sync_install = false,
+  auto_install = true,
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = true,
+  },
+})
+
+require('telescope').setup({
+  defaults = {
+    mappings = {
+      i = { ['<Esc>'] = require('telescope.actions').close }
+    },
+  }
+})
+EOF
 
 " GitGutter config
 let g:gitgutter_close_preview_on_escape = 1
@@ -227,7 +278,8 @@ vmap <leader>c *``cgn
 nnoremap <leader>ciw *``cgn
 nnoremap <leader>c. /\V<C-r>"<CR>cgn<C-a><Esc>
 
-" Get highlight-groups of word under the cursor
+" Get tree-sitter or vim-syntax highlight group of a word under the cursor
+nnoremap <F11> :TSHighlightCapturesUnderCursor<CR>
 nnoremap <F10> :echo "hi<"
       \ . synIDattr(synID(line("."),col("."),1),"name") . "> trans<"
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"

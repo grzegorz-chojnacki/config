@@ -94,7 +94,31 @@ highlight Directory       ctermfg=4
 highlight Whitespace      ctermfg=8
 highlight! link TrailingSpace Error
 
-highlight VM_Cursor       ctermfg=3    ctermbg=8
-highlight VM_Insert       ctermfg=0    ctermbg=3
-highlight VM_Extend       ctermfg=1    ctermbg=8
-highlight! link VM_Mono VM_Cursor
+" TreeSitter
+highlight link TSVariable Identifier
+highlight link TSVariableBuiltin Type
+highlight link TSConstructor Type
+highlight link TSPunctBracket Ignore
+highlight link TSPunctDelimiter Ignore
+highlight link TSTag Identifier
+highlight link TSTagDelimiter TSTag
+
+" HTML
+highlight link TSTagAttribute Constant
+highlight link htmlTSOperator String
+" CSS
+highlight link cssTSType Identifier
+highlight link cssTSProperty Constant
+" Python
+highlight link pythonTSFuncBuiltin Function
+" JSON
+highlight link jsonTSLabel Identifier
+highlight link json5TSKeyword jsonTSLabel
+" Markdown
+highlight link markdownTSTitle Identifier
+highlight link markdownTSPunctSpecial markdownTSTitle
+
+" highlight VM_Cursor       ctermfg=3    ctermbg=8
+" highlight VM_Insert       ctermfg=0    ctermbg=3
+" highlight VM_Extend       ctermfg=1    ctermbg=8
+" highlight! link VM_Mono VM_Cursor

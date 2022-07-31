@@ -13,6 +13,3 @@ highlight link markdownH3 Identifier
 highlight link markdownH4 Identifier
 highlight link markdownH5 Identifier
 highlight link markdownH6 Identifier
-
-" Fix markdown syntax highlighting for indented lists
-syn match markdownListMarker "\%(\t\| *\)[-*+]\%(\s\+\S\)\@=" contained
