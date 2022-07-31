@@ -183,6 +183,10 @@ augroup custom
   autocmd FileType markdown setlocal comments=n:>
   " Format tables
   autocmd FileType markdown vnoremap <leader>f !column -t -s'\|' -o'\|'<CR>
+
+  " Make quickfix lists modifiable by default, commit changes with <C-s>
+  autocmd BufWinEnter quickfix set modifiable | setlocal errorformat=%f\|%l\ col\ %c-%k\|%m | nnoremap <buffer> <C-s> :cgetbuffer<CR>
+
   " Set color highlighting for arbitrary files
   autocmd FileType markdown
         \ silent! :syntax match HexColor /#\v(\x{8}|\x{6}|\x{4}|\x{3})/
