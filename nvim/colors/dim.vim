@@ -103,6 +103,9 @@ highlight link TSPunctDelimiter Ignore
 highlight link TSTag Identifier
 highlight link TSTagDelimiter TSTag
 
+" Telescope
+highlight link TelescopeBorder LineNr
+
 " HTML
 highlight link TSTagAttribute Constant
 highlight link htmlTSOperator String

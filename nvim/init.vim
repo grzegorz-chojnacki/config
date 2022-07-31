@@ -133,6 +133,12 @@ let g:markdown_fenced_languages = ['python', 'javascript', 'sh', 'bash', 'c', 'y
 " Netrw config
 let g:netrw_banner = 0
 
+" Telescope config
+nnoremap <leader>ff <Cmd>Telescope find_files<CR>
+nnoremap <leader>fh <Cmd>Telescope find_files hidden=true no_ignore=true<CR>
+nnoremap <leader>ft <Cmd>Telescope help_tags<CR>
+nnoremap <leader>fg <Cmd>Telescope live_grep<CR>
+
 " Remove trailing whitespace and blank lines at the end of file
 function! s:TrimWhitespace()
   let l:save = winsaveview()
