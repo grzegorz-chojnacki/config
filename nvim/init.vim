@@ -25,6 +25,7 @@ set updatetime=200
 set path+=**
 set complete+=i,kspell
 set spelllang=en_us,pl
+set iskeyword+=-
 
 " Search settings
 set hlsearch
@@ -61,13 +62,11 @@ let g:python_host_prog =  '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
 
 call plug#begin()
-" Required by telescope
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/playground'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 
-Plug 'ap/vim-css-color'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/vim-easy-align'
 
@@ -75,13 +74,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 call plug#end()
-
-" let g:coq_settings = {
-"       \ 'auto_start': 'shut-up',
-"       \ 'keymap': { 'jump_to_mark': '<c-m>' },
-"       \ 'display': {
-"         \ 'pum': { 'source_context': [' [',']'], 'fast_close': v:false },
-"         \ 'icons': { 'mode': 'none' }}}
 
 " Embedded lua config
 lua << EOF
@@ -187,11 +179,6 @@ augroup custom
   " Make quickfix lists modifiable by default, commit changes with <C-s>
   autocmd BufWinEnter quickfix set modifiable | setlocal errorformat=%f\|%l\ col\ %c-%k\|%m | nnoremap <buffer> <C-s> :cgetbuffer<CR>
 
-  " Set color highlighting for arbitrary files
-  autocmd FileType markdown
-        \ silent! :syntax match HexColor /#\v(\x{8}|\x{6}|\x{4}|\x{3})/
-        \ | call css_color#init('hex', 'none', 'HexColor')
-
   " Fix cursor placement on tabs in help files (align left)
   autocmd BufEnter * if &ft ==# 'help'
         \ | setlocal listchars=tab:\ \
@@ -229,16 +216,20 @@ nnoremap <silent> <Esc> :nohlsearch \| echon<CR>
 " Don't allow to suspend
 noremap <C-z> <Nop>
 
+" Run last used register
+noremap Q @@
+
 " Save file
 nnoremap <C-s> :w<CR>
 
 " Easier exit from terminal
 tnoremap <Esc> <C-\><C-n>
 
-" Natural movement
+" Natural/easier movement
 noremap j gj
 noremap k gk
-noremap - g$
+noremap - $
+noremap 0 ^
 
 " Pane switching shortcuts
 nnoremap <C-h> <C-w>h
@@ -265,8 +256,8 @@ xnoremap <M-K> :t'>+0<CR>gv
 xnoremap <M-J> :t'<-1<CR>gv
 
 " Replace all
-nnoremap s :%s//g<Left><Left>
-vnoremap s :s//g<Left><Left>
+nnoremap S :%s//g<Left><Left>
+vnoremap S :s//g<Left><Left>
 
 " Enable dot command in visual mode
 vnoremap . :norm.<CR>

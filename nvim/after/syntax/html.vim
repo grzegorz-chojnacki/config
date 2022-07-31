@@ -1,4 +1,3 @@
-setlocal iskeyword+=-
 highlight link htmlTag Identifier
 highlight link htmlArg Constant
 highlight link htmlTagN htmlTag

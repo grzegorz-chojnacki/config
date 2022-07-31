@@ -102,6 +102,7 @@ highlight link TSPunctBracket Ignore
 highlight link TSPunctDelimiter Ignore
 highlight link TSTag Identifier
 highlight link TSTagDelimiter TSTag
+highlight link TSFuncBuiltin Function
 
 " Telescope
 highlight link TelescopeBorder LineNr
@@ -113,7 +114,6 @@ highlight link htmlTSOperator String
 highlight link cssTSType Identifier
 highlight link cssTSProperty Constant
 " Python
-highlight link pythonTSFuncBuiltin Function
 " JSON
 highlight link jsonTSLabel Identifier
 highlight link json5TSKeyword jsonTSLabel
