@@ -1,9 +1,6 @@
+set nocompatible
 colorscheme dim
 filetype plugin on
-syntax on
-
-" Various basic settings
-set nocompatible
 set confirm
 set title
 set encoding=utf-8
@@ -76,9 +73,9 @@ call plug#end()
 " GitGutter config
 let g:gitgutter_close_preview_on_escape = 1
 let g:gitgutter_sign_modified_removed = '~'
-let g:gitgutter_sign_removed_first_line = '-'
-let g:gitgutter_sign_removed_above_and_below = '-'
 let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = g:gitgutter_sign_removed
+let g:gitgutter_sign_removed_above_and_below = g:gitgutter_sign_removed
 
 let g:markdown_fenced_languages = ['python', 'javascript', 'sh', 'bash', 'c', 'yaml']
 
@@ -156,14 +153,14 @@ nmap <C-_> gcc
 xmap <C-_> gc
 
 " Toggle buffer
-nnoremap <Leader><Tab> :b <Tab>
+nnoremap <leader><Tab> :b <Tab>
 
 " Toggle options
-noremap <silent> <M-z> :set wrap!<CR>
-noremap <silent> <M-s> :let &scrolloff=((&scrolloff > 5) ? 5 : 99)<CR>
-noremap <silent> <Leader>v :let &virtualedit=(empty(&virtualedit) ? 'all' : '')<CR>
-noremap <silent> <Leader>z :let &foldcolumn=(&foldcolumn ? 0 : 1)<CR>
-noremap <silent> <Leader>sp :set spell!<CR>
+nnoremap <silent> <M-z> :set wrap!<CR>
+nnoremap <silent> <M-s> :let &scrolloff=((&scrolloff > 5) ? 5 : 99)<CR>
+nnoremap <silent> <leader>v :let &virtualedit=(empty(&virtualedit) ? 'all' : '')<CR>
+nnoremap <silent> <leader>z :let &foldcolumn=(&foldcolumn ? 0 : 1)<CR>
+nnoremap <silent> <leader>sp :set spell!<CR>
 
 " Clear last search and the command output at the bottom
 nnoremap <silent> <Esc> :nohlsearch \| echon<CR>
@@ -203,8 +200,8 @@ vnoremap <M-k> :m '<-2<CR>gv
 " Duplicate lines and ranges
 nnoremap <M-K> :t-1<CR>
 nnoremap <M-J> :t+0<CR>
-xnoremap <M-K> :t '>+0<CR>gv
-xnoremap <M-J> :t '<-1<CR>gv
+xnoremap <M-K> :t'>+0<CR>gv
+xnoremap <M-J> :t'<-1<CR>gv
 
 " Replace all
 nnoremap s :%s//g<Left><Left>
@@ -218,7 +215,8 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Keep register content when pasting over text in visual mode
-vnoremap p "_dP
+vnoremap p "_dp
+vnoremap P "_dP
 
 " Proper start mappings in visual mode
 xnoremap * :call <SID>VSetSearch('/')<CR>/<C-r>/<CR>
