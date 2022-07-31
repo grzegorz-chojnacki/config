@@ -23,3 +23,4 @@ text/x-tex=nvim.desktop;
 x-scheme-handler/http=brave-browser.desktop;
 x-scheme-handler/https=brave-browser.desktop;
 x-scheme-handler/mailto=brave-browser.desktop;
+x-scheme-handler/heroic=heroic.desktop
