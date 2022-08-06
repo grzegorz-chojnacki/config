@@ -7,7 +7,7 @@ set encoding=utf-8
 set backspace=indent,eol,start
 set wildmenu
 set wildmode=longest:full,full
-set completeopt=menuone,longest,preview,noselect
+set completeopt=menuone,preview,noinsert
 set wildcharm=<Tab>
 set splitbelow splitright
 set number relativenumber
