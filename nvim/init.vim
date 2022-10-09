@@ -1,6 +1,6 @@
 set nocompatible
 colorscheme dim
-filetype plugin on
+filetype plugin indent on
 syntax on
 set confirm
 set title
@@ -218,7 +218,7 @@ nnoremap s *``cgn
 nnoremap <M-.> /\V<C-r>"<CR>cgn<C-a><Esc>
 
 " Run macro at each line of visual selection
-xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
+xnoremap @ :<C-u>call <SID>ExecuteMacroOverVisualRange()<CR>
 
 " Get vim-syntax highlight group of a word under the cursor
 nnoremap <F10> :echo "hi<"
