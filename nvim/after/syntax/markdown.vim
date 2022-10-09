@@ -1,10 +1,8 @@
-highlight link markdownCode Constant
-highlight link markdownCodeDelimiter markdownCode
-highlight link markdownHeadingDelimiter Identifier
-
 highlight markdownItalic ctermfg=6 cterm=italic
 highlight markdownBold ctermfg=5 cterm=bold
 
+highlight link markdownCode Constant
+highlight link markdownCodeDelimiter markdownCode
 highlight link markdownHeadingDelimiter Identifier
 highlight link markdownHeadingRule Identifier
 highlight link markdownH1 Identifier

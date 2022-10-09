@@ -64,14 +64,6 @@ highlight DiffDelete      ctermfg=1    ctermbg=0
 highlight DiffText        ctermfg=2    ctermbg=0    cterm=bold
 highlight! link DiffAdded DiffAdd
 highlight! link DiffRemoved DiffDelete
-highlight! link GitGutterAdd DiffAdd
-highlight! link GitGutterChange DiffChange
-highlight! link GitGutterDelete DiffDelete
-
-highlight! link GitGutterAddLineNr DiffAdd
-highlight! link GitGutterChangeLineNr DiffChange
-highlight! link GitGutterDeleteLineNr DiffDelete
-highlight! link GitGutterChangeDeleteLineNr DiffChange
 
 " Selection
 highlight Visual          ctermfg=7    ctermbg=8
@@ -87,41 +79,9 @@ highlight SpellCap        ctermfg=7    ctermbg=none cterm=underline
 
 " Whitespace and other
 match TrailingSpace /\s\+$/
+highlight! link TrailingSpace Error
 highlight Special         ctermfg=5
 highlight SpecialKey      ctermfg=8
 highlight NonText         ctermfg=8
 highlight Directory       ctermfg=4
 highlight Whitespace      ctermfg=8
-highlight! link TrailingSpace Error
-
-" TreeSitter
-highlight link TSVariable Identifier
-highlight link TSVariableBuiltin Type
-highlight link TSConstructor Type
-highlight link TSPunctBracket Ignore
-highlight link TSPunctDelimiter Ignore
-highlight link TSTag Identifier
-highlight link TSTagDelimiter TSTag
-highlight link TSFuncBuiltin Function
-
-" Telescope
-highlight link TelescopeBorder LineNr
-
-" HTML
-highlight link TSTagAttribute Constant
-highlight link htmlTSOperator String
-" CSS
-highlight link cssTSType Identifier
-highlight link cssTSProperty Constant
-" Python
-" JSON
-highlight link jsonTSLabel Identifier
-highlight link json5TSKeyword jsonTSLabel
-" Markdown
-highlight link markdownTSTitle Identifier
-highlight link markdownTSPunctSpecial markdownTSTitle
-
-" highlight VM_Cursor       ctermfg=3    ctermbg=8
-" highlight VM_Insert       ctermfg=0    ctermbg=3
-" highlight VM_Extend       ctermfg=1    ctermbg=8
-" highlight! link VM_Mono VM_Cursor

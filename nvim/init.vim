@@ -1,6 +1,7 @@
 set nocompatible
 colorscheme dim
 filetype plugin on
+syntax on
 set confirm
 set title
 set encoding=utf-8
@@ -13,19 +14,18 @@ set splitbelow splitright
 set number relativenumber
 set signcolumn=number
 set nowrap
-set ruler
 set scrolloff=5
 set sidescrolloff=5
 set clipboard=unnamedplus
 set mouse=nv
 set cursorline
 set laststatus=3
-set statusline=%<[%n]%y%m%r\ %f%=%l,%c\ %p%%
+set lazyredraw
+set statusline=%<[%n]%y%m%r\ %f%=%l,%c\ %p%%\ (%L)
 set updatetime=200
-set path+=**
+set wildignore+=.git/*
 set complete+=i,kspell
 set spelllang=en_us,pl
-set iskeyword+=-
 
 " Search settings
 set hlsearch
@@ -35,6 +35,10 @@ set incsearch
 
 " Don't pollute $HOME, store viminfo in .cache
 set viminfo+=n~/.cache/viminfo
+
+" Set backups
+set backup
+set backupdir-=.
 
 " Undo settings
 set undolevels=1000
@@ -51,7 +55,7 @@ set tabstop=2
 set softtabstop=2
 set linebreak
 set breakindent
-set breakindentopt=sbr
+set breakindentopt=sbr,shift:2
 set showbreak=↪
 set cpoptions+=n
 set listchars=tab:»\ ,precedes:‹,extends:›,nbsp:␣,trail:·,lead:·,conceal:∷
@@ -61,75 +65,8 @@ let mapleader = " "
 let g:python_host_prog =  '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
 
-call plug#begin()
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'nvim-treesitter/playground'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
-
-Plug 'airblade/vim-gitgutter'
-Plug 'junegunn/vim-easy-align'
-
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-call plug#end()
-
-" Embedded lua config
-lua << EOF
-require('nvim-treesitter.configs').setup({
-  ensure_installed = {
-    "vim",
-    "lua",
-    "bash",
-    "markdown",
-    "yaml",
-    "html",
-    "css",
-    "comment",
-    "javascript",
-    "java",
-    "json",
-    "json5",
-    "jsdoc",
-    "python",
-    "c",
-    "latex",
-  },
-  sync_install = false,
-  auto_install = true,
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = true,
-  },
-})
-
-require('telescope').setup({
-  defaults = {
-    mappings = {
-      i = { ['<Esc>'] = require('telescope.actions').close }
-    },
-  }
-})
-EOF
-
-" GitGutter config
-let g:gitgutter_close_preview_on_escape = 1
-let g:gitgutter_sign_modified_removed = '~'
-let g:gitgutter_sign_removed = '-'
-let g:gitgutter_sign_removed_first_line = g:gitgutter_sign_removed
-let g:gitgutter_sign_removed_above_and_below = g:gitgutter_sign_removed
-
-let g:markdown_fenced_languages = ['python', 'javascript', 'sh', 'bash', 'c', 'yaml']
-
 " Netrw config
 let g:netrw_banner = 0
-
-" Telescope config
-nnoremap <leader>ff <Cmd>Telescope find_files<CR>
-nnoremap <leader>fh <Cmd>Telescope find_files hidden=true no_ignore=true<CR>
-nnoremap <leader>ft <Cmd>Telescope help_tags<CR>
-nnoremap <leader>fg <Cmd>Telescope live_grep<CR>
 
 " Remove trailing whitespace and blank lines at the end of file
 function! s:TrimWhitespace()
@@ -148,6 +85,11 @@ function! s:VSetSearch(cmdtype)
   let @s = temp
 endfunction
 
+function! s:ExecuteMacroOverVisualRange()
+  echo "@".getcmdline()
+  execute ":'<,'>normal @".nr2char(getchar())
+endfunction
+
 " Events
 augroup custom
   " Clear all commands in group
@@ -155,6 +97,9 @@ augroup custom
 
   " Set the cursor to I-beam upon exiting
   autocmd VimLeave * set guicursor=a:ver20
+
+  " Set JSDoc include for js files
+  autocmd FileType javascript set include=<reference\s*\ path=
 
   " Jump to last location without affecting the jump list
   autocmd BufRead * silent! normal g'"
@@ -188,17 +133,9 @@ augroup end
 
 
 " Launch plugins
-nnoremap <leader>G :GitGutterToggle<CR>
-nnoremap <leader>g :Git<CR>
 nnoremap <M-f> :FZF!<CR>
 nnoremap <C-w>e :Ex<CR>
 nnoremap <C-w><C-e> :Ex<CR>
-nnoremap ga <Plug>(LiveEasyAlign)
-xnoremap ga <Plug>(LiveEasyAlign)
-
-" Toggle comment
-nmap <C-_> gcc
-xmap <C-_> gc
 
 " Toggle buffer
 nnoremap <leader><Tab> :b <Tab>
@@ -215,6 +152,7 @@ nnoremap <silent> <Esc> :nohlsearch \| echon<CR>
 
 " Don't allow to suspend
 noremap <C-z> <Nop>
+noremap <C-Z> <C-z>
 
 " Run last used register
 noremap Q @@
@@ -229,7 +167,6 @@ tnoremap <Esc> <C-\><C-n>
 noremap j gj
 noremap k gk
 noremap - $
-noremap 0 ^
 
 " Pane switching shortcuts
 nnoremap <C-h> <C-w>h
@@ -274,13 +211,16 @@ vnoremap P "_dP
 xnoremap * :call <SID>VSetSearch('/')<CR>/<C-r>/<CR>
 xnoremap # :call <SID>VSetSearch('?')<CR>?<C-r>/<CR>
 
-" Change next occurence of word or selection
-vmap <leader>c *``cgn
-nnoremap <leader>ciw *``cgn
-nnoremap <leader>c. /\V<C-r>"<CR>cgn<C-a><Esc>
+" Change next occurrence of word or selection
+" vmap <M-s> *``qq
+vmap s *``cgn
+nnoremap s *``cgn
+nnoremap <M-.> /\V<C-r>"<CR>cgn<C-a><Esc>
 
-" Get tree-sitter or vim-syntax highlight group of a word under the cursor
-nnoremap <F11> :TSHighlightCapturesUnderCursor<CR>
+" Run macro at each line of visual selection
+xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
+
+" Get vim-syntax highlight group of a word under the cursor
 nnoremap <F10> :echo "hi<"
       \ . synIDattr(synID(line("."),col("."),1),"name") . "> trans<"
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
