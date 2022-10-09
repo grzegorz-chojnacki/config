@@ -5,5 +5,8 @@ ERRFILE="$XDG_CACHE_HOME/X11/xsession-errors"
 xset -b
 xset r rate 200 50
 xset s off
+xset -dpms
+
+setxkbmap -option caps:swapescape
 
 exec i3
