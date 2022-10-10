@@ -21,7 +21,7 @@ set mouse=nv
 set cursorline
 set laststatus=3
 set lazyredraw
-set statusline=%<[%n]%y%m%r\ %f%=%l,%c\ %p%%\ (%L)
+set statusline=%<[%n]%y%m%r %f%=%l,%c %p%% (%L)
 set updatetime=200
 set wildignore+=.git/*
 set complete+=i,kspell
@@ -51,14 +51,15 @@ set smartindent
 set smarttab
 set expandtab
 set shiftwidth=2
+set shiftround
 set tabstop=2
 set softtabstop=2
 set linebreak
 set breakindent
-set breakindentopt=sbr,shift:2
+set breakindentopt=sbr,shift:2,min:20
 set showbreak=↪
 set cpoptions+=n
-set listchars=tab:»\ ,precedes:‹,extends:›,nbsp:␣,trail:·,lead:·,conceal:∷
+set listchars=tab:» ,precedes:‹,extends:›,nbsp:␣,trail:·,lead:·,conceal:∷,leadmultispace:¦ 
 set list
 
 let mapleader = " "
@@ -67,6 +68,39 @@ let g:python3_host_prog = '/usr/bin/python3'
 
 " Netrw config
 let g:netrw_banner = 0
+
+" lua <<EOF
+" require('packer').startup(function(use)
+"   use 'wbthomason/packer.nvim'
+"   use 'tpope/vim-commentary'
+"   use 'tpope/vim-fugitive'
+"   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+" end)
+"
+" require('nvim-treesitter.configs').setup({
+"   ensure_installed = {
+"     'vim',
+"     'lua',
+"     'bash',
+"     'yaml',
+"     'html',
+"     'css',
+"     'comment',
+"     'javascript',
+"     'java',
+"     'json',
+"     'json5',
+"     'jsdoc',
+"     'python',
+"     'c',
+"   },
+"   sync_install = false,
+"   highlight = {
+"     enable = true,
+"     additional_vim_regex_highlighting = true,
+"   },
+" })
+" EOF
 
 " Remove trailing whitespace and blank lines at the end of file
 function! s:TrimWhitespace()

@@ -84,4 +84,26 @@ highlight Special         ctermfg=5
 highlight SpecialKey      ctermfg=8
 highlight NonText         ctermfg=8
 highlight Directory       ctermfg=4
-highlight Whitespace      ctermfg=8
+highlight Whitespace      ctermfg=8 cterm=nocombine
+
+" " TreeSitter
+" highlight link TSVariable Identifier
+" highlight link TSVariableBuiltin Type
+" highlight link TSConstructor Type
+" highlight link TSPunctBracket Ignore
+" highlight link TSPunctDelimiter Ignore
+" highlight link TSTag Identifier
+" highlight link TSTagDelimiter TSTag
+" highlight link TSFuncBuiltin Function
+
+" " HTML
+" highlight link TSTagAttribute Constant
+" highlight link htmlTSOperator String
+
+" " CSS
+" highlight link cssTSType Identifier
+" highlight link cssTSProperty Constant
+
+" " JSON
+" highlight link jsonTSLabel Identifier
+" highlight link json5TSKeyword jsonTSLabel
