@@ -7,6 +7,4 @@ xset r rate 200 50
 xset s off
 xset -dpms
 
-setxkbmap -option caps:swapescape
-
 exec i3

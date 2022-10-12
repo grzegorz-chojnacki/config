@@ -147,7 +147,7 @@ bindsym XF86Explorer               exec --no-startup-id gsimplecal
 
 # System actions
 bindsym $Mod+Shift+q               exec $Logout
-bindsym $Mod+Scroll_Lock           exec xset r rate 200 50 && setxkbmap -option caps:swapescape
+bindsym $Mod+Scroll_Lock           exec xset r rate 200 50
 bindsym $Mod+Shift+colon           exec --no-startup-id i3lock -fec 000000 && sleep 1 && xset s activate
 bindsym --release $Mod+Pause       exec systemctl suspend
 bindsym --release $Mod+Shift+Pause exec poweroff
