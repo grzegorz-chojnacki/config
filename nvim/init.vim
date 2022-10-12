@@ -76,38 +76,41 @@ let g:gitgutter_sign_removed_first_line = g:gitgutter_sign_removed
 let g:gitgutter_sign_removed_above_and_below = g:gitgutter_sign_removed
 
 lua << EOF
-require('packer').startup(function(use)
-  use 'airblade/vim-gitgutter'
-  use 'nvim-treesitter/nvim-treesitter'
-  use 'nvim-treesitter/playground'
-  use 'tpope/vim-commentary'
-  use 'tpope/vim-fugitive'
-  use 'wbthomason/packer.nvim'
-end)
+-- Ensure packer is installed
+if vim.fn.empty(vim.fn.glob(vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim')) > 0 then
+  require('packer').startup(function(use)
+    use 'airblade/vim-gitgutter'
+    use 'nvim-treesitter/nvim-treesitter'
+    use 'nvim-treesitter/playground'
+    use 'tpope/vim-commentary'
+    use 'tpope/vim-fugitive'
+    use 'wbthomason/packer.nvim'
+  end)
 
-require('nvim-treesitter.configs').setup({
-  ensure_installed = {
-    'bash',
-    'c',
-    'comment',
-    'css',
-    'html',
-    'java',
-    'javascript',
-    'jsdoc',
-    'json',
-    'json5',
-    'lua',
-    'python',
-    'vim',
-    'yaml',
-  },
-  sync_install = false,
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = true,
-  },
-})
+  require('nvim-treesitter.configs').setup({
+    ensure_installed = {
+      'bash',
+      'c',
+      'comment',
+      'css',
+      'html',
+      'java',
+      'javascript',
+      'jsdoc',
+      'json',
+      'json5',
+      'lua',
+      'python',
+      'vim',
+      'yaml',
+    },
+    sync_install = false,
+    highlight = {
+      enable = true,
+      additional_vim_regex_highlighting = true,
+    },
+  })
+end
 EOF
 
 " Remove trailing whitespace and blank lines at the end of file
