@@ -258,5 +258,9 @@
   {
     "key": "ctrl+alt+l",
     "command": "editor.action.transformToLowercase"
+  },
+  {
+    "key": "ctrl+shift+alt+k",
+    "command": "bookmarks.toggleLabeled"
   }
 ]

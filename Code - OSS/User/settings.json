@@ -138,4 +138,11 @@
   "prettier.singleQuote": true,
   "prettier.semi": false,
   "window.menuBarVisibility": "hidden",
+  "gitlens.codeLens.enabled": false,
+  "gitlens.statusBar.enabled": false,
+  "kotlin.debugAdapter.enabled": false,
+  "kotlin.languageServer.enabled": false,
+  "gitlens.hovers.enabled": false,
+  "gitlens.hovers.avatars": false,
+  "terminal.integrated.shellIntegration.decorationsEnabled": "never",
 }
