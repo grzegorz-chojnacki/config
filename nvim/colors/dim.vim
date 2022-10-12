@@ -86,24 +86,36 @@ highlight NonText         ctermfg=8
 highlight Directory       ctermfg=4
 highlight Whitespace      ctermfg=8 cterm=nocombine
 
-" " TreeSitter
-" highlight link TSVariable Identifier
-" highlight link TSVariableBuiltin Type
-" highlight link TSConstructor Type
-" highlight link TSPunctBracket Ignore
-" highlight link TSPunctDelimiter Ignore
-" highlight link TSTag Identifier
-" highlight link TSTagDelimiter TSTag
-" highlight link TSFuncBuiltin Function
+" GitGutter
+highlight! link GitGutterAdd DiffAdd
+highlight! link GitGutterChange DiffChange
+highlight! link GitGutterDelete DiffDelete
 
-" " HTML
-" highlight link TSTagAttribute Constant
-" highlight link htmlTSOperator String
+highlight! link GitGutterAddLineNr DiffAdd
+highlight! link GitGutterChangeLineNr DiffChange
+highlight! link GitGutterDeleteLineNr DiffDelete
+highlight! link GitGutterChangeDeleteLineNr DiffChange
 
-" " CSS
-" highlight link cssTSType Identifier
-" highlight link cssTSProperty Constant
+" TreeSitter
+highlight link TSVariable Identifier
+highlight link TSVariableBuiltin Type
+highlight link TSConstructor Type
+highlight link TSPunctBracket Ignore
+highlight link TSPunctDelimiter Ignore
+highlight link TSTag Identifier
+highlight link TSTagDelimiter TSTag
+highlight link TSFuncBuiltin Function
 
-" " JSON
-" highlight link jsonTSLabel Identifier
-" highlight link json5TSKeyword jsonTSLabel
+" HTML
+highlight link TSTagAttribute Constant
+highlight link htmlTSOperator String
+
+" CSS
+highlight link cssTSType Identifier
+highlight link cssTSProperty Constant
+
+" JSON
+highlight link jsonTSLabel Identifier
+highlight link json5TSKeyword jsonTSLabel
+
+nnoremap <C-_> gcc

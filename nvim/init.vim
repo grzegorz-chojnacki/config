@@ -63,44 +63,52 @@ set listchars=tab:» ,precedes:‹,extends:›,nbsp:␣,trail:·,lead:·,concea
 set list
 
 let mapleader = " "
+let g:netrw_banner = 0
+let g:vimsyn_embed = 0
 let g:python_host_prog =  '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
 
-" Netrw config
-let g:netrw_banner = 0
+" GitGutter config
+let g:gitgutter_close_preview_on_escape = 1
+let g:gitgutter_sign_modified_removed = '~'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = g:gitgutter_sign_removed
+let g:gitgutter_sign_removed_above_and_below = g:gitgutter_sign_removed
 
-" lua <<EOF
-" require('packer').startup(function(use)
-"   use 'wbthomason/packer.nvim'
-"   use 'tpope/vim-commentary'
-"   use 'tpope/vim-fugitive'
-"   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-" end)
-"
-" require('nvim-treesitter.configs').setup({
-"   ensure_installed = {
-"     'vim',
-"     'lua',
-"     'bash',
-"     'yaml',
-"     'html',
-"     'css',
-"     'comment',
-"     'javascript',
-"     'java',
-"     'json',
-"     'json5',
-"     'jsdoc',
-"     'python',
-"     'c',
-"   },
-"   sync_install = false,
-"   highlight = {
-"     enable = true,
-"     additional_vim_regex_highlighting = true,
-"   },
-" })
-" EOF
+lua << EOF
+require('packer').startup(function(use)
+  use 'airblade/vim-gitgutter'
+  use 'nvim-treesitter/nvim-treesitter'
+  use 'nvim-treesitter/playground'
+  use 'tpope/vim-commentary'
+  use 'tpope/vim-fugitive'
+  use 'wbthomason/packer.nvim'
+end)
+
+require('nvim-treesitter.configs').setup({
+  ensure_installed = {
+    'bash',
+    'c',
+    'comment',
+    'css',
+    'html',
+    'java',
+    'javascript',
+    'jsdoc',
+    'json',
+    'json5',
+    'lua',
+    'python',
+    'vim',
+    'yaml',
+  },
+  sync_install = false,
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = true,
+  },
+})
+EOF
 
 " Remove trailing whitespace and blank lines at the end of file
 function! s:TrimWhitespace()
@@ -170,6 +178,12 @@ augroup end
 nnoremap <M-f> :FZF!<CR>
 nnoremap <C-w>e :Ex<CR>
 nnoremap <C-w><C-e> :Ex<CR>
+
+" Git integration
+nnoremap <C-_> gcc
+xnoremap <C-_> gc
+nnoremap <Leader>g :Git<CR>
+nnoremap <Leader>G :GitGutterToggle<CR>
 
 " Toggle buffer
 nnoremap <leader><Tab> :b <Tab>
@@ -255,6 +269,7 @@ nnoremap <M-.> /\V<C-r>"<CR>cgn<C-a><Esc>
 xnoremap @ :<C-u>call <SID>ExecuteMacroOverVisualRange()<CR>
 
 " Get vim-syntax highlight group of a word under the cursor
+nnoremap <F11> :TSHighlightCapturesUnderCursor<CR>
 nnoremap <F10> :echo "hi<"
       \ . synIDattr(synID(line("."),col("."),1),"name") . "> trans<"
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
