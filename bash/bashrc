@@ -89,4 +89,3 @@ alias e='ranger'
 alias f='fff'
 alias o='xdg-open'
 alias cal='cal -m'
-alias timer="termdown"
