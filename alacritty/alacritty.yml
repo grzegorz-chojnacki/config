@@ -34,7 +34,7 @@ colors:
       foreground: '#4C4D53'
       background: '#232530'
 
-    bar:
+    footer_bar:
       foreground: '#E95678'
       background: '#16161C'
 
