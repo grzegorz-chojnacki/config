@@ -48,6 +48,31 @@ function ex () {
   fi
 }
 
+# venv - simplify python virtual environments
+# usage: venv <command>
+function venv() {
+  function usage() {
+    echo -e 'usage: venv <command>\n'
+    echo -e 'Streamline usage of python virtual environments\n'
+    echo -e 'Available commands:'
+    echo -e '  init   initialize venv in the current directory'
+    echo -e '  start  activate venv in the current directory'
+    echo -e '  end    deactivate the current venv\n'
+  }
+
+  case $1 in
+    'init')
+      if [ ! -d ./venv ]; then python -m venv ./venv
+      else echo 'venv already exists in this directory'; fi ;;
+    'start')
+      if [ -f ./venv/bin/activate ]; then source ./venv/bin/activate
+      else echo 'No venv in the current directory'; fi ;;
+    'end')
+      if [[ $(type -t deactivate) == function ]]; then deactivate
+      else echo 'Cannot deactivate venv'; fi ;;
+    *) usage ;;
+  esac
+}
 
 #################
 # Prompt config #
