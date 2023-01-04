@@ -39,6 +39,8 @@ default_border pixel 1
 # Workaround for the default_border option not working
 for_window [class=".*"] border pixel 1
 default_floating_border normal 1
+# Workaround for the default_floating_border option not working
+for_window [class=".*" floating] border normal 1
 
 # class                 border      background  text       indicator   child_border
 client.focused          $Background $Background $Cranberry $Dark       $Gray
@@ -56,8 +58,9 @@ for_window [class="Galculator"] floating enable, move workspace current
 # Exceptions for always floating
 for_window [class="Steam" title="^Steam$"] floating disable
 
-# Move Discord to workspace 2
+# Move Discord to workspace 2 and don't focus
 for_window [class="discord"] move container to workspace number 2
+no_focus [class="discord"]
 
 
 #################
