@@ -222,12 +222,6 @@ noremap j gj
 noremap k gk
 noremap - $
 
-" Pane switching shortcuts
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
 " Pane resizing shortcuts
 nnoremap <silent> <C-M-h> :vertical resize -1<CR>
 nnoremap <silent> <C-M-j> :resize -1<CR>
