@@ -14,6 +14,7 @@ audio/x-wav=deadbeef.desktop;
 image/bmp=imv.desktop;
 image/jpeg=imv.desktop;
 image/png=imv.desktop;
+image/gif=imv.desktop;
 image/svg+xml=imv.desktop;
 inode/directory=pcmanfm.desktop;
 text/csv=nvim.desktop;

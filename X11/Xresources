@@ -1,3 +1,5 @@
+Xcursor.theme: Vanilla-DMZ
+
 ! Black + DarkGrey
 *color0:  #1c1e26
 *color8:  #4c4d53
@@ -22,4 +24,3 @@
 ! LightGrey + White
 *color7:  #bbbbbb
 *color15: #e5e5e5
-
