@@ -17,6 +17,7 @@ set nowrap
 set scrolloff=5
 set sidescrolloff=5
 set clipboard=unnamedplus
+set synmaxcol=200
 set mouse=nv
 set cursorline
 set laststatus=3
@@ -26,12 +27,14 @@ set updatetime=200
 set wildignore+=.git/*
 set complete+=i,kspell
 set spelllang=en_us,pl
+set shellcmdflag+=\ -O\ globstar
 
 " Search settings
 set hlsearch
 set ignorecase
 set smartcase
 set incsearch
+set grepprg=rg\ -M80\ --vimgrep
 
 " Don't pollute $HOME, store viminfo in .cache
 set viminfo+=n~/.cache/viminfo
@@ -77,7 +80,7 @@ let g:gitgutter_sign_removed_above_and_below = g:gitgutter_sign_removed
 
 lua << EOF
 -- Ensure packer is installed
-if vim.fn.empty(vim.fn.glob(vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim')) > 0 then
+-- if vim.fn.empty(vim.fn.glob(vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim')) > 0 then
   require('packer').startup(function(use)
     use 'airblade/vim-gitgutter'
     use 'nvim-treesitter/nvim-treesitter'
@@ -110,7 +113,7 @@ if vim.fn.empty(vim.fn.glob(vim.fn.stdpath('data')..'/site/pack/packer/start/pac
       additional_vim_regex_highlighting = true,
     },
   })
-end
+-- end
 EOF
 
 " Remove trailing whitespace and blank lines at the end of file
@@ -143,7 +146,7 @@ augroup custom
   " Set the cursor to I-beam upon exiting
   autocmd VimLeave * set guicursor=a:ver20
 
-  " Set JSDoc include for js files
+  " Set JSDoc include for js files (:checkpath to see what got included)
   autocmd FileType javascript set include=<reference\s*\ path=
 
   " Jump to last location without affecting the jump list
@@ -161,13 +164,13 @@ augroup custom
   " Blink highlight on yanked text
   autocmd TextYankPost * silent! lua require('vim.highlight').on_yank()
 
-  " Continue quotes in markdown
-  autocmd FileType markdown setlocal comments=n:>
   " Format tables
-  autocmd FileType markdown vnoremap <leader>f !column -t -s'\|' -o'\|'<CR>
+  autocmd FileType markdown vnoremap <leader>f !column -ts'\|' -o'\|'<CR>
 
   " Make quickfix lists modifiable by default, commit changes with <C-s>
-  autocmd BufWinEnter quickfix set modifiable | setlocal errorformat=%f\|%l\ col\ %c-%k\|%m | nnoremap <buffer> <C-s> :cgetbuffer<CR>
+  autocmd BufWinEnter quickfix set modifiable
+        \ | setlocal errorformat=%f\|%l\ col\ %c-%k\|%m
+        \ | nnoremap <buffer> <C-s> :cgetbuffer<CR>
 
   " Fix cursor placement on tabs in help files (align left)
   autocmd BufEnter * if &ft ==# 'help'
@@ -183,8 +186,8 @@ nnoremap <C-w>e :Ex<CR>
 nnoremap <C-w><C-e> :Ex<CR>
 
 " Git integration
-nnoremap <C-_> gcc
-xnoremap <C-_> gc
+nmap <C-_> gcc
+xmap <C-_> gc
 nnoremap <Leader>g :Git<CR>
 nnoremap <Leader>G :GitGutterToggle<CR>
 
@@ -209,7 +212,7 @@ noremap <C-Z> <C-z>
 noremap Q @@
 
 " Save file
-nnoremap <C-s> :w<CR>
+nnoremap <silent> <C-s> :update<CR>
 
 " Easier exit from terminal
 tnoremap <Esc> <C-\><C-n>
@@ -263,10 +266,8 @@ xnoremap * :call <SID>VSetSearch('/')<CR>/<C-r>/<CR>
 xnoremap # :call <SID>VSetSearch('?')<CR>?<C-r>/<CR>
 
 " Change next occurrence of word or selection
-" vmap <M-s> *``qq
 vmap s *``cgn
 nnoremap s *``cgn
-nnoremap <M-.> /\V<C-r>"<CR>cgn<C-a><Esc>
 
 " Run macro at each line of visual selection
 xnoremap @ :<C-u>call <SID>ExecuteMacroOverVisualRange()<CR>
