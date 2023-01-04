@@ -2,9 +2,6 @@
 	email = grzegorzc60@gmail.com
 	name = Grzegorz Chojnacki
 
-[diff]
-	tool = vimdiff3
-
 [alias]
 	tracked = ls-tree -r --name-only HEAD
 	tree = log --all --decorate --oneline --graph
@@ -16,11 +13,14 @@
 [init]
 	defaultBranch = master
 
-[difftool "vimdiff3"]
-	path = nvim
+[diff]
+	tool = nvimdiff
+	conflictStyle = diff3
 
 [merge]
-	tool = vimdiff3
+	tool = nvimdiff
+	conflictStyle = diff3
 
-[mergetool "vimdiff3"]
+[mergetool]
 	path = nvim
+	prompt = false
