@@ -88,6 +88,7 @@ lua << EOF
     use 'tpope/vim-commentary'
     use 'tpope/vim-fugitive'
     use 'wbthomason/packer.nvim'
+    use 'junegunn/vim-easy-align'
   end)
 
   require('nvim-treesitter.configs').setup({
@@ -258,6 +259,10 @@ vnoremap P "_dP
 " Proper start mappings in visual mode
 xnoremap * :call <SID>VSetSearch('/')<CR>/<C-r>/<CR>
 xnoremap # :call <SID>VSetSearch('?')<CR>?<C-r>/<CR>
+
+" Search current word in the directory tree
+nnoremap <leader>/ :vimgrep /<C-r><C-w>/g **/*
+xnoremap <leader>/ "-ygv:<C-u>vimgrep /<C-r>-/g **/*
 
 " Change next occurrence of word or selection
 vmap s *``cgn
