@@ -52,7 +52,6 @@ client.background       $Background
 
 # Always floating
 for_window [class="Steam"]      floating enable
-for_window [class="Deadbeef"]   floating enable, resize set 1000px 800px, move workspace current
 for_window [class="Galculator"] floating enable, move workspace current
 
 # Exceptions for always floating
@@ -153,6 +152,7 @@ bindsym $Mod+Shift+q               exec $Logout
 bindsym $Mod+Scroll_Lock           exec xset r rate 200 50
 bindsym $Mod+Shift+colon           exec --no-startup-id i3lock -fec 000000 && sleep 1 && xset s activate
 bindsym --release $Mod+Pause       exec systemctl suspend
+bindsym --release $Mod+$Alt+Pause  exec systemctl hibernate
 bindsym --release $Mod+Shift+Pause exec poweroff
 bindsym --release $Mod+F12         exec ~/scripts/hide-desktop
 
