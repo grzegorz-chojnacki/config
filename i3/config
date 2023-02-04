@@ -109,6 +109,7 @@ set $SizeUnit       40 px
 set $RefreshBar     killall -SIGUSR1 i3status
 set $Logout         "i3-nagbar -f 'pango:Fira Code' -t warning -m 'Would you like to logout?' -B 'Yes' 'i3-msg exit'"
 set $ClipboardImage xclip -selection clipboard -t image/png -i
+set $LockScreen     i3lock -fec 000000 && sleep 1
 
 bindsym $Mod+f       fullscreen toggle
 bindsym $Mod+Tab     workspace back_and_forth
@@ -155,9 +156,9 @@ bindsym XF86Explorer               exec --no-startup-id gsimplecal
 # System actions
 bindsym $Mod+Shift+q               exec $Logout
 bindsym $Mod+Scroll_Lock           exec xset r rate 200 50
-bindsym $Mod+Shift+colon           exec --no-startup-id i3lock -fec 000000 && sleep 1 && xset s activate
-bindsym --release $Mod+Pause       exec systemctl suspend
-bindsym --release $Mod+$Alt+Pause  exec systemctl hibernate
+bindsym $Mod+Shift+colon           exec --no-startup-id $LockScreen && xset s activate
+bindsym --release $Mod+Pause       exec --no-startup-id $LockScreen && systemctl suspend
+bindsym --release $Mod+$Alt+Pause  exec --no-startup-id $LockScreen && systemctl hibernate
 bindsym --release $Mod+Shift+Pause exec poweroff
 bindsym --release $Mod+F12         exec ~/scripts/hide-desktop
 
