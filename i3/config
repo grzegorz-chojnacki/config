@@ -54,6 +54,7 @@ client.background       $Background
 # Always floating
 for_window [class="Steam"]      floating enable
 for_window [class="Galculator"] floating enable, move workspace current
+for_window [class="qalc"] floating enable, move workspace current
 
 # Exceptions for always floating
 for_window [class="Steam" title="^Steam$"] floating disable
@@ -149,7 +150,7 @@ bindsym XF86AudioPrev              exec --no-startup-id mpc prev
 bindsym XF86AudioPlay              exec --no-startup-id mpc toggle
 bindsym XF86Tools                  exec --no-startup-id $Terminal ncmpcpp
 bindsym Shift+XF86Tools            exec --no-startup-id ~/scripts/now-playing
-bindsym XF86Calculator             exec --no-startup-id galculator
+bindsym XF86Calculator             exec --no-startup-id alacritty --class 'qalc' -e qalc
 bindsym XF86HomePage               exec --no-startup-id brave
 bindsym XF86Explorer               exec --no-startup-id gsimplecal
 
