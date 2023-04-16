@@ -8,7 +8,7 @@ exec --no-startup-id dunst &
 exec --no-startup-id unclutter --timeout 2 &
 exec --no-startup-id redshift &
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-exec --no-startup-id mpc volume 50 && mpc add / && mpc random on
+exec --no-startup-id mpc add / && mpc volume 50 && mpc random on && mpc crossfade 5
 
 ################
 #  Behaviour   #
