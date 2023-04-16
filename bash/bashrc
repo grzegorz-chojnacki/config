@@ -88,7 +88,7 @@ fi
 
 export PS1='\[$T4\]\w\[$T5\]$(__git_ps1)\[$T1\]$(errcode)\[$TR\] \$ '
 export PS4='# '
-export PATH=$HOME/scripts:$PATH
+export PATH="$HOME/scripts:$PATH"
 
 ###########
 # Aliases #
@@ -115,3 +115,5 @@ alias f='fff'
 alias o='xdg-open'
 alias cal='cal -m'
 alias mpvf='mpv "$(fzf)"'
+alias legendary='/opt/Heroic/resources/app.asar.unpacked/build/bin/linux/legendary'
+alias hex='od -v -tx1z'
