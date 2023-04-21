@@ -28,6 +28,10 @@ HISTCONTROL=ignoreboth:erasedups
 HISTSIZE=
 HISTFILESIZE=
 
+# FZF's shell additions
+[ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash
+[ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash
+
 # ex - archive extractor
 # usage: ex <file>
 function ex () {
