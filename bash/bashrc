@@ -18,6 +18,9 @@ shopt -s checkwinsize
 bind 'TAB':menu-complete
 bind '"\e[Z"':menu-complete-backward
 
+# Append commands to history immediately
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
+
 # Don't save duplicate lines or lines starting with space
 HISTCONTROL=ignoreboth:erasedups
 
