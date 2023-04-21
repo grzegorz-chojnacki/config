@@ -9,19 +9,17 @@ ncmpcpp_directory = ~/.config/ncmpcpp
 mpd_music_dir = ~/Music/CiuMPe3ki
 mpd_crossfade_time = 5
 
-visualizer_data_source = /tmp/mpd.fifo
-visualizer_output_name = mpd_fifo
-visualizer_in_stereo = yes
-visualizer_type = spectrum
-visualizer_fps = 60
-visualizer_autoscale = no
-visualizer_look = ██
-visualizer_spectrum_smooth_look = yes
-visualizer_color = 4, 5, 3, 2, 6
-visualizer_spectrum_dft_size = 2
-visualizer_spectrum_gain = 10
-visualizer_spectrum_hz_min = 20
-visualizer_spectrum_hz_max = 16000
+# visualizer_in_stereo = yes
+# visualizer_type = spectrum
+# visualizer_fps = 60
+# visualizer_autoscale = no
+# visualizer_look = ██
+# visualizer_spectrum_smooth_look = yes
+# visualizer_color = 4, 5, 3, 2, 6
+# visualizer_spectrum_dft_size = 2
+# visualizer_spectrum_gain = 10
+# visualizer_spectrum_hz_min = 20
+# visualizer_spectrum_hz_max = 16000
 playlist_disable_highlight_delay = 0
 ##### song format #####
 ##
@@ -122,7 +120,7 @@ playlist_disable_highlight_delay = 0
 #song_window_title_format = {%a - }{%t}|{%f}
 #browser_sort_mode = type
 #browser_sort_format = {%a - }{%t}|{%f} {%l}
-song_columns_list_format = (30)[3]{a:Artists} (65)[5]{t|f:Title} (5)[6]{lr:Length}
+song_columns_list_format = (30)[3]{a{, }}:Artists} (65)[5]{t|f:Title} (5)[6]{lr:Length}
 
 # execute_on_song_change = ""
 
