@@ -70,6 +70,7 @@ let g:netrw_banner = 0
 let g:vimsyn_embed = 0
 let g:python_host_prog =  '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
+let g:markdown_recommended_style = 0
 
 " GitGutter config
 let g:gitgutter_close_preview_on_escape = 1
