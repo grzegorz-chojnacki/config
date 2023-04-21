@@ -55,6 +55,11 @@ function ex () {
   fi
 }
 
+
+function tomp3() {
+  ffmpeg -i "$1" "${1}.mp3"
+}
+
 # venv - simplify python virtual environments
 # usage: venv <command>
 function venv() {
