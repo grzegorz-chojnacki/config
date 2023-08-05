@@ -1,4 +1,3 @@
-// vim: ft=javascript
 general {
   output_format = "i3bar"
   colors = false
@@ -26,13 +25,14 @@ memory {
 }
 
 cpu_temperature 0 {
-  format = "<span color='#e95678'>cpu:</span> <span color='#f09483'>%degrees°C</span>"
+  format = "<span color='#e95678'>cpu:</span> <span color='#f09483'>%degrees°C</span> "
   path = "/sys/class/hwmon/hwmon2/temp2_input"
+  separator = false
   separator_block_width = 0
 }
 
 cpu_usage {
-  format = " <span color='#4c4d53'>@</span> <span color='#f09483'>%usage</span>"
+  format = "<span color='#4c4d53'>@</span> <span color='#f09483'>%usage</span>"
 }
 
 cpu_temperature 1 {

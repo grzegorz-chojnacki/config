@@ -142,6 +142,8 @@ bindsym $Mod+Print exec maim -i $(xdotool getactivewindow) | $ClipboardImage
 # Media controls
 bindsym XF86AudioRaiseVolume       exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@     +10% && $RefreshBar
 bindsym XF86AudioLowerVolume       exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@     -10% && $RefreshBar
+bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id mpc volume +10
+bindsym Shift+XF86AudioLowerVolume exec --no-startup-id mpc volume -10
 bindsym XF86AudioMute              exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@   toggle && $RefreshBar
 bindsym XF86AudioMicMute           exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $RefreshBar
 bindsym XF86AudioStop              exec --no-startup-id mpc stop
@@ -167,7 +169,6 @@ bindsym --release $Mod+F12         exec ~/scripts/hide-desktop
 bindsym $Mod+z                     exec --no-startup-id rofi -show drun
 bindsym $Mod+p                     exec --no-startup-id rofi -show drun
 bindsym $Mod+Shift+p               exec --no-startup-id rofi -show run
-bindsym $Alt+Tab                   exec --no-startup-id rofi -show window
 bindsym $Mod+period                exec --no-startup-id ~/scripts/emoji
 
 # Other programs
@@ -262,15 +263,23 @@ bindsym $Mod+Ctrl+Right resize grow   width  $SizeUnit
 ################
 
 mode "swap" {
-  bindsym h     focus left
-  bindsym j     focus down
-  bindsym k     focus up
-  bindsym l     focus right
+  bindsym h          focus left
+  bindsym j          focus down
+  bindsym k          focus up
+  bindsym l          focus right
+  bindsym $Mod+h     focus left
+  bindsym $Mod+j     focus down
+  bindsym $Mod+k     focus up
+  bindsym $Mod+l     focus right
 
-  bindsym Left  focus left
-  bindsym Down  focus down
-  bindsym Up    focus up
-  bindsym Right focus right
+  bindsym Left       focus left
+  bindsym Down       focus down
+  bindsym Up         focus up
+  bindsym Right      focus right
+  bindsym $Mod+Left  focus left
+  bindsym $Mod+Down  focus down
+  bindsym $Mod+Up    focus up
+  bindsym $Mod+Right focus right
 
   bindsym Return     swap container with mark "swap", unmark "swap", mode "default"
   bindsym Escape     mode "default"
