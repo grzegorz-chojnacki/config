@@ -57,7 +57,7 @@ function ex () {
 
 
 function tomp3() {
-  ffmpeg -i "$1" "${1}.mp3"
+  ffmpeg -i "$1" -codec:a libmp3lame -b:a 320k "${1}.mp3"
 }
 
 # venv - simplify python virtual environments
@@ -126,6 +126,7 @@ alias e='ranger'
 alias f='fff'
 alias o='xdg-open'
 alias cal='cal -m'
-alias mpvf='mpv "$(fzf)"'
+alias mpvf='find . -type f | sort | fzf -i --cycle --preview "mpv --loop {}"'
 alias legendary='/opt/Heroic/resources/app.asar.unpacked/build/bin/linux/legendary'
 alias hex='od -v -tx1z'
+alias hamachi='sudo /opt/logmein-hamachi/bin/hamachid && sleep 5 && sudo hamachi'
