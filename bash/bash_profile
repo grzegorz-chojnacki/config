@@ -83,7 +83,7 @@ fi
 
 # Autostart X session on login
 if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  startx "$XINITRC"
+  exec startx "$XINITRC"
 elif [[ -f ~/.bashrc ]]; then
   source ~/.bashrc
 fi
