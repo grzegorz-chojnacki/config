@@ -120,6 +120,9 @@
   "[markdown]": {
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
+  "[python]": {
+    "editor.tabSize": 4,
+  },
   "editor.copyWithSyntaxHighlighting": false,
   "prettier.htmlWhitespaceSensitivity": "ignore",
   "workbench.editor.untitled.hint": "hidden",
@@ -147,4 +150,8 @@
   "window.menuBarVisibility": "hidden",
   "terminal.integrated.minimumContrastRatio": 1,
   "terminal.integrated.cursorStyle": "line",
+  "scm.diffDecorationsGutterPattern": {
+    "modified": false
+  },
+  "editor.renderFinalNewline": "on",
 }
