@@ -97,25 +97,17 @@ highlight! link GitGutterDeleteLineNr DiffDelete
 highlight! link GitGutterChangeDeleteLineNr DiffChange
 
 " TreeSitter
-highlight link TSVariable Identifier
-highlight link TSVariableBuiltin Type
-highlight link TSConstructor Type
-highlight link TSPunctBracket Ignore
-highlight link TSPunctDelimiter Ignore
-highlight link TSTag Identifier
-highlight link TSTagDelimiter TSTag
-highlight link TSFuncBuiltin Function
+highlight link @punctuation.bracket Ignore
+highlight link @constructor Type
+highlight link @variable.builtin Type
+highlight link @function.builtin Function
+highlight link @punctuation.delimiter Normal
 
-" HTML
-highlight link TSTagAttribute Constant
-highlight link htmlTSOperator String
+highlight link @tag Identifier
+highlight link @tag.attribute Constant
 
-" CSS
-highlight link cssTSType Identifier
-highlight link cssTSProperty Constant
-
-" JSON
-highlight link jsonTSLabel Identifier
-highlight link json5TSKeyword jsonTSLabel
-
-nnoremap <C-_> gcc
+highlight link @text.literal Constant
+highlight @text.emphasis ctermfg=6 cterm=italic
+highlight @text.strong   ctermfg=5 cterm=bold
+highlight link @text.todo String
+highlight link @text.reference Type

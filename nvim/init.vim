@@ -12,7 +12,6 @@ set completeopt=menuone,preview,noinsert
 set wildcharm=<Tab>
 set splitbelow splitright
 set number relativenumber
-set signcolumn=number
 set nowrap
 set scrolloff=5
 set sidescrolloff=5
@@ -78,18 +77,39 @@ let g:gitgutter_sign_modified_removed = '~'
 let g:gitgutter_sign_removed = '-'
 let g:gitgutter_sign_removed_first_line = g:gitgutter_sign_removed
 let g:gitgutter_sign_removed_above_and_below = g:gitgutter_sign_removed
+let g:gitgutter_floating_window_options = {
+      \ 'relative': 'cursor',
+      \ 'row': 1,
+      \ 'col': 0,
+      \ 'width': 42,
+      \ 'height': &previewheight,
+      \ 'style': 'minimal',
+      \ 'border': 'single'
+      \ }
 
 lua << EOF
 -- Ensure packer is installed
--- if vim.fn.empty(vim.fn.glob(vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim')) > 0 then
+if vim.fn.empty(vim.fn.glob(vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim')) ~= 0 then
+  print('Packer not found!')
+else
   require('packer').startup(function(use)
     use 'airblade/vim-gitgutter'
-    use 'nvim-treesitter/nvim-treesitter'
     use 'nvim-treesitter/playground'
     use 'tpope/vim-commentary'
     use 'tpope/vim-fugitive'
     use 'wbthomason/packer.nvim'
     use 'junegunn/vim-easy-align'
+    use {'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'}}
+    use {'nvim-telescope/telescope.nvim', tag = '0.1.1', requires = {{'nvim-lua/plenary.nvim'}}}
+    use {'VonHeikemen/lsp-zero.nvim', branch = 'v2.x', requires = {
+        {'neovim/nvim-lspconfig'},
+        {'williamboman/mason.nvim', {run = ':MasonUpdate'}},
+        {'williamboman/mason-lspconfig.nvim'},
+        {'hrsh7th/nvim-cmp'},
+        {'hrsh7th/cmp-nvim-lsp'},
+        {'L3MON4D3/LuaSnip'},
+      }
+    }
   end)
 
   require('nvim-treesitter.configs').setup({
@@ -110,12 +130,23 @@ lua << EOF
       'yaml',
     },
     sync_install = false,
+    auto_install = true,
     highlight = {
       enable = true,
-      additional_vim_regex_highlighting = true,
+      additional_vim_regex_highlighting = true
     },
   })
--- end
+
+  local lsp = require('lsp-zero').preset({})
+
+  lsp.on_attach(function(client, bufnr)
+    lsp.default_keymaps({buffer = bufnr})
+  end)
+
+  require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+  lsp.set_preferences({sign_icons = {}})
+  lsp.setup()
+end
 EOF
 
 " Remove trailing whitespace and blank lines at the end of file
@@ -181,15 +212,22 @@ augroup custom
         \ | endif
 augroup end
 
-
-" Launch plugins
-nnoremap <M-f> :FZF!<CR>
+" Ex remaps
 nnoremap <C-w>e :Ex<CR>
 nnoremap <C-w><C-e> :Ex<CR>
 
-" Git integration
+" Telescope remaps
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>l  <cmd>Telescope filetypes<cr>
+
+" Comments
 nmap <C-_> gcc
 xmap <C-_> gc
+
+" Git integration
 nnoremap <Leader>g :Git<CR>
 nnoremap <Leader>G :GitGutterToggle<CR>
 
@@ -231,10 +269,10 @@ nnoremap <silent> <C-M-k> :resize +1<CR>
 nnoremap <silent> <C-M-l> :vertical resize +1<CR>
 
 " Move lines
-nnoremap <M-j> :m .+1<CR>
-nnoremap <M-k> :m .-2<CR>
-vnoremap <M-j> :m '>+1<CR>gv
-vnoremap <M-k> :m '<-2<CR>gv
+nnoremap <M-j> :m .+1<CR>==
+nnoremap <M-k> :m .-2<CR>==
+vnoremap <M-j> :m '>+1<CR>gv=gv
+vnoremap <M-k> :m '<-2<CR>gv=gv
 
 " Duplicate lines and ranges
 nnoremap <M-K> :t-1<CR>
@@ -249,6 +287,9 @@ vnoremap S :s//g<Left><Left>
 " Enable dot command in visual mode
 vnoremap . :norm.<CR>
 
+" Don't abort insert changes in visual block mode
+inoremap <C-c> <Esc>
+
 " Text indentation without loosing selection
 vnoremap < <gv
 vnoremap > >gv
@@ -257,7 +298,7 @@ vnoremap > >gv
 vnoremap p "_dp
 vnoremap P "_dP
 
-" Proper start mappings in visual mode
+" Proper "star" mappings in visual mode
 xnoremap * :call <SID>VSetSearch('/')<CR>/<C-r>/<CR>
 xnoremap # :call <SID>VSetSearch('?')<CR>?<C-r>/<CR>
 
