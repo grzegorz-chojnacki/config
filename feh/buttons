@@ -1,0 +1,15 @@
+# Pan the image with left click
+pan 1
+
+# Zooming by panning with mouse wheel held
+zoom 2
+
+# Right click menu
+toggle_menu 3
+
+# Zooming with mouse wheel
+zoom_in  4 Ctrl+4
+zoom_out 5 Ctrl+5
+
+# Disabled
+blur
