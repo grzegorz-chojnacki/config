@@ -1,0 +1,62 @@
+"ui.window"              = { fg = "gray",       bg = "black"   }
+"ui.statusline"          = { fg = "white",      bg = "black"   }
+"ui.statusline.inactive" = { fg = "gray",       bg = "black"   }
+"ui.statusline.insert"   = { fg = "black",      bg = "red"     }
+"ui.statusline.select"   = { fg = "black",      bg = "magenta" }
+"ui.menu"                = { fg = "light-gray", bg = "black"   }
+"ui.menu.selected"       = { fg = "red",        modifiers = ["reversed"] }
+"ui.linenr"              = { fg = "gray",       bg = "black"   }
+"ui.linenr.selected"     = { fg = "white",      bg = "black"   }
+"ui.cursor"              = { fg = "black",      bg = "magenta" }
+"ui.cursor.primary"      = { fg = "black",      bg = "red"     }
+"ui.selection"           = {                    bg = "select"  }
+"ui.help"                = { fg = "white",      bg = "black"   }
+"ui.gutter"              = {                    bg = "black"   }
+"ui.highlight"           = {                    bg = "select"  }
+"ui.virtual.whitespace"  = { fg = "gray"                       }
+"ui.cursor.match"        = { modifiers = ["bold"]              }
+"ui.popup"               = {                    bg = "select"  }
+
+"diagnostic" = { modifiers = ["underlined"] }
+"info"       = "white"
+"hint"       = "light-gray"
+"debug"      = "gray"
+"warning"    = "green"
+"error"      = "red"
+
+"attribute"                 = "green"
+"type"                      = "yellow"
+"type.builtin"              = "magenta"
+"constructor"               = "yellow"
+"constant"                  = "green"
+"constant.character.escape" = "magenta"
+"string"                    = "blue"
+"comment"                   = { fg = "gray", modifiers = ["italic"] }
+"variable"                  = "red"
+"variable.builtin"          = "yellow"
+"label"                     = "green"
+"keyword"                   = "magenta"
+"operator"                  = "magenta"
+"function"                  = "cyan"
+"tag"                       = "red"
+"tag_name"                  = "magenta"
+"namespace"                 = "magenta"
+"special"                   = "blue"
+
+"markup.heading"       = "red"
+"markup.list"          = "red"
+"markup.bold"          = { fg = "magenta", modifiers = ["bold"] }
+"markup.italic"        = { fg = "cyan",    modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link.url"      = { fg = "yellow", modifiers = ["underlined"] }
+"markup.link.text"     = "green"
+"markup.link.label"    = "blue"
+"markup.quote"         = "green"
+"markup.raw"           = "green"
+
+"diff.plus"  = "cyan"
+"diff.delta" = "magenta"
+"diff.minus" = "red"
+
+[palette]
+select = "#232530"
