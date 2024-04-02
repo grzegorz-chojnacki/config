@@ -16,8 +16,8 @@ menu_select  space Return
 toggle_menu  m     Menu
 
 # Image navigation
-next_img H  Right space
-prev_img L  Left  BackSpace
+next_img L  Right space
+prev_img H  Left  BackSpace
 
 # Image scrolling
 scroll_up     k C-Up

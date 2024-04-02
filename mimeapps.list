@@ -16,6 +16,7 @@ image/jpeg=imv.desktop;
 image/png=imv.desktop;
 image/gif=imv.desktop;
 image/svg+xml=imv.desktop;
+video/mp4=mpv.desktop;
 inode/directory=pcmanfm.desktop;
 text/csv=nvim.desktop;
 text/plain=nvim.desktop;
@@ -24,10 +25,13 @@ text/x-tex=nvim.desktop;
 x-scheme-handler/http=brave-browser.desktop;
 x-scheme-handler/https=brave-browser.desktop;
 x-scheme-handler/mailto=brave-browser.desktop;
-x-scheme-handler/heroic=heroic.desktop
+x-scheme-handler/heroic=heroic.desktop;
+x-scheme-handler/about=brave-browser.desktop;
+text/html=brave-browser.desktop;
 
 [Added Associations]
 application/x-executable=steam.desktop;
 application/pdf=libreoffice-draw.desktop;libreoffice-writer.desktop;
 application/x-ms-dos-executable=wine.desktop;
 application/x-mobipocket-ebook=org.pwmt.zathura.desktop;
+application/x-gba-rom=retroarch.desktop;

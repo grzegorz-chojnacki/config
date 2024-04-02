@@ -115,7 +115,7 @@
   },
   "explorer.confirmDelete": false,
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[markdown]": {
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
@@ -125,7 +125,6 @@
   },
   "editor.copyWithSyntaxHighlighting": false,
   "prettier.htmlWhitespaceSensitivity": "ignore",
-  "workbench.editor.untitled.hint": "hidden",
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "markdown-pdf.margin.bottom": "0",
   "markdown-pdf.margin.right": "0",
@@ -147,11 +146,12 @@
   "gitlens.hovers.avatars": false,
   "terminal.integrated.shellIntegration.decorationsEnabled": "never",
   "git.confirmSync": false,
-  "window.menuBarVisibility": "hidden",
   "terminal.integrated.minimumContrastRatio": 1,
   "terminal.integrated.cursorStyle": "line",
   "scm.diffDecorationsGutterPattern": {
     "modified": false
   },
   "editor.renderFinalNewline": "on",
+  "workbench.editor.empty.hint": "hidden",
+  "window.menuBarVisibility": "hidden",
 }
