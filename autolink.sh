@@ -21,7 +21,6 @@ targets=(
   'bash/bash_profile'
   'X11/xinitrc'
   'X11/Xresources'
-  'profile'
 )
 
 for target in ${targets[@]}; do
