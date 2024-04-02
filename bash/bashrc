@@ -60,6 +60,11 @@ function tomp3() {
   ffmpeg -i "$1" -codec:a libmp3lame -b:a 320k "${1}.mp3"
 }
 
+function norm() {
+  ffmpeg -i "$1" -af 'loudnorm=I=-13' "${1%%.wav}-normalized.wav"
+}
+
+
 # venv - simplify python virtual environments
 # usage: venv <command>
 function venv() {
