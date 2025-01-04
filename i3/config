@@ -9,12 +9,6 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id mpc add / && mpc volume 50 && mpc random on && mpc crossfade 5
 
 ################
-#  Behaviour   #
-################
-
-workspace_layout tabbed
-
-################
 #    Theme     #
 ################
 set $Background #16161C
@@ -32,11 +26,14 @@ set $Turquoise  #25B0BC
 
 font pango:Fira Code Medium 11
 
+workspace_layout tabbed
 title_align center
 hide_edge_borders smart
+
 default_border pixel 1
 # Workaround for the default_border option not working
 for_window [class=".*"] border pixel 1
+
 default_floating_border normal 1
 # Workaround for the default_floating_border option not working
 for_window [class=".*" floating] border normal 1
@@ -52,7 +49,7 @@ client.background       $Background
 # Always floating
 for_window [class="Steam"]      floating enable
 for_window [class="Galculator"] floating enable, move workspace current
-for_window [class="qalc"] floating enable, move workspace current
+for_window [class="qalc"]       floating enable, move workspace current
 
 # Exceptions for always floating
 for_window [class="Steam" title="^Steam$"] floating disable
@@ -179,7 +176,7 @@ bindsym $Mod+e                     exec --no-startup-id pcmanfm
 bindsym $Mod+g                     exec --no-startup-id gimp
 bindsym $Mod+x                     exec --no-startup-id ~/scripts/xpad
 bindsym $Mod+o                     exec --no-startup-id $Terminal $Editor -c 'cd ~/.config' ~/.config/i3/config
-bindsym $Mod+n                     exec --no-startup-id $Terminal $Editor ~/notes.md
+bindsym $Mod+n                     exec --no-startup-id $Terminal $Editor -c 'cd ~/notes' ~/notes
 bindsym $Mod+Shift+n               exec --no-startup-id $Terminal $Editor
 bindsym $Mod+Shift+e               exec --no-startup-id $Terminal fff
 bindsym Control+$Alt+Delete        exec --no-startup-id $Terminal htop

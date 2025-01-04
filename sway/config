@@ -17,26 +17,27 @@ input type:keyboard {
   xkb_layout pl
 }
 
-seat seat0 {
-  hide_cursor 2000
-  hide_cursor when-typing disable
-}
+# https://github.com/swaywm/sway/issues/7382
+# seat seat0 {
+  # hide_cursor 2000
+  # hide_cursor when-typing disable
+# }
 
 ################
 #   Display    #
 ################
 output HDMI-A-1 {
   subpixel rgb
-  mode 1920x1080@60Hz
+  mode 1920x1080
   pos 0 35
-  background /home/grzegorz/Pictures/Images/3-filter.png fill #000000
+  background /home/grzegorz/Pictures/Wallpapers/3-filter.png fill #000000
 }
 
 output DP-3 {
   subpixel rgb
-  mode 1920x1200@60Hz
+  mode 1920x1200
   pos 1920 0
-  background /home/grzegorz/Pictures/Images/3-filter.png fill #000000
+  background /home/grzegorz/Pictures/Wallpapers/3-filter.png fill #000000
 }
 
 ################
@@ -65,9 +66,10 @@ font pango:Fira Code Medium 11
 
 # Borders
 title_align center
+hide_edge_borders --i3 none
 smart_borders on
 default_border pixel 1
-hide_edge_borders --i3 none
+default_floating_border normal 1
 
 # Class                 Border      Background  Text       Indicator   Child
 client.focused          $Background $Background $Cranberry $Dark       $Gray
@@ -149,7 +151,6 @@ bindsym {
 
     button2      kill
     $Mod+c       kill
-    $Mod+Shift+c exec xkill
 
     $Mod+r       reload
 
@@ -168,6 +169,8 @@ bindsym {
     Shift+XF86AudioLowerVolume exec mpc volume -10
     XF86AudioMute              exec pactl set-sink-mute   @DEFAULT_SINK@   toggle && $RefreshBar
     XF86AudioMicMute           exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && $RefreshBar
+    $Mod+Shift+BackSpace       exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && notify-send -u low -t 1500 $(pactl get-source-mute @DEFAULT_SOURCE@)
+    $Mod+$Alt+BackSpace        exec --no-startup-id ~/scripts/loopback
     XF86AudioStop              exec mpc stop
     XF86AudioNext              exec mpc next
     XF86AudioPrev              exec mpc prev
@@ -308,3 +311,6 @@ mode "swap" {
 }
 
 bindsym $Mod+slash mark --add "swap", mode "swap"
+
+# Imports several environment variables into the systemd user session and dbus
+include /etc/sway/config.d/*

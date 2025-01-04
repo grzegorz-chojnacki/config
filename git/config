@@ -24,3 +24,6 @@
 [mergetool]
 	path = nvim
 	prompt = false
+
+[rebase]
+	updateRefs = true

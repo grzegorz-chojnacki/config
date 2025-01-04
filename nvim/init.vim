@@ -2,6 +2,8 @@ set nocompatible
 colorscheme dim
 filetype plugin indent on
 syntax on
+
+set notermguicolors
 set confirm
 set title
 set encoding=utf-8
@@ -12,11 +14,9 @@ set completeopt=menuone,preview,noinsert
 set wildcharm=<Tab>
 set splitbelow splitright
 set number relativenumber
-set nowrap
-set scrolloff=5
+set scrolloff=99
 set sidescrolloff=5
-set clipboard=unnamedplus
-set synmaxcol=200
+set synmaxcol=1024
 set mouse=nv
 set cursorline
 set laststatus=3
@@ -24,6 +24,7 @@ set lazyredraw
 set statusline=%<[%n]%y%m%r %f%=%l,%c %p%% (%L)
 set updatetime=200
 set wildignore+=.git/*
+set wildignorecase
 set complete+=i,kspell
 set spelllang=en_us,pl
 set shellcmdflag+=\ -O\ globstar
@@ -58,10 +59,10 @@ set tabstop=2
 set softtabstop=2
 set linebreak
 set breakindent
-set breakindentopt=sbr,shift:2,min:20
+set breakindentopt=sbr,shift:2,min:20,list:-1
 set showbreak=↪
 set cpoptions+=n
-set listchars=tab:» ,precedes:‹,extends:›,nbsp:␣,trail:·,lead:·,conceal:∷,leadmultispace:¦ 
+set listchars=tab:» ,precedes:‹,extends:›,nbsp:␣,trail:·,lead:·,conceal:∷
 set list
 
 let mapleader = " "
