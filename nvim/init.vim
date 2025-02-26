@@ -62,6 +62,7 @@ set breakindent
 set breakindentopt=sbr,shift:2,min:20,list:-1
 set showbreak=↪
 set cpoptions+=n
+set clipboard+=unnamedplus
 set listchars=tab:» ,precedes:‹,extends:›,nbsp:␣,trail:·,lead:·,conceal:∷
 set list
 
