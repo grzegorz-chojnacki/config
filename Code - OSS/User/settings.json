@@ -71,31 +71,25 @@
       "statusBarItem.remoteForeground": "#E95678",
       "extensionButton.prominentBackground": "#3D4043",
       "terminalCursor.foreground": "#E95678",
+      "editor.background": "#16161C",
+      "sideBar.background": "#16161C",
+      "activityBar.background": "#16161C",
+      "statusBar.background": "#16161C",
+      "titleBar.activeBackground": "#16161C",
+      "editorGroupHeader.tabsBackground": "#16161C",
+      "tab.inactiveBackground": "#16161C",
+      "tab.activeBackground": "#1c1e26",
     }
   },
   "editor.tokenColorCustomizations": {
     "[Horizon]": {
       "textMateRules": [
         {
-          "name": "Java variables Fix",
-          "scope": "source.java",
-          "settings": { "foreground": "#E95678E6" }
+          "scope": "keyword.operator",
+          "settings": {
+            "foreground": "#B877DBE6"
+          }
         },
-        {
-          "name": "Punctuation Fix",
-          "scope": "source.java punctuation",
-          "settings": { "foreground": "#BBBBBB" }
-        },
-        {
-          "name": "String Fix",
-          "scope": "source.java punctuation.definition.string",
-          "settings": { "foreground": "#FAB795E6" }
-        },
-        {
-          "name": "Comment Fix",
-          "scope": "source.java punctuation.definition.comment",
-          "settings": { "foreground":  "#BBBBBB4D" }
-        }
       ]
     },
   },
